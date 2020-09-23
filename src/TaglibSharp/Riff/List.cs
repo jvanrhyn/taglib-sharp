@@ -38,18 +38,11 @@ namespace TagLib.Riff
 	[ComVisible (false)]
 	public class List : Dictionary<ByteVector, ByteVectorCollection>
 	{
-
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the <see cref="StringType"/> value used for parsing
 		///    and rendering the contents of this list.
 		/// </summary>
-		StringType string_type = StringType.UTF8;
-
-		#endregion
-
-		#region Constructors
+		private StringType string_type = StringType.UTF8;
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -139,10 +132,6 @@ namespace TagLib.Riff
 		{
 		}
 
-		#endregion
-
-		#region Public Properties
-
 		/// <summary>
 		///    Gets or sets the <see cref="StringType"/> value used for parsing
 		///    and rendering the contents of this list.
@@ -160,10 +149,6 @@ namespace TagLib.Riff
 			}
 		}
 
-		#endregion
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw RIFF list.
@@ -584,11 +569,6 @@ namespace TagLib.Riff
 				Remove (id);
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Populates the current instance by reading in the contents
@@ -599,7 +579,7 @@ namespace TagLib.Riff
 		///    A <see cref="ByteVector"/> containing a raw RIFF list to
 		///    read into the current instance.
 		/// </param>
-		void Parse (ByteVector data)
+		private void Parse (ByteVector data)
 		{
 			int offset = 0;
 			while (offset + 8 < data.Count) {
@@ -617,6 +597,5 @@ namespace TagLib.Riff
 				offset += 8 + length;
 			}
 		}
-		#endregion
 	}
 }

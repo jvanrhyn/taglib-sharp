@@ -32,44 +32,32 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public struct BoxHeader
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the box size.
 		/// </summary>
-		ulong box_size;
+		private ulong box_size;
 
 		/// <summary>
 		///    Contains the header size.
 		/// </summary>
-		uint header_size;
+		private uint header_size;
 
 		/// <summary>
 		///    Contains the position of the header.
 		/// </summary>
-		readonly long position;
+		private readonly long position;
 
 		/// <summary>
 		///    Indicated that the header was read from a file.
 		/// </summary>
-		readonly bool from_disk;
+		private readonly bool from_disk;
 
-		#endregion
-
-
-
-		#region Public Fields
 
 		/// <summary>
 		///    An empty box header.
 		/// </summary>
 		public static readonly BoxHeader Empty = new BoxHeader ("xxxx");
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -224,11 +212,6 @@ namespace TagLib.Mpeg4
 			ExtendedType = extendedType;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the type of box represented by the current instance.
@@ -313,11 +296,6 @@ namespace TagLib.Mpeg4
 			get { return from_disk ? position : -1; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Overwrites the header on disk, updating it to include a
@@ -385,18 +363,11 @@ namespace TagLib.Mpeg4
 			return output;
 		}
 
-		#endregion
-
-
-
-		#region Internal Properties
 
 		/// <summary>
 		///    Gets and sets the box represented by the current instance
 		///    as a means of temporary storage for internal uses.
 		/// </summary>
 		internal Box Box { get; set; }
-
-		#endregion
 	}
 }

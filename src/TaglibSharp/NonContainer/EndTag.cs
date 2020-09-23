@@ -44,24 +44,17 @@ namespace TagLib.NonContainer
 	/// </remarks>
 	public class EndTag : CombinedTag
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the file to operate on.
 		/// </summary>
-		readonly TagLib.File file;
+		private readonly TagLib.File file;
 
 		/// <summary>
 		///    Contains the number of bytes that must be read to
 		///    hold all applicable indicators.
 		/// </summary>
-		static readonly int read_size = (int)Math.Max (Math.Max (Ape.Footer.Size, Id3v2.Footer.Size), Id3v1.Tag.Size);
+		private static readonly int read_size = (int)Math.Max (Math.Max (Ape.Footer.Size, Id3v2.Footer.Size), Id3v1.Tag.Size);
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -82,11 +75,6 @@ namespace TagLib.NonContainer
 			this.file = file;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the total size of the tags located at the end of the
@@ -103,11 +91,6 @@ namespace TagLib.NonContainer
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Reads the tags stored at the end of the file into the
@@ -249,11 +232,6 @@ namespace TagLib.NonContainer
 			return tag;
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Reads a tag ending at a specified position and moves the
@@ -274,7 +252,7 @@ namespace TagLib.NonContainer
 		///    found at the specified position, or <see langword="null"
 		///    /> if no tag was found.
 		/// </returns>
-		TagLib.Tag ReadTag (ref long end, ReadStyle style)
+		private TagLib.Tag ReadTag (ref long end, ReadStyle style)
 		{
 			long start = end;
 			TagTypes type = ReadTagInfo (ref start);
@@ -315,7 +293,7 @@ namespace TagLib.NonContainer
 		///    type of tag found at the specified position, or <see
 		///    cref="TagTypes.None" /> if no tag was found.
 		/// </returns>
-		TagTypes ReadTagInfo (ref long position)
+		private TagTypes ReadTagInfo (ref long position)
 		{
 			if (position - read_size < 0)
 				return TagTypes.None;
@@ -357,7 +335,5 @@ namespace TagLib.NonContainer
 
 			return TagTypes.None;
 		}
-
-		#endregion
 	}
 }

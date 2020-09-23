@@ -48,33 +48,26 @@ namespace TagLib.Flac
 	[SupportedMimeType ("audio/flac")]
 	public class File : TagLib.NonContainer.File
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the Flac metadata tag.
 		/// </summary>
-		Metadata metadata;
+		private Metadata metadata;
 
 		/// <summary>
 		///    Contains the combination of all file tags.
 		/// </summary>
-		CombinedTag tag;
+		private CombinedTag tag;
 
 		/// <summary>
 		///    Contains the Flac header block.
 		/// </summary>
-		ByteVector header_block;
+		private ByteVector header_block;
 
 		/// <summary>
 		///    Contains the stream start position.
 		/// </summary>
-		long stream_start;
+		private long stream_start;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -157,11 +150,6 @@ namespace TagLib.Flac
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
@@ -175,11 +163,6 @@ namespace TagLib.Flac
 			get { return tag; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Saves the changes made in the current instance to the
@@ -324,11 +307,6 @@ namespace TagLib.Flac
 			base.RemoveTags (types);
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Reads format specific information at the start of the
@@ -410,18 +388,13 @@ namespace TagLib.Flac
 			return new Properties (TimeSpan.Zero, header);
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Indicates whether or not the block types passed into
 		///    <see cref="ReadBlocks" /> are to be white-listed or
 		///    black-listed.
 		/// </summary>
-		enum BlockMode
+		private enum BlockMode
 		{
 			/// <summary>
 			///    All block types except those provided are to be
@@ -466,7 +439,7 @@ namespace TagLib.Flac
 		/// <exception cref="CorruptFileException">
 		///    "<c>fLaC</c>" could not be found.
 		/// </exception>
-		IList<Block> ReadBlocks (ref long start, out long end, BlockMode mode, params BlockType[] types)
+		private IList<Block> ReadBlocks (ref long start, out long end, BlockMode mode, params BlockType[] types)
 		{
 			var blocks = new List<Block> ();
 
@@ -502,8 +475,6 @@ namespace TagLib.Flac
 
 			return blocks;
 		}
-
-		#endregion
 	}
 
 
@@ -520,7 +491,7 @@ namespace TagLib.Flac
 		/// <summary>
 		///    Contains the pictures.
 		/// </summary>
-		readonly List<IPicture> pictures = new List<IPicture> ();
+		private readonly List<IPicture> pictures = new List<IPicture> ();
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see

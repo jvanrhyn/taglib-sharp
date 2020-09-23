@@ -42,9 +42,7 @@ namespace TagLib
 		/// <summary>
 		///    Contains the internal list.
 		/// </summary>
-		readonly List<T> data = new List<T> ();
-
-		#region Constructors
+		private readonly List<T> data = new List<T> ();
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -82,10 +80,6 @@ namespace TagLib
 				Add (list);
 		}
 
-		#endregion
-
-		#region Properties
-
 		/// <summary>
 		///    Gets whether or not the current instance is empty.
 		/// </summary>
@@ -96,10 +90,6 @@ namespace TagLib
 		public bool IsEmpty {
 			get { return Count == 0; }
 		}
-
-		#endregion
-
-		#region Methods
 
 		/// <summary>
 		///    Adds a collection of elements to the current instance.
@@ -206,10 +196,6 @@ namespace TagLib
 		{
 			return data.ToArray ();
 		}
-
-		#endregion
-
-		#region IList<T>
 
 		/// <summary>
 		///    Gets whether or not the current instance is read-only.
@@ -375,11 +361,6 @@ namespace TagLib
 			return ToString (", ");
 		}
 
-		#endregion
-
-
-
-		#region ICollection<T>
 
 		/// <summary>
 		///    Gets the number of elements in the current instance.
@@ -430,10 +411,6 @@ namespace TagLib
 			data.CopyTo (array, arrayIndex);
 		}
 
-		#endregion
-
-
-		#region IEnumerable<T>
 
 		/// <summary>
 		///    Gets an enumerator for enumerating through the elements
@@ -452,7 +429,5 @@ namespace TagLib
 		{
 			return data.GetEnumerator ();
 		}
-
-		#endregion
 	}
 }

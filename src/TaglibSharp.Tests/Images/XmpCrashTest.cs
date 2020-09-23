@@ -12,7 +12,7 @@ namespace TaglibSharp.Tests.Images
 	[TestFixture]
 	public class XmpCrashTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample_xmpcrash.jpg";
+		private static readonly string sample_file = TestPath.Samples + "sample_xmpcrash.jpg";
 
 		[Test]
 		public void ParseXmp ()

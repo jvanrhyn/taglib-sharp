@@ -37,49 +37,38 @@ namespace TagLib.WavPack
 	/// </summary>
 	public struct StreamHeader : IAudioCodec, ILosslessAudioCodec, IEquatable<StreamHeader>
 	{
-		#region Constants
-
-		static readonly uint[] sample_rates = new uint[] {
+		private static readonly uint[] sample_rates = new uint[] {
 			6000, 8000, 9600, 11025, 12000, 16000, 22050, 24000,
 			32000, 44100, 48000, 64000, 88200, 96000, 192000};
 
-		const int BYTES_STORED = 3;
-		const int MONO_FLAG = 4;
-		const int SHIFT_LSB = 13;
-		const long SHIFT_MASK = (0x1fL << SHIFT_LSB);
-		const int SRATE_LSB = 23;
-		const long SRATE_MASK = (0xfL << SRATE_LSB);
+		private const int BYTES_STORED = 3;
+		private const int MONO_FLAG = 4;
+		private const int SHIFT_LSB = 13;
+		private const long SHIFT_MASK = (0x1fL << SHIFT_LSB);
+		private const int SRATE_LSB = 23;
+		private const long SRATE_MASK = (0xfL << SRATE_LSB);
 
-		#endregion
-
-
-
-		#region Private Fields
 
 		/// <summary>
 		///    Contains the number of bytes in the stream.
 		/// </summary>
-		readonly long stream_length;
+		private readonly long stream_length;
 
 		/// <summary>
 		///    Contains the WavPack version.
 		/// </summary>
-		readonly ushort version;
+		private readonly ushort version;
 
 		/// <summary>
 		///    Contains the flags.
 		/// </summary>
-		readonly uint flags;
+		private readonly uint flags;
 
 		/// <summary>
 		///    Contains the sample count.
 		/// </summary>
-		readonly uint samples;
+		private readonly uint samples;
 
-		#endregion
-
-
-		#region Public Static Fields
 
 		/// <summary>
 		///    The size of a WavPack header.
@@ -94,11 +83,6 @@ namespace TagLib.WavPack
 		/// </value>
 		public static readonly ReadOnlyByteVector FileIdentifier = "wvpk";
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -138,11 +122,6 @@ namespace TagLib.WavPack
 			samples = data.Mid (12, 4).ToUInt (false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the duration of the media represented by the current
@@ -252,11 +231,6 @@ namespace TagLib.WavPack
 			}
 		}
 
-		#endregion
-
-
-
-		#region IEquatable
 
 		/// <summary>
 		///    Generates a hash code for the current instance.
@@ -352,7 +326,5 @@ namespace TagLib.WavPack
 		{
 			return !first.Equals (second);
 		}
-
-		#endregion
 	}
 }

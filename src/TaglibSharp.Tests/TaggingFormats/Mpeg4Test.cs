@@ -6,13 +6,13 @@ namespace TaglibSharp.Tests.TaggingFormats
 	[TestFixture]
 	public class Mpeg4Test
 	{
-		static readonly string val_sing =
+		private static readonly string val_sing =
 			"01234567890123456789012345678901234567890123456789";
 
-		static readonly string[] val_mult = {"A123456789",
+		private static readonly string[] val_mult = {"A123456789",
 			"B123456789", "C123456789", "D123456789", "E123456789"};
 
-		static readonly string[] val_gnre = {"Rap",
+		private static readonly string[] val_gnre = {"Rap",
 			"Jazz", "Non-Genre", "Blues"};
 
 		[Test]
@@ -832,7 +832,7 @@ namespace TaglibSharp.Tests.TaggingFormats
 			Assert.IsTrue (file.Tag.IsEmpty, "Should be empty.");
 		}
 
-		TagLib.Mpeg4.File CreateFile (out MemoryFileAbstraction abst)
+		private TagLib.Mpeg4.File CreateFile (out MemoryFileAbstraction abst)
 		{
 			byte[] data = {
 				0x00, 0x00, 0x00, 0x18, 0x66, 0x74, 0x79, 0x70,
@@ -845,9 +845,9 @@ namespace TaglibSharp.Tests.TaggingFormats
 			return new TagLib.Mpeg4.File (abst, ReadStyle.None);
 		}
 
-		delegate void TagTestFunc (Tag tag, string msg);
+		private delegate void TagTestFunc (Tag tag, string msg);
 
-		void TagTestWithSave (ref TagLib.Mpeg4.File file, MemoryFileAbstraction abst, TagTestFunc testFunc)
+		private void TagTestWithSave (ref TagLib.Mpeg4.File file, MemoryFileAbstraction abst, TagTestFunc testFunc)
 		{
 			testFunc (file.GetTag (TagTypes.Apple), "Before Save");
 			file.Save ();

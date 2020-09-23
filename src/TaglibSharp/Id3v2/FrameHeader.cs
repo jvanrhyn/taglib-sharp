@@ -93,23 +93,16 @@ namespace TagLib.Id3v2
 	/// </summary>
 	public struct FrameHeader
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains frame's ID.
 		/// </summary>
-		ReadOnlyByteVector frame_id;
+		private ReadOnlyByteVector frame_id;
 
 		/// <summary>
 		///    Contains frame's flags.
 		/// </summary>
-		FrameFlags flags;
+		private FrameFlags flags;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -205,11 +198,6 @@ namespace TagLib.Id3v2
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the identifier of the frame described by
@@ -264,10 +252,6 @@ namespace TagLib.Id3v2
 				flags = value;
 			}
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance, encoded in a specified
@@ -336,13 +320,8 @@ namespace TagLib.Id3v2
 			return (uint)(version < 3 ? 6 : 10);
 		}
 
-		#endregion
 
-
-
-		#region Private Methods
-
-		static ReadOnlyByteVector ConvertId (ByteVector id, byte version, bool toVersion)
+		private static ReadOnlyByteVector ConvertId (ByteVector id, byte version, bool toVersion)
 		{
 			if (version >= 4) {
 				var outid = id as ReadOnlyByteVector;
@@ -380,7 +359,7 @@ namespace TagLib.Id3v2
 			return id is ReadOnlyByteVector ? id as ReadOnlyByteVector : new ReadOnlyByteVector (id);
 		}
 
-		static readonly ReadOnlyByteVector[,] version2_frames =
+		private static readonly ReadOnlyByteVector[,] version2_frames =
 			new ReadOnlyByteVector[59, 2] {
 				{ "BUF", "RBUF" },
 				{ "CNT", "PCNT" },
@@ -443,14 +422,12 @@ namespace TagLib.Id3v2
 				{ "XRV", "RVA2" }
 			};
 
-		static readonly ReadOnlyByteVector[,] version3_frames =
+		private static readonly ReadOnlyByteVector[,] version3_frames =
 			new ReadOnlyByteVector[3, 2] {
 				{ "TORY", "TDOR" },
 				{ "TYER", "TDRC" },
 				{ "XRVA", "RVA2" }
 
 			};
-
-		#endregion
 	}
 }

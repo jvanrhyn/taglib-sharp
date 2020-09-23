@@ -38,26 +38,19 @@ namespace TagLib.IFD
 	/// </summary>
 	public class IFDTag : ImageTag
 	{
-
-		#region Private Fields
-
 		/// <summary>
 		///    A reference to the Exif IFD (which can be found by following the
 		///    pointer in IFD0, ExifIFD tag). This variable should not be used
 		///    directly, use the <see cref="ExifIFD"/> property instead.
 		/// </summary>
-		IFDStructure exif_ifd;
+		private IFDStructure exif_ifd;
 
 		/// <summary>
 		///    A reference to the GPS IFD (which can be found by following the
 		///    pointer in IFD0, GPSIFD tag). This variable should not be used
 		///    directly, use the <see cref="GPSIFD"/> property instead.
 		/// </summary>
-		IFDStructure gps_ifd;
-
-		#endregion
-
-		#region Public Properties
+		private IFDStructure gps_ifd;
 
 		/// <value>
 		///    The IFD structure referenced by the current instance
@@ -122,10 +115,6 @@ namespace TagLib.IFD
 			get { return TagTypes.TiffIFD; }
 		}
 
-		#endregion
-
-		#region Constructors
-
 		/// <summary>
 		///    Constructor. Creates an empty IFD tag. Can be populated manually, or via
 		///    <see cref="IFDReader"/>.
@@ -135,10 +124,6 @@ namespace TagLib.IFD
 			Structure = new IFDStructure ();
 		}
 
-		#endregion
-
-		#region Public Methods
-
 		/// <summary>
 		///    Clears the values stored in the current instance.
 		/// </summary>
@@ -146,10 +131,6 @@ namespace TagLib.IFD
 		{
 			throw new NotImplementedException ();
 		}
-
-		#endregion
-
-		#region Metadata fields
 
 		/// <summary>
 		///    Gets or sets the comment for the image described
@@ -574,14 +555,10 @@ namespace TagLib.IFD
 			}
 		}
 
-		#endregion
-
-		#region Private Methods
-
 		/// <summary>
 		///    Initilazies the GPS IFD with some basic entries.
 		/// </summary>
-		void InitGpsDirectory ()
+		private void InitGpsDirectory ()
 		{
 			GPSIFD.SetStringValue (0, (ushort)GPSEntryTag.GPSVersionID, "2 0 0 0");
 			GPSIFD.SetStringValue (0, (ushort)GPSEntryTag.GPSMapDatum, "WGS-84");
@@ -599,7 +576,7 @@ namespace TagLib.IFD
 		///    A <see cref="Rational"/> representing the same angle by degree, minutes
 		///    and seconds of the angle.
 		/// </returns>
-		Rational[] DegreeToRationals (double angle)
+		private Rational[] DegreeToRationals (double angle)
 		{
 			if (angle < 0.0 || angle > 180.0)
 				throw new ArgumentException (nameof (angle));
@@ -616,8 +593,5 @@ namespace TagLib.IFD
 
 			return rationals;
 		}
-
-		#endregion
-
 	}
 }

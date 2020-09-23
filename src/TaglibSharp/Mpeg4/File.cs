@@ -42,12 +42,10 @@ namespace TagLib.Mpeg4
 	[SupportedMimeType ("video/x-m4v")]
 	public class File : TagLib.File
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the Apple tag.
 		/// </summary>
-		AppleTag apple_tag;
+		private AppleTag apple_tag;
 
 		/// <summary>
 		///    Contains the combined tag.
@@ -55,18 +53,13 @@ namespace TagLib.Mpeg4
 		/// <remarks>
 		///    TODO: Add support for ID3v2 tags.
 		/// </remarks>
-		CombinedTag tag;
+		private CombinedTag tag;
 
 		/// <summary>
 		///    Contains the media properties.
 		/// </summary>
-		Properties properties;
+		private Properties properties;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -150,11 +143,6 @@ namespace TagLib.Mpeg4
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
@@ -186,11 +174,6 @@ namespace TagLib.Mpeg4
 		/// </summary>
 		protected List<IsoUserDataBox> UdtaBoxes { get; } = new List<IsoUserDataBox> ();
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Saves the changes made in the current instance to the
@@ -343,11 +326,6 @@ namespace TagLib.Mpeg4
 			tag.SetTags ();
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Reads the file with a specified read style.
@@ -357,7 +335,7 @@ namespace TagLib.Mpeg4
 		///    of accuracy to read the media properties, or <see
 		///    cref="ReadStyle.None" /> to ignore the properties.
 		/// </param>
-		void Read (ReadStyle propertiesStyle)
+		private void Read (ReadStyle propertiesStyle)
 		{
 			// TODO: Support Id3v2 boxes!!!
 			tag = new CombinedTag ();
@@ -423,7 +401,7 @@ namespace TagLib.Mpeg4
 		///		If there is a single udta in a file, we return that.
 		///		If there are multiple udtas, we search for the one that contains the ILST box.
 		/// </remarks>
-		IsoUserDataBox FindAppleTagUdta ()
+		private IsoUserDataBox FindAppleTagUdta ()
 		{
 			if (UdtaBoxes.Count == 1)
 				return UdtaBoxes[0];   //Single udta - just return it
@@ -440,7 +418,7 @@ namespace TagLib.Mpeg4
 		/// <summary>
 		///    Returns true if there is a udta with ILST present in our collection
 		/// </summary>
-		bool IsAppleTagUdtaPresent ()
+		private bool IsAppleTagUdtaPresent ()
 		{
 			foreach (var udtaBox in UdtaBoxes) {
 				if (udtaBox.GetChild (BoxType.Meta) != null && udtaBox.GetChild (BoxType.Meta).GetChild (BoxType.Ilst) != null)
@@ -449,7 +427,5 @@ namespace TagLib.Mpeg4
 
 			return false;
 		}
-
-		#endregion
 	}
 }

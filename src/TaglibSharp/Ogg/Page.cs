@@ -35,18 +35,11 @@ namespace TagLib.Ogg
 	/// </summary>
 	public class Page
 	{
-		#region Private Properties
-
 		/// <summary>
 		///    Contains the packets.
 		/// </summary>
-		readonly ByteVectorCollection packets;
+		private readonly ByteVectorCollection packets;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and intializes a new instance of <see
@@ -127,11 +120,6 @@ namespace TagLib.Ogg
 			header.PacketSizes = packet_sizes.ToArray ();
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw Ogg page.
@@ -161,11 +149,6 @@ namespace TagLib.Ogg
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the header of the current instance.
@@ -199,11 +182,6 @@ namespace TagLib.Ogg
 			get { return Header.Size + Header.DataSize; }
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Overwrites all page headers in a file starting at a
@@ -284,7 +262,5 @@ namespace TagLib.Ogg
 				position += size;
 			}
 		}
-
-		#endregion
 	}
 }

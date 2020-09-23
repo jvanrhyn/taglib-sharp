@@ -45,7 +45,7 @@ namespace TagLib.Image
 		/// <summary>
 		///    This class represents a metadata block to overwrite.
 		/// </summary>
-		class MetadataBlock
+		private class MetadataBlock
 		{
 
 			/// <summary>
@@ -168,7 +168,7 @@ namespace TagLib.Image
 		/// <summary>
 		///    An odered list of the metadata blocks. The blocks do not overlap.
 		/// </summary>
-		readonly List<MetadataBlock> metadata_blocks = new List<MetadataBlock> ();
+		private readonly List<MetadataBlock> metadata_blocks = new List<MetadataBlock> ();
 
 
 		/// <summary>
@@ -279,8 +279,6 @@ namespace TagLib.Image
 		}
 
 
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance for a specified
 		///    path in the local file system.
@@ -313,7 +311,5 @@ namespace TagLib.Image
 			: base (abstraction)
 		{
 		}
-
-		#endregion
 	}
 }

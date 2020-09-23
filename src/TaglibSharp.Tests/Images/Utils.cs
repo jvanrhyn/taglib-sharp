@@ -7,7 +7,7 @@ namespace TaglibSharp.Tests.Images
 {
 	public static class Utils
 	{
-		static readonly MD5 md5 = MD5.Create ();
+		private static readonly MD5 md5 = MD5.Create ();
 
 		public static File CreateTmpFile (string sample_file, string tmp_file)
 		{

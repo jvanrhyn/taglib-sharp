@@ -38,7 +38,7 @@ namespace TaglibSharp.Tests.Images
 			TestXmp (metadata, ValidateSimpleType);
 		}
 
-		void ValidateSimpleType (XmpTag tag)
+		private void ValidateSimpleType (XmpTag tag)
 		{
 			var tree = tag.NodeTree;
 
@@ -90,7 +90,7 @@ namespace TaglibSharp.Tests.Images
 			TestXmp (metadata, ValidateStructuredType);
 		}
 
-		void ValidateStructuredType (XmpTag tag)
+		private void ValidateStructuredType (XmpTag tag)
 		{
 			var tree = tag.NodeTree;
 
@@ -305,7 +305,7 @@ namespace TaglibSharp.Tests.Images
 			});
 		}
 
-		delegate void XmpValidator (XmpTag tag);
+		private delegate void XmpValidator (XmpTag tag);
 
 		/// <summary>
 		///    This makes every test do the following:
@@ -318,20 +318,20 @@ namespace TaglibSharp.Tests.Images
 		///    revalidate ensures that whatever it generated is valid XMP and
 		///    contains the same information.
 		/// </summary>
-		void TestXmp (string metadata, XmpValidator validator)
+		private void TestXmp (string metadata, XmpValidator validator)
 		{
 			var tag = TestParse (metadata, validator);
 			TestRender (tag, validator);
 		}
 
-		XmpTag TestParse (string metadata, XmpValidator validator)
+		private XmpTag TestParse (string metadata, XmpValidator validator)
 		{
 			var tag = new XmpTag (metadata, null);
 			validator (tag);
 			return tag;
 		}
 
-		void TestRender (XmpTag tag, XmpValidator validator)
+		private void TestRender (XmpTag tag, XmpValidator validator)
 		{
 			string xmp = tag.Render ();
 

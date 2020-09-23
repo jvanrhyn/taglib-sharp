@@ -9,11 +9,11 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class MpgFormatTest : IFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "Turning Lime.mpg";
-		static readonly string sample_picture = TestPath.Samples + "sample_gimp.gif";
-		static readonly string sample_other = TestPath.Samples + "apple_tags.m4a";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite.mpg";
-		File file;
+		private static readonly string sample_file = TestPath.Samples + "Turning Lime.mpg";
+		private static readonly string sample_picture = TestPath.Samples + "sample_gimp.gif";
+		private static readonly string sample_other = TestPath.Samples + "apple_tags.m4a";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite.mpg";
+		private File file;
 
 
 		[OneTimeSetUp]

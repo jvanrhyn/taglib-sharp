@@ -31,8 +31,6 @@ using System;
 
 namespace TagLib.Ape
 {
-	#region Enums
-
 	/// <summary>
 	///    Indicates the flags applied to a <see cref="Footer" /> object.
 	/// </summary>
@@ -55,9 +53,6 @@ namespace TagLib.Ape
 		HeaderPresent = 0x80000000
 	}
 
-	#endregion
-
-
 
 	/// <summary>
 	///    This structure provides a representation of an APEv2 tag footer
@@ -65,18 +60,11 @@ namespace TagLib.Ape
 	/// </summary>
 	public struct Footer : IEquatable<Footer>
 	{
-		#region Private Properties
-
 		/// <summary>
 		///    Contains the APE tag version.
 		/// </summary>
-		readonly uint version;
+		private readonly uint version;
 
-		#endregion
-
-
-
-		#region Public Static Fields
 
 		/// <summary>
 		///    Specifies the size of an APEv2 footer.
@@ -92,11 +80,6 @@ namespace TagLib.Ape
 		/// </value>
 		public static readonly ReadOnlyByteVector FileIdentifier = "APETAGEX";
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -131,11 +114,6 @@ namespace TagLib.Ape
 			Flags = (FooterFlags)data.Mid (20, 4).ToUInt (false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the version of APE tag described by the current
@@ -196,11 +174,6 @@ namespace TagLib.Ape
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as an APE tag footer.
@@ -229,11 +202,6 @@ namespace TagLib.Ape
 			return (Flags & FooterFlags.HeaderPresent) != 0 ? Render (true) : new ByteVector ();
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Renders the current instance as either an APE tag header
@@ -247,7 +215,7 @@ namespace TagLib.Ape
 		///    A <see cref="ByteVector" /> object containing the
 		///    rendered version of the current instance.
 		/// </returns>
-		ByteVector Render (bool isHeader)
+		private ByteVector Render (bool isHeader)
 		{
 			var v = new ByteVector {
 
@@ -285,11 +253,6 @@ namespace TagLib.Ape
 			return v;
 		}
 
-		#endregion
-
-
-
-		#region IEquatable
 
 		/// <summary>
 		///    Generates a hash code for the current instance.
@@ -386,7 +349,5 @@ namespace TagLib.Ape
 		{
 			return !first.Equals (second);
 		}
-
-		#endregion
 	}
 }

@@ -7,13 +7,13 @@ namespace TaglibSharp.Tests.TaggingFormats
 	[TestFixture]
 	public class ApeTest
 	{
-		static readonly string val_sing =
+		private static readonly string val_sing =
 			"01234567890123456789012345678901234567890123456789";
 
-		static readonly string[] val_mult = {"A123456789",
+		private static readonly string[] val_mult = {"A123456789",
 			"B123456789", "C123456789", "D123456789", "E123456789"};
 
-		static readonly string[] val_gnre = { "Rap", "Jazz", "Non-Genre", "Blues" };
+		private static readonly string[] val_gnre = { "Rap", "Jazz", "Non-Genre", "Blues" };
 
 		[Test]
 		public void TestTitle ()
@@ -833,9 +833,9 @@ namespace TaglibSharp.Tests.TaggingFormats
 			Assert.IsTrue (tag.IsEmpty, "Should be empty.");
 		}
 
-		delegate void TagTestFunc (Tag tag, string msg);
+		private delegate void TagTestFunc (Tag tag, string msg);
 
-		void TagTestWithSave (ref Tag tag, TagTestFunc testFunc)
+		private void TagTestWithSave (ref Tag tag, TagTestFunc testFunc)
 		{
 			testFunc (tag, "Before Save");
 			tag = new Tag (tag.Render ());

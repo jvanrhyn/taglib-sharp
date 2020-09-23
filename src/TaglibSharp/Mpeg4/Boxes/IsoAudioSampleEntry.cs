@@ -36,33 +36,26 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class IsoAudioSampleEntry : IsoSampleEntry, IAudioCodec
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the channel count.
 		/// </summary>
-		readonly ushort channel_count;
+		private readonly ushort channel_count;
 
 		/// <summary>
 		///    Contains the sample size.
 		/// </summary>
-		readonly ushort sample_size;
+		private readonly ushort sample_size;
 
 		/// <summary>
 		///    Contains the sample rate.
 		/// </summary>
-		readonly uint sample_rate;
+		private readonly uint sample_rate;
 
 		/// <summary>
 		///    Contains the children of the box.
 		/// </summary>
-		readonly IEnumerable<Box> children;
+		private readonly IEnumerable<Box> children;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -98,11 +91,6 @@ namespace TagLib.Mpeg4
 			children = LoadChildren (file);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the position of the data contained in the current
@@ -127,11 +115,6 @@ namespace TagLib.Mpeg4
 			get { return children; }
 		}
 
-		#endregion
-
-
-
-		#region IAudioCodec Properties
 
 		/// <summary>
 		///    Gets the duration of the media represented by the current
@@ -225,7 +208,5 @@ namespace TagLib.Mpeg4
 		public int AudioSampleSize {
 			get { return sample_size; }
 		}
-
-		#endregion
 	}
 }

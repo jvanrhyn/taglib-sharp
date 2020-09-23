@@ -9,13 +9,13 @@ namespace TaglibSharp.Tests.TaggingFormats
 	[TestFixture]
 	public class Id3V2Test
 	{
-		static readonly string val_sing =
+		private static readonly string val_sing =
 			"01234567890123456789012345678901234567890123456789";
 
-		static readonly string[] val_mult = {"A123456789",
+		private static readonly string[] val_mult = {"A123456789",
 			"B123456789", "C123456789", "D123456789", "E123456789"};
 
-		static readonly string[] val_gnre = {"Rap",
+		private static readonly string[] val_gnre = {"Rap",
 			"Jazz", "Non-Genre", "Blues"};
 
 		[Test]
@@ -1602,9 +1602,9 @@ namespace TaglibSharp.Tests.TaggingFormats
 
 		}
 
-		delegate void TagTestFunc (Tag tag, string msg);
+		private delegate void TagTestFunc (Tag tag, string msg);
 
-		void TagTestWithSave (ref Tag tag, TagTestFunc testFunc)
+		private void TagTestWithSave (ref Tag tag, TagTestFunc testFunc)
 		{
 			testFunc (tag, "Before Save");
 			for (byte version = 2; version <= 4; version++) {
@@ -1624,13 +1624,13 @@ namespace TaglibSharp.Tests.TaggingFormats
 			}
 		}
 
-		delegate void FrameTestFunc (Frame frame, string msg);
+		private delegate void FrameTestFunc (Frame frame, string msg);
 
-		delegate void SetEncodingFunc (Frame frame, StringType encoding);
+		private delegate void SetEncodingFunc (Frame frame, StringType encoding);
 
-		delegate Frame CreateFrameFunc (ByteVector data, byte version);
+		private delegate Frame CreateFrameFunc (ByteVector data, byte version);
 
-		void FrameTest (Frame frame, byte minVersion,
+		private void FrameTest (Frame frame, byte minVersion,
 						SetEncodingFunc setEncFunc,
 						CreateFrameFunc createFunc,
 						FrameTestFunc testFunc)

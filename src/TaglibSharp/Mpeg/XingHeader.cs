@@ -36,9 +36,6 @@ namespace TagLib.Mpeg
 	/// </summary>
 	public struct XingHeader
 	{
-
-		#region Public Fields
-
 		/// <summary>
 		///    Contains te Xing identifier.
 		/// </summary>
@@ -52,11 +49,6 @@ namespace TagLib.Mpeg
 		/// </summary>
 		public static readonly XingHeader Unknown = new XingHeader (0, 0);
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -71,7 +63,7 @@ namespace TagLib.Mpeg
 		///    A <see cref="uint" /> value specifying the stream size of
 		///    the audio represented by the new instance.
 		/// </param>
-		XingHeader (uint frame, uint size)
+		private XingHeader (uint frame, uint size)
 		{
 			TotalFrames = frame;
 			TotalSize = size;
@@ -119,11 +111,6 @@ namespace TagLib.Mpeg
 			Present = true;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the total number of frames in the file, as indicated
@@ -155,11 +142,6 @@ namespace TagLib.Mpeg
 		/// </value>
 		public bool Present { get; private set; }
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets the offset at which a Xing header would appear in an
@@ -186,7 +168,5 @@ namespace TagLib.Mpeg
 			else
 				return single_channel ? 0x0D : 0x15;
 		}
-
-		#endregion
 	}
 }

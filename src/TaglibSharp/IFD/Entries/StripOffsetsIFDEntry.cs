@@ -32,22 +32,15 @@ namespace TagLib.IFD.Entries
 	/// </summary>
 	public class StripOffsetsIFDEntry : ArrayIFDEntry<uint>
 	{
-
-		#region Private Fields
-
 		/// <value>
 		///    Store the strip length to read them before writing.
 		/// </value>
-		readonly uint[] byte_counts;
+		private readonly uint[] byte_counts;
 
 		/// <value>
 		///    The file the offsets belong to
 		/// </value>
-		readonly File file;
-
-		#endregion
-
-		#region Constructors
+		private readonly File file;
 
 		/// <summary>
 		///    Constructor.
@@ -74,10 +67,6 @@ namespace TagLib.IFD.Entries
 			if (values.Length != byte_counts.Length)
 				throw new Exception ("strip offsets and strip byte counts do not have the same length");
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance to a <see cref="ByteVector"/>
@@ -144,7 +133,5 @@ namespace TagLib.IFD.Entries
 
 			return data;
 		}
-
-		#endregion
 	}
 }

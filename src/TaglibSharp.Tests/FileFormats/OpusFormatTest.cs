@@ -7,9 +7,9 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class OpusFormatTest : IFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample.opus";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite.opus";
-		File file;
+		private static readonly string sample_file = TestPath.Samples + "sample.opus";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite.opus";
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

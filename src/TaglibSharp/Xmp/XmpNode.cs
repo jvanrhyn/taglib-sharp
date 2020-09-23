@@ -33,27 +33,20 @@ namespace TagLib.Xmp
 	/// </summary>
 	public class XmpNode
 	{
-
-		#region Private Fields
-
 		/// <value>
 		///    The children of the current node
 		/// </value>
-		List<XmpNode> children;
+		private List<XmpNode> children;
 
 		/// <value>
 		///    The qualifiers of the current node
 		/// </value>
-		Dictionary<string, Dictionary<string, XmpNode>> qualifiers;
+		private Dictionary<string, Dictionary<string, XmpNode>> qualifiers;
 
 		/// <value>
 		///    The name of the current node
 		/// </value>
-		string name;
-
-		#endregion
-
-		#region Properties
+		private string name;
 
 		/// <value>
 		///    The namespace the current instance belongs to
@@ -107,10 +100,6 @@ namespace TagLib.Xmp
 			get { return children ?? new List<XmpNode> (); }
 		}
 
-		#endregion
-
-		#region Constructors
-
 		/// <summary>
 		///    Constructor.
 		/// </summary>
@@ -151,10 +140,6 @@ namespace TagLib.Xmp
 		{
 			Value = value;
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Adds a node as child of the current node
@@ -355,10 +340,6 @@ namespace TagLib.Xmp
 		}
 
 
-		#endregion
-
-		#region Internal Methods
-
 		internal void Dump (string prefix)
 		{
 			Console.WriteLine ("{0}{1}{2} ({4}) = \"{3}\"", prefix, Namespace, Name, Value, Type);
@@ -380,16 +361,12 @@ namespace TagLib.Xmp
 			}
 		}
 
-		#endregion
-
-		#region Private Methods
-
 		/// <summary>
 		///    Is this a node that we can transform into an attribute of the
 		///    parent node? Yes if it has no qualifiers or children, nor is
 		///    it part of a list.
 		/// </summary>
-		bool IsReallySimpleType {
+		private bool IsReallySimpleType {
 			get {
 				return Type == XmpNodeType.Simple && (children == null || children.Count == 0)
 					&& QualifierCount == 0 && (Name != XmpTag.LI_URI || Namespace != XmpTag.RDF_NS);
@@ -399,11 +376,11 @@ namespace TagLib.Xmp
 		/// <summary>
 		///    Is this the root node of the tree?
 		/// </summary>
-		bool IsRootNode {
+		private bool IsRootNode {
 			get { return Name == string.Empty && Namespace == string.Empty; }
 		}
 
-		void AddAllQualifiersTo (XmlNode xml)
+		private void AddAllQualifiersTo (XmlNode xml)
 		{
 			if (qualifiers == null)
 				return;
@@ -416,15 +393,12 @@ namespace TagLib.Xmp
 			}
 		}
 
-		void AddAllChildrenTo (XmlNode parent)
+		private void AddAllChildrenTo (XmlNode parent)
 		{
 			if (children == null)
 				return;
 			foreach (var child in children)
 				child.RenderInto (parent);
 		}
-		#endregion
-
-
 	}
 }

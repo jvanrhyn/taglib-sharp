@@ -32,23 +32,16 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class Box
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the box header.
 		/// </summary>
-		BoxHeader header;
+		private BoxHeader header;
 
 		/// <summary>
 		///    Contains the position of the box data.
 		/// </summary>
-		readonly long data_position;
+		private readonly long data_position;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -96,11 +89,6 @@ namespace TagLib.Mpeg4
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the MPEG-4 box type of the current instance.
@@ -159,11 +147,6 @@ namespace TagLib.Mpeg4
 		/// </value>
 		public IsoHandlerBox Handler { get; private set; }
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance, including its children, to
@@ -378,11 +361,6 @@ namespace TagLib.Mpeg4
 			}
 		}
 
-		#endregion
-
-
-
-		#region Protected Properties
 
 		/// <summary>
 		///    Gets the size of the data contained in the current
@@ -422,11 +400,6 @@ namespace TagLib.Mpeg4
 			get { return header; }
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Loads the children of the current instance from a
@@ -544,8 +517,6 @@ namespace TagLib.Mpeg4
 
 			return output;
 		}
-
-		#endregion
 
 		/*
 		#region Internal Methods

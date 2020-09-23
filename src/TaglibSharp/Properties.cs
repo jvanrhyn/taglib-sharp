@@ -40,23 +40,16 @@ namespace TagLib
 	/// </summary>
 	public class Properties : IAudioCodec, IVideoCodec, IPhotoCodec
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the codecs.
 		/// </summary>
-		readonly ICodec[] codecs = Array.Empty<ICodec> ();
+		private readonly ICodec[] codecs = Array.Empty<ICodec> ();
 
 		/// <summary>
 		///    Contains the duration.
 		/// </summary>
-		TimeSpan duration = TimeSpan.Zero;
+		private TimeSpan duration = TimeSpan.Zero;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -112,11 +105,6 @@ namespace TagLib
 				this.codecs = new List<ICodec> (codecs).ToArray ();
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the codecs contained in the current instance.
@@ -130,11 +118,6 @@ namespace TagLib
 			get { return codecs; }
 		}
 
-		#endregion
-
-
-
-		#region ICodec
 
 		/// <summary>
 		///    Gets the duration of the media represented by the current
@@ -211,11 +194,6 @@ namespace TagLib
 			}
 		}
 
-		#endregion
-
-
-
-		#region IAudioCodec
 
 		/// <summary>
 		///    Gets the bitrate of the audio represented by the current
@@ -322,11 +300,6 @@ namespace TagLib
 			}
 		}
 
-		#endregion
-
-
-
-		#region IVideoCodec
 
 		/// <summary>
 		///    Gets the width of the video represented by the current
@@ -378,11 +351,6 @@ namespace TagLib
 			}
 		}
 
-		#endregion
-
-
-
-		#region IPhotoCodec
 
 		/// <summary>
 		///    Gets the width of the photo represented by the current
@@ -450,7 +418,5 @@ namespace TagLib
 				return 0;
 			}
 		}
-
-		#endregion
 	}
 }

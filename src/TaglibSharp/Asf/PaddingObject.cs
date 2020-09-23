@@ -33,9 +33,6 @@ namespace TagLib.Asf
 	/// </summary>
 	public class PaddingObject : Object
 	{
-
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="PaddingObject" /> by reading the contents from a
@@ -86,11 +83,6 @@ namespace TagLib.Asf
 			Size = size;
 		}
 
-		#endregion
-
-
-
-		#region Prublic Properties
 
 		/// <summary>
 		///    Gets and sets the number of bytes the current instance
@@ -102,11 +94,6 @@ namespace TagLib.Asf
 		/// </value>
 		public ulong Size { get; set; }
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw ASF object.
@@ -119,7 +106,5 @@ namespace TagLib.Asf
 		{
 			return Render (new ByteVector ((int)(Size - 24)));
 		}
-
-		#endregion
 	}
 }

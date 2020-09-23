@@ -31,24 +31,18 @@ namespace TagLib.Matroska
 	/// </summary>
 	public class Track : ICodec, IUIDElement
 	{
-		#region Private fields
-
 #pragma warning disable 414 // Assigned, never used
-		readonly ulong track_number;
-		readonly string track_codec_id;
-		readonly string track_codec_name;
-		readonly string track_name;
-		readonly string track_language;
-		readonly bool track_enabled;
-		readonly bool track_default;
-		readonly ByteVector codec_data;
+		private readonly ulong track_number;
+		private readonly string track_codec_id;
+		private readonly string track_codec_name;
+		private readonly string track_name;
+		private readonly string track_language;
+		private readonly bool track_enabled;
+		private readonly bool track_default;
+		private readonly ByteVector codec_data;
 #pragma warning restore 414
 
-		readonly List<EBMLreader> unknown_elems = new List<EBMLreader> ();
-
-		#endregion
-
-		#region Constructors
+		private readonly List<EBMLreader> unknown_elems = new List<EBMLreader> ();
 
 		/// <summary>
 		/// Constructs a <see cref="Track" /> parsing from provided 
@@ -104,24 +98,12 @@ namespace TagLib.Matroska
 			}
 		}
 
-		#endregion
-
-		#region Public fields
-
 		/// <summary>
 		/// List of unknown elements encountered while parsing.
 		/// </summary>
 		public List<EBMLreader> UnknownElements {
 			get { return unknown_elems; }
 		}
-
-		#endregion
-
-		#region Public methods
-
-		#endregion
-
-		#region ICodec
 
 		/// <summary>
 		/// Describes track duration.
@@ -144,10 +126,6 @@ namespace TagLib.Matroska
 			get { return $"{track_codec_name} {track_language}"; }
 		}
 
-		#endregion
-
-		#region IUIDElement Boilerplate
-
 		/// <summary>
 		/// Unique ID representing the element, as random as possible (setting zero will generate automatically a new one).
 		/// </summary>
@@ -156,15 +134,11 @@ namespace TagLib.Matroska
 			set { _UID = UIDElement.GenUID (value); }
 		}
 
-		ulong _UID = UIDElement.GenUID ();
+		private ulong _UID = UIDElement.GenUID ();
 
 		/// <summary>
 		/// Get the Tag type the UID should be represented by, or 0 if undefined
 		/// </summary>
 		public MatroskaID UIDType { get { return MatroskaID.TagTrackUID; } }
-
-		#endregion
-
-
 	}
 }

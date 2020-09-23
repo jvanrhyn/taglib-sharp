@@ -35,17 +35,15 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class IsoVisualSampleEntry : IsoSampleEntry, IVideoCodec
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the width of the visual.
 		/// </summary>
-		readonly ushort width;
+		private readonly ushort width;
 
 		/// <summary>
 		///    Contains the height of the visual.
 		/// </summary>
-		readonly ushort height;
+		private readonly ushort height;
 
 		/*
 		/// <summary>
@@ -54,11 +52,6 @@ namespace TagLib.Mpeg4
 		private BoxList children;
 		*/
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -94,11 +87,6 @@ namespace TagLib.Mpeg4
 			*/
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the position of the data contained in the current
@@ -125,11 +113,6 @@ namespace TagLib.Mpeg4
 		}
 		*/
 
-		#endregion
-
-
-
-		#region IVideoCodec Properties
 
 		/// <summary>
 		///    Gets the duration of the media represented by the current
@@ -190,7 +173,5 @@ namespace TagLib.Mpeg4
 		public int VideoHeight {
 			get { return height; }
 		}
-
-		#endregion
 	}
 }

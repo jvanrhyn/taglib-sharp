@@ -39,50 +39,43 @@ namespace TagLib.Ogg
 	/// </summary>
 	public class XiphComment : Tag, IEnumerable<string>
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the comment fields.
 		/// </summary>
-		readonly Dictionary<string, string[]> field_list = new Dictionary<string, string[]> ();
+		private readonly Dictionary<string, string[]> field_list = new Dictionary<string, string[]> ();
 
 		/// <summary>
 		///    Contains the vendor ID.
 		/// </summary>
-		string vendor_id;
+		private string vendor_id;
 
 		/// <summary>
 		///    Saves BeatsPerMinute tag as either "Tempo" or "BPM"
 		///    based on which was last read.
 		/// </summary>
-		static bool SaveBeatsPerMinuteAsTempo = true;
+		private static bool SaveBeatsPerMinuteAsTempo = true;
 
 		/// <summary>
 		///    Picture instances parsed from the fields.
 		/// </summary>
-		IPicture[] pictures;
+		private IPicture[] pictures;
 
 		/// <summary>
 		///    true if the picture fields in <see cref="field_list" />
 		///    should be updated from the <see cref="pictures"/> array.
 		/// </summary>
-		bool picture_fields_dirty;
+		private bool picture_fields_dirty;
 
 		/// <summary>
 		///    Name of picture fields as defined in the norm.
 		/// </summary>
-		static readonly string[] PICTURE_FIELDS = { "COVERART", "METADATA_BLOCK_PICTURE" };
+		private static readonly string[] PICTURE_FIELDS = { "COVERART", "METADATA_BLOCK_PICTURE" };
 
 		/// <summary>
 		///    Cached empty pictures array.
 		/// </summary>
-		static readonly IPicture[] EMPTY_PICTURES = Array.Empty<IPicture> ();
+		private static readonly IPicture[] EMPTY_PICTURES = Array.Empty<IPicture> ();
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -112,11 +105,6 @@ namespace TagLib.Ogg
 			Parse (data);
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets the field data for a given field identifier.
@@ -328,11 +316,6 @@ namespace TagLib.Ogg
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the number of fields contained in the current
@@ -375,11 +358,6 @@ namespace TagLib.Ogg
 			get { return vendor_id; }
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates and initializes a new instance of <see
@@ -447,12 +425,6 @@ namespace TagLib.Ogg
 			}
 		}
 
-		#endregion
-
-
-
-
-		#region Private methods
 
 		/// <summary>
 		///    If needed, update the pictures field from the value of the
@@ -462,7 +434,7 @@ namespace TagLib.Ogg
 		///    Name of the field being queried by the user.
 		///    If the field name is not a picture field name, no update will take place.
 		/// </param>
-		void EnsurePictureFieldsClean (string fieldName)
+		private void EnsurePictureFieldsClean (string fieldName)
 		{
 			if (IsPictureField (fieldName) && picture_fields_dirty)
 				StorePictures ();
@@ -472,7 +444,7 @@ namespace TagLib.Ogg
 		///    Parses the pictures from the COVERART and METADATA_BLOCK_PICTURE
 		///    fields contained in the <see cref="field_list" /> variable.
 		/// </summary>
-		void ParsePictures ()
+		private void ParsePictures ()
 		{
 			string[] coverArtStrings = GetField ("COVERART"),
 				blockPictureStrings = GetField ("METADATA_BLOCK_PICTURE");
@@ -501,7 +473,7 @@ namespace TagLib.Ogg
 		///    METADATA_BLOCK_PICTURE field. Conversion to Flac.Picture is done
 		///    as needed.
 		/// </summary>
-		void StorePictures ()
+		private void StorePictures ()
 		{
 			// Remove all picture fields
 			foreach (string pictureField in PICTURE_FIELDS)
@@ -529,7 +501,7 @@ namespace TagLib.Ogg
 		///    when the Pictures property is accessed.
 		/// </summary>
 		/// <param name="key">Name of the Xiph field being changed</param>
-		void ResetPicturesState (string key)
+		private void ResetPicturesState (string key)
 		{
 			if (IsPictureField (key)) {
 				picture_fields_dirty = false;
@@ -545,17 +517,13 @@ namespace TagLib.Ogg
 		///    true if the field represents a field that contains picture art data,
 		///    false otherwise.
 		/// </returns>
-		static bool IsPictureField (string fieldName)
+		private static bool IsPictureField (string fieldName)
 		{
 			foreach (string pictureFieldName in PICTURE_FIELDS)
 				if (string.Equals (fieldName, pictureFieldName))
 					return true;
 			return false;
 		}
-
-		#endregion
-
-		#region IEnumerable
 
 		/// <summary>
 		///    Gets an enumerator for enumerating through the the field
@@ -575,11 +543,6 @@ namespace TagLib.Ogg
 			return field_list.Keys.GetEnumerator ();
 		}
 
-		#endregion
-
-
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -1674,7 +1637,5 @@ namespace TagLib.Ogg
 			pictures = Array.Empty<IPicture> ();
 			picture_fields_dirty = false;
 		}
-
-		#endregion
 	}
 }

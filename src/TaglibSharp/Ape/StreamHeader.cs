@@ -71,8 +71,6 @@ namespace TagLib.Ape
 	/// </summary>
 	public struct StreamHeader : IAudioCodec, ILosslessAudioCodec
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the APE version.
 		/// </summary>
@@ -81,7 +79,7 @@ namespace TagLib.Ape
 		///    1000 times the actual version number, so 3810 indicates
 		///    version 3.81.
 		/// </remarks>
-		readonly ushort version;
+		private readonly ushort version;
 
 		/*
 		/// <summary>
@@ -99,7 +97,7 @@ namespace TagLib.Ape
 		/// <remarks>
 		///    This value is stored in bytes (55-58).
 		/// </remarks>
-		readonly uint blocks_per_frame;
+		private readonly uint blocks_per_frame;
 
 		/// <summary>
 		///    Contains the number of audio blocks in the final frame.
@@ -107,7 +105,7 @@ namespace TagLib.Ape
 		/// <remarks>
 		///    This value is stored in bytes (59-62).
 		/// </remarks>
-		readonly uint final_frame_blocks;
+		private readonly uint final_frame_blocks;
 
 		/// <summary>
 		///    Contains the total number of frames.
@@ -115,7 +113,7 @@ namespace TagLib.Ape
 		/// <remarks>
 		///    This value is stored in bytes (63-66).
 		/// </remarks>
-		readonly uint total_frames;
+		private readonly uint total_frames;
 
 		/// <summary>
 		///    Contains the number of bits per sample.
@@ -124,7 +122,7 @@ namespace TagLib.Ape
 		///    This value is stored in bytes (67,68) and is typically
 		///    16.
 		/// </remarks>
-		readonly ushort bits_per_sample;
+		private readonly ushort bits_per_sample;
 
 		/// <summary>
 		///    Contains the number of channels.
@@ -133,7 +131,7 @@ namespace TagLib.Ape
 		///    This value is stored in bytes (69,70) and is typically
 		///    1 or 2.
 		/// </remarks>
-		readonly ushort channels;
+		private readonly ushort channels;
 
 		/// <summary>
 		///    Contains the sample rate.
@@ -142,7 +140,7 @@ namespace TagLib.Ape
 		///    This value is stored in bytes (71-74) and is typically
 		///    44100.
 		/// </remarks>
-		readonly uint sample_rate;
+		private readonly uint sample_rate;
 
 		/// <summary>
 		///    Contains the length of the audio stream.
@@ -150,13 +148,8 @@ namespace TagLib.Ape
 		/// <remarks>
 		///    This value is provided by the constructor.
 		/// </remarks>
-		readonly long stream_length;
+		private readonly long stream_length;
 
-		#endregion
-
-
-
-		#region Public Static Fields
 
 		/// <summary>
 		///    The size of a Monkey Audio header.
@@ -171,11 +164,6 @@ namespace TagLib.Ape
 		/// </value>
 		public static readonly ReadOnlyByteVector FileIdentifier = "MAC ";
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -224,11 +212,6 @@ namespace TagLib.Ape
 			sample_rate = data.Mid (72, 4).ToUInt (false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the duration of the media represented by the current
@@ -354,6 +337,5 @@ namespace TagLib.Ape
         ///    represented by the current instance.
         /// </value>
         public CompressionLevel Compression { get; private set; }
-
-        #endregion
-    }}
+	}
+}

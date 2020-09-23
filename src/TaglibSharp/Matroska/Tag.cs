@@ -34,12 +34,10 @@ namespace TagLib.Matroska
 	/// </summary>
 	public class Tag : TagLib.Tag
 	{
-		#region Private fields/Properties
-
 		/// <summary>
 		/// Define if this represent a video content (true), or an audio content (false)
 		/// </summary>
-		bool IsVideo {
+		private bool IsVideo {
 			get {
 				if (Elements != null) {
 					foreach (var uid in Elements) {
@@ -52,11 +50,6 @@ namespace TagLib.Matroska
 			}
 		}
 
-
-		#endregion
-
-
-		#region Constructors
 
 		/// <summary>
 		/// Constructor
@@ -71,12 +64,6 @@ namespace TagLib.Matroska
 			Tags = tags;
 			tags?.Add (this);
 		}
-
-
-		#endregion
-
-
-		#region Methods
 
 
 		/// <summary>
@@ -106,7 +93,7 @@ namespace TagLib.Matroska
 		/// <param name="create">Create one if it doesn't exist yet.</param>
 		/// <param name="targetType">Target Type Value.</param>
 		/// <returns>the Tag representing the collection</returns>
-		Tag TagsGet (bool create, TargetType targetType)
+		private Tag TagsGet (bool create, TargetType targetType)
 		{
 			Tag ret = Tags?.Get (targetType);
 			if (ret == null && create) {
@@ -121,7 +108,7 @@ namespace TagLib.Matroska
 		/// </summary>
 		/// <param name="create">Create one if it doesn't exist yet.</param>
 		/// <returns>the Tag representing the collection</returns>
-		Tag TagsAlbum (bool create)
+		private Tag TagsAlbum (bool create)
 		{
 			Tag ret = null;
 			if (Tags != null) {
@@ -365,7 +352,7 @@ namespace TagLib.Matroska
 		/// <param name="subkey">Nested SimpleTag to find (if non null) Tag name</param>
 		/// <param name="recu">Also search in parent Tag if true (default: true)</param>
 		/// <returns>Tag value</returns>
-		string GetString (string key, string subkey = null, bool recu = true)
+		private string GetString (string key, string subkey = null, bool recu = true)
 		{
 			string ret = null;
 
@@ -383,7 +370,7 @@ namespace TagLib.Matroska
 		/// <param name="subkey">Nested SimpleTag to find (if non null) Tag name</param>
 		/// <param name="recu">Also search in parent Tag if true (default: false)</param>
 		/// <returns>Tag value as unsigned integer</returns>
-		uint GetUint (string key, string subkey = null, bool recu = false)
+		private uint GetUint (string key, string subkey = null, bool recu = false)
 		{
 			uint ret = 0;
 			string val = GetString (key, subkey, recu);
@@ -395,11 +382,6 @@ namespace TagLib.Matroska
 			return ret;
 		}
 
-
-		#endregion
-
-
-		#region Properties
 
 		/// <summary>
 		/// Retrieve a list of Matroska Tags 
@@ -484,7 +466,7 @@ namespace TagLib.Matroska
 			}
 		}
 
-		TargetType _TargetType = TargetType.DEFAULT;
+		private TargetType _TargetType = TargetType.DEFAULT;
 
 		/// <summary>
 		/// Array of UID elements the tag applies to. If null, the tag apply to all elements.
@@ -1302,7 +1284,5 @@ namespace TagLib.Matroska
 		{
 			SimpleTags.Clear ();
 		}
-
-		#endregion
 	}
 }

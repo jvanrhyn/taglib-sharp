@@ -32,18 +32,11 @@ namespace TagLib
 	/// </summary>
 	public class CombinedTag : Tag
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains tags to be combined.
 		/// </summary>
-		readonly List<Tag> tags;
+		private readonly List<Tag> tags;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -72,11 +65,6 @@ namespace TagLib
 			this.tags = new List<Tag> (tags);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the tags combined in the current instance.
@@ -89,11 +77,6 @@ namespace TagLib
 			get { return tags.ToArray (); }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Sets the child tags to combine in the current instance.
@@ -107,11 +90,6 @@ namespace TagLib
 			this.tags.AddRange (tags);
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Inserts a tag into the collection of tags in the current
@@ -168,11 +146,6 @@ namespace TagLib
 			tags.Clear ();
 		}
 
-		#endregion
-
-
-
-		#region Overrides
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -2006,7 +1979,5 @@ namespace TagLib
 			foreach (Tag tag in tags)
 				tag.Clear ();
 		}
-
-		#endregion
 	}
 }

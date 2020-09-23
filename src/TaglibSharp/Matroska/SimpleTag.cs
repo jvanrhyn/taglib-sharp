@@ -33,8 +33,6 @@ namespace TagLib.Matroska
 	/// </summary>
 	public class SimpleTag : ByteVector
 	{
-		#region Constructors
-
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -51,10 +49,6 @@ namespace TagLib.Matroska
 			Value = value;
 		}
 
-		#endregion
-
-
-		#region Properties
 
 		/// <summary>
 		/// Indicate if the content of the SimpleTag is in binary (true) or as a string (false).
@@ -107,10 +101,6 @@ namespace TagLib.Matroska
 		/// </summary>
 		public Dictionary<string, List<SimpleTag>> SimpleTags = null;
 
-		#endregion
-
-		#region Implicit Conversions
-
 		/// <summary>
 		/// Convert a SimpleTag to a String in the Default encoding
 		/// </summary>
@@ -119,7 +109,5 @@ namespace TagLib.Matroska
 		{
 			return v?.ToString (StringType.UTF8);
 		}
-
-		#endregion
 	}
 }

@@ -6,10 +6,10 @@ namespace TaglibSharp.Tests.Images.Validators
 {
 	public class PropertyModificationValidator<T> : IMetadataModificationValidator
 	{
-		readonly T test_value;
-		readonly T orig_value;
+		private readonly T test_value;
+		private readonly T orig_value;
 
-		readonly PropertyInfo property_info;
+		private readonly PropertyInfo property_info;
 
 		public PropertyModificationValidator (string property_name, T orig_value, T test_value)
 		{

@@ -34,9 +34,6 @@ namespace TagLib.Image
 	/// </summary>
 	public abstract class ImageTag : Tag
 	{
-
-		#region Public Properties
-
 		/// <summary>
 		///    Gets or sets the keywords for the image described
 		///    by the current instance.
@@ -234,8 +231,5 @@ namespace TagLib.Image
 			get { return null; }
 			set { }
 		}
-
-		#endregion
-
 	}
 }

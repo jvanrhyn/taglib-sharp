@@ -30,8 +30,6 @@ namespace TagLib.Matroska
 	/// </summary>
 	public class SubtitleTrack : Track
 	{
-		#region Constructors
-
 		/// <summary>
 		/// Constructs a <see cref="SubtitleTrack" /> parsing from provided
 		/// file data.
@@ -55,22 +53,10 @@ namespace TagLib.Matroska
 			}
 		}
 
-        #endregion
-
-        #region Public fields
-
-        /// <summary>
+		/// <summary>
         /// List of unknown elements encountered while parsing.
         /// </summary>
         public new List<EBMLreader> UnknownElements { get; } = new List<EBMLreader>();
-
-		#endregion
-
-		#region Public methods
-
-		#endregion
-
-		#region ICodec
 
 		/// <summary>
 		/// This type of track only has text media type.
@@ -80,7 +66,5 @@ namespace TagLib.Matroska
 				return MediaTypes.Text;
 			}
 		}
-
-		#endregion
 	}
 }

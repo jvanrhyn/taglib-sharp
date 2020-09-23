@@ -7,17 +7,17 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class M4vFormatTest : IFormatTest
 	{
-		readonly ReadOnlyByteVector BOXTYPE_LDES = "ldes"; // long description
-		readonly ReadOnlyByteVector BOXTYPE_TVSH = "tvsh"; // TV Show or series
-		readonly ReadOnlyByteVector BOXTYPE_PURD = "purd"; // purchase date
+		private readonly ReadOnlyByteVector BOXTYPE_LDES = "ldes"; // long description
+		private readonly ReadOnlyByteVector BOXTYPE_TVSH = "tvsh"; // TV Show or series
+		private readonly ReadOnlyByteVector BOXTYPE_PURD = "purd"; // purchase date
 
-		const string LONG_DESC = "American comedy luminaries talk about the influence of Monty Python.";
-		const string PURD_DATE = "2009-01-26 08:14:10";
-		const string TV_SHOW = "Ask An Astronomer";
+		private const string LONG_DESC = "American comedy luminaries talk about the influence of Monty Python.";
+		private const string PURD_DATE = "2009-01-26 08:14:10";
+		private const string TV_SHOW = "Ask An Astronomer";
 
-		readonly string sample_file = TestPath.Samples + "sample.m4v";
-		readonly string tmp_file = TestPath.Samples + "tmpwrite.m4v";
-		File file;
+		private readonly string sample_file = TestPath.Samples + "sample.m4v";
+		private readonly string tmp_file = TestPath.Samples + "tmpwrite.m4v";
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()
@@ -99,7 +99,7 @@ namespace TaglibSharp.Tests.FileFormats
 		{
 		}
 
-		void SetTags (TagLib.Mpeg4.AppleTag tag)
+		private void SetTags (TagLib.Mpeg4.AppleTag tag)
 		{
 			tag.Title = "TEST title";
 			tag.Performers = new[] { "TEST performer 1", "TEST performer 2" };
@@ -121,7 +121,7 @@ namespace TaglibSharp.Tests.FileFormats
 			atag.SetData (BOXTYPE_TVSH, new[] { newbox2 });
 		}
 
-		void CheckTags (TagLib.Mpeg4.AppleTag tag)
+		private void CheckTags (TagLib.Mpeg4.AppleTag tag)
 		{
 			Assert.AreEqual ("TEST title", tag.Title);
 			Assert.AreEqual ("TEST performer 1; TEST performer 2", tag.JoinedPerformers);

@@ -32,43 +32,36 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class IsoMovieHeaderBox : FullBox
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the creation time of the movie.
 		/// </summary>
-		readonly ulong creation_time;
+		private readonly ulong creation_time;
 
 		/// <summary>
 		///    Contains the modification time of the movie.
 		/// </summary>
-		readonly ulong modification_time;
+		private readonly ulong modification_time;
 
 		/// <summary>
 		///    Contains the timescale.
 		/// </summary>
-		readonly uint timescale;
+		private readonly uint timescale;
 
 		/// <summary>
 		///    Contains the duration.
 		/// </summary>
-		readonly ulong duration;
+		private readonly ulong duration;
 
 		/// <summary>
 		///    Contains the rate.
 		/// </summary>
-		readonly uint rate;
+		private readonly uint rate;
 
 		/// <summary>
 		///    Contains the volume.
 		/// </summary>
-		readonly ushort volume;
+		private readonly ushort volume;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -146,11 +139,6 @@ namespace TagLib.Mpeg4
 				NextTrackId = data.Mid (0, 4).ToUInt ();
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the creation time of movie represented by the
@@ -232,7 +220,5 @@ namespace TagLib.Mpeg4
 		///   track in the movie represented by the current instance.
 		/// </value>
 		public uint NextTrackId { get; }
-
-		#endregion
 	}
 }

@@ -32,48 +32,31 @@ namespace TagLib.Ogg.Codecs
 	/// </summary>
 	public class Vorbis : Codec, IAudioCodec
 	{
-		#region Private Static Fields
-
 		/// <summary>
 		///    Contains the file identifier.
 		/// </summary>
-		static readonly ByteVector id = "vorbis";
+		private static readonly ByteVector id = "vorbis";
 
-		#endregion
-
-
-
-		#region Private Fields
 
 		/// <summary>
 		///    Contains the header packet.
 		/// </summary>
-		HeaderPacket header;
+		private HeaderPacket header;
 
 		/// <summary>
 		///    Contains the comment data.
 		/// </summary>
-		ByteVector comment_data;
+		private ByteVector comment_data;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="Vorbis" />.
 		/// </summary>
-		Vorbis ()
+		private Vorbis ()
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Reads a Ogg packet that has been encountered in the
@@ -184,11 +167,6 @@ namespace TagLib.Ogg.Codecs
 				packets.Insert (1, data);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the bitrate of the audio represented by the current
@@ -265,11 +243,6 @@ namespace TagLib.Ogg.Codecs
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Implements the <see cref="T:CodecProvider" /> delegate to
@@ -290,11 +263,6 @@ namespace TagLib.Ogg.Codecs
 			return (PacketType (packet) == 1) ? new Vorbis () : null;
 		}
 
-		#endregion
-
-
-
-		#region Private Static Methods
 
 		/// <summary>
 		///    Gets the packet type for a specified Vorbis packet.
@@ -307,7 +275,7 @@ namespace TagLib.Ogg.Codecs
 		///    A <see cref="int" /> value containing the packet type or
 		///    -1 if the packet is invalid.
 		/// </returns>
-		static int PacketType (ByteVector packet)
+		private static int PacketType (ByteVector packet)
 		{
 			if (packet.Count <= id.Count)
 				return -1;
@@ -319,12 +287,10 @@ namespace TagLib.Ogg.Codecs
 			return packet[0];
 		}
 
-		#endregion
-
 		/// <summary>
 		///    This structure represents a Vorbis header packet.
 		/// </summary>
-		struct HeaderPacket
+		private struct HeaderPacket
 		{
 			public uint sample_rate;
 			public uint channels;

@@ -36,50 +36,41 @@ namespace TagLib.Id3v1
 	/// </summary>
 	public class Tag : TagLib.Tag
 	{
-
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the title.
 		/// </summary>
-		string title;
+		private string title;
 
 		/// <summary>
 		///    Contains the semicolon separated performers.
 		/// </summary>
-		string artist;
+		private string artist;
 
 		/// <summary>
 		///    Contains the album name.
 		/// </summary>
-		string album;
+		private string album;
 
 		/// <summary>
 		///    Contains the 4 digit year.
 		/// </summary>
-		string year;
+		private string year;
 
 		/// <summary>
 		///    Contains a comment on track.
 		/// </summary>
-		string comment;
+		private string comment;
 
 		/// <summary>
 		///    Contains the track number in the album.
 		/// </summary>
-		byte track;
+		private byte track;
 
 		/// <summary>
 		///    Contains the genre index.
 		/// </summary>
-		byte genre;
+		private byte genre;
 
-		#endregion
-
-
-
-
-		#region Public Static Fields
 
 		/// <summary>
 		///    The size of a ID3v1 tag.
@@ -94,11 +85,6 @@ namespace TagLib.Id3v1
 		/// </value>
 		public static readonly ReadOnlyByteVector FileIdentifier = "TAG";
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -186,11 +172,6 @@ namespace TagLib.Id3v1
 			Parse (data);
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw ID3v1 tag.
@@ -216,11 +197,6 @@ namespace TagLib.Id3v1
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region Public Static Properties
 
 		/// <summary>
 		///    Gets and sets the <see cref="StringHandler" /> object
@@ -232,10 +208,6 @@ namespace TagLib.Id3v1
 		/// </value>
 		public static StringHandler DefaultStringHandler { get; set; } = new StringHandler ();
 
-		#endregion
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Populates the current instance by parsing the contents of
@@ -245,7 +217,7 @@ namespace TagLib.Id3v1
 		///    A <see cref="ByteVector" /> object containing the
 		///    starting with an ID3v1 tag.
 		/// </param>
-		void Parse (ByteVector data)
+		private void Parse (ByteVector data)
 		{
 			title = DefaultStringHandler.Parse (data.Mid (3, 30));
 			artist = DefaultStringHandler.Parse (data.Mid (33, 30));
@@ -270,11 +242,6 @@ namespace TagLib.Id3v1
 			genre = data[127];
 		}
 
-		#endregion
-
-
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -459,7 +426,5 @@ namespace TagLib.Id3v1
 			track = 0;
 			genre = 255;
 		}
-
-		#endregion
 	}
 }

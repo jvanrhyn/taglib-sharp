@@ -31,33 +31,21 @@ namespace TagLib.Mpeg
 	/// </summary>
 	public struct VideoHeader : IVideoCodec
 	{
-		#region Private Static Fields
-
 		/// <summary>
 		///    Contains frame rate values.
 		/// </summary>
-		static readonly double[] frame_rates = new double[9] {
+		private static readonly double[] frame_rates = new double[9] {
 			0, 24000d/1001d, 24, 25, 30000d/1001d, 30, 50,
 			60000d/1001d, 60
 		};
 
-		#endregion
-
-
-
-		#region Private Fields
 
 		/// <summary>
 		///    Contains the index in <see cref="frame_rates" /> of the
 		///    video frame rate.
 		/// </summary>
-		readonly int frame_rate_index;
+		private readonly int frame_rate_index;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -94,11 +82,6 @@ namespace TagLib.Mpeg
 			VideoBitrate = (int)((data.Mid (4, 3).ToUInt () >> 6) & 0x3FFFF);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the duration of the media represented by the current
@@ -177,7 +160,5 @@ namespace TagLib.Mpeg
 		///    video represented by the current instance.
 		/// </value>
 		public int VideoBitrate { get; private set; }
-
-		#endregion
 	}
 }

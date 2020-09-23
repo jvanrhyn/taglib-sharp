@@ -30,18 +30,12 @@ namespace TagLib.Matroska
 	/// </summary>
 	public class AudioTrack : Track, IAudioCodec
 	{
-		#region Private fields
-
 #pragma warning disable 414 // Assigned, never used
-		readonly double rate;
-		readonly ulong channels;
-		readonly ulong depth;
+		private readonly double rate;
+		private readonly ulong channels;
+		private readonly ulong depth;
 #pragma warning restore 414
 
-
-		#endregion
-
-		#region Constructors
 
 		/// <summary>
 		///  Construct a <see cref="AudioTrack" /> reading information from 
@@ -96,18 +90,10 @@ namespace TagLib.Matroska
 			}
 		}
 
-        #endregion
-
-        #region Public fields
-
-        /// <summary>
+		/// <summary>
         /// List of unknown elements encountered while parsing.
         /// </summary>
         public new List<EBMLreader> UnknownElements { get; } = new List<EBMLreader>();
-
-		#endregion
-
-		#region ICodec
 
 		/// <summary>
 		/// This type of track only has audio media type.
@@ -115,10 +101,6 @@ namespace TagLib.Matroska
 		public override MediaTypes MediaTypes {
 			get { return MediaTypes.Audio; }
 		}
-
-		#endregion
-
-		#region IAudioCodec
 
 		/// <summary>
 		/// Audio track bitrate.
@@ -140,7 +122,5 @@ namespace TagLib.Matroska
 		public int AudioChannels {
 			get { return (int)channels; }
 		}
-
-		#endregion
 	}
 }

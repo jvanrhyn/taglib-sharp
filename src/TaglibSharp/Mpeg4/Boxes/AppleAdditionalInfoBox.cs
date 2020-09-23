@@ -32,17 +32,11 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class AppleAdditionalInfoBox : FullBox
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the box data.
 		/// </summary>
-		ByteVector data;
+		private ByteVector data;
 
-		#endregion
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -84,11 +78,6 @@ namespace TagLib.Mpeg4
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the data contained in the current instance.
@@ -113,7 +102,5 @@ namespace TagLib.Mpeg4
 			get { return Data.ToString (StringType.Latin1).TrimStart ('\0'); }
 			set { Data = ByteVector.FromString (value, StringType.Latin1); }
 		}
-
-		#endregion
 	}
 }

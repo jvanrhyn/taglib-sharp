@@ -33,12 +33,12 @@ namespace TaglibSharp.Tests.Images
 	[TestFixture]
 	public class JpegSony1Test
 	{
-		static readonly string sample_file = TestPath.Samples + "sample_sony1.jpg";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite_sony1.jpg";
+		private static readonly string sample_file = TestPath.Samples + "sample_sony1.jpg";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite_sony1.jpg";
 
-		readonly TagTypes contained_types = TagTypes.TiffIFD;
+		private readonly TagTypes contained_types = TagTypes.TiffIFD;
 
-		File file;
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

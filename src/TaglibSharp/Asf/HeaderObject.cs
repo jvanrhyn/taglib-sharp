@@ -34,23 +34,16 @@ namespace TagLib.Asf
 	/// </summary>
 	public class HeaderObject : Object
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the reserved header data.
 		/// </summary>
-		readonly ByteVector reserved;
+		private readonly ByteVector reserved;
 
 		/// <summary>
 		///    Contains the child objects.
 		/// </summary>
-		readonly List<Object> children;
+		private readonly List<Object> children;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -95,11 +88,6 @@ namespace TagLib.Asf
 				file.Tell));
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the header extension object contained in the
@@ -178,11 +166,6 @@ namespace TagLib.Asf
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw ASF object.
@@ -259,7 +242,5 @@ namespace TagLib.Asf
 					children[i].Guid == Asf.Guid.AsfExtendedContentDescriptionObject)
 					children.RemoveAt (i);
 		}
-
-		#endregion
 	}
 }

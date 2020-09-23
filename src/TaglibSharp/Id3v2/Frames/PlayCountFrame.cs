@@ -158,8 +158,6 @@ namespace TagLib.Id3v2
 	/// </example>
 	public class PlayCountFrame : Frame
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="PlayCountFrame" /> with a count of zero.
@@ -219,13 +217,8 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-        #endregion
 
-
-
-        #region Public Properties
-
-        /// <summary>
+		/// <summary>
         ///    Gets and sets the play count of the current instance.
         /// </summary>
         /// <value>
@@ -234,11 +227,6 @@ namespace TagLib.Id3v2
         /// </value>
         public ulong PlayCount { get; set; }
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a play count frame from a specified tag, optionally
@@ -275,11 +263,6 @@ namespace TagLib.Id3v2
 			return pcnt;
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -319,11 +302,6 @@ namespace TagLib.Id3v2
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -339,7 +317,5 @@ namespace TagLib.Id3v2
 			};
 			return frame;
 		}
-
-		#endregion
 	}
 }

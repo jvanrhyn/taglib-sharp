@@ -35,18 +35,11 @@ namespace TagLib.Asf
 	/// </summary>
 	public class ExtendedContentDescriptionObject : Object, IEnumerable<ContentDescriptor>
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the content descriptors.
 		/// </summary>
-		readonly List<ContentDescriptor> descriptors = new List<ContentDescriptor> ();
+		private readonly List<ContentDescriptor> descriptors = new List<ContentDescriptor> ();
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -97,11 +90,6 @@ namespace TagLib.Asf
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets whether or not the current instance is empty.
@@ -115,11 +103,6 @@ namespace TagLib.Asf
 			get { return descriptors.Count == 0; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw ASF object.
@@ -240,11 +223,6 @@ namespace TagLib.Asf
 			this.descriptors.InsertRange (position, descriptors);
 		}
 
-		#endregion
-
-
-
-		#region IEnumerable
 
 		/// <summary>
 		///    Gets an enumerator for enumerating through the content
@@ -264,7 +242,5 @@ namespace TagLib.Asf
 		{
 			return descriptors.GetEnumerator ();
 		}
-
-		#endregion
 	}
 }

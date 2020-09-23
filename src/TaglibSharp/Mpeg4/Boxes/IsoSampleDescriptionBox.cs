@@ -33,8 +33,6 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class IsoSampleDescriptionBox : FullBox
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="IsoSampleDescriptionBox" /> with a provided header
@@ -66,10 +64,6 @@ namespace TagLib.Mpeg4
 			Children = LoadChildren (file);
 		}
 
-		#endregion
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the position of the data contained in the current
@@ -103,7 +97,5 @@ namespace TagLib.Mpeg4
 		///    children of the current instance.
 		/// </value>
 		public override IEnumerable<Box> Children { get; }
-
-		#endregion
 	}
 }

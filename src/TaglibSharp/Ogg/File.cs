@@ -54,23 +54,16 @@ namespace TagLib.Ogg
 	[SupportedMimeType ("audio/x-opus+ogg")]
 	public class File : TagLib.File
 	{
-		#region Private Fields
-
 		/// <summary>
 		///   Contains the tags for the file.
 		/// </summary>
-		readonly GroupedComment tag;
+		private readonly GroupedComment tag;
 
 		/// <summary>
 		///    Contains the media properties.
 		/// </summary>
-		Properties properties;
+		private Properties properties;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -160,11 +153,6 @@ namespace TagLib.Ogg
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Saves the changes made in the current instance to the
@@ -269,11 +257,6 @@ namespace TagLib.Ogg
 			return null;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
@@ -300,11 +283,6 @@ namespace TagLib.Ogg
 			get { return properties; }
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Reads the file with a specified read style.
@@ -314,7 +292,7 @@ namespace TagLib.Ogg
 		///    of accuracy to read the media properties, or <see
 		///    cref="ReadStyle.None" /> to ignore the properties.
 		/// </param>
-		void Read (ReadStyle propertiesStyle)
+		private void Read (ReadStyle propertiesStyle)
 		{
 			var streams = ReadStreams (null, out var end);
 			var codecs = new List<ICodec> ();
@@ -355,7 +333,7 @@ namespace TagLib.Ogg
 		///    /> object containing stream serial numbers as the keys
 		///    <see cref="Bitstream" /> objects as the values.
 		/// </returns>
-		Dictionary<uint, Bitstream> ReadStreams (List<Page> pages, out long end)
+		private Dictionary<uint, Bitstream> ReadStreams (List<Page> pages, out long end)
 		{
 			var streams = new Dictionary<uint, Bitstream> ();
 			var active_streams = new List<Bitstream> ();
@@ -388,11 +366,6 @@ namespace TagLib.Ogg
 			return streams;
 		}
 
-		#endregion
-
-
-
-		#region Private Properties
 
 		/// <summary>
 		///    Gets the last page header in the file.
@@ -406,7 +379,7 @@ namespace TagLib.Ogg
 		///    absolute granular position of a stream so the duration
 		///    can be calculated.
 		/// </remarks>
-		PageHeader LastPageHeader {
+		private PageHeader LastPageHeader {
 			get {
 				long last_page_header_offset = RFind ("OggS");
 
@@ -416,7 +389,5 @@ namespace TagLib.Ogg
 				return new PageHeader (this, last_page_header_offset);
 			}
 		}
-
-		#endregion
 	}
 }

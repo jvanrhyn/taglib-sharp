@@ -33,52 +33,35 @@ namespace TagLib.Ogg.Codecs
 	/// </summary>
 	public class Opus : Codec, IAudioCodec
 	{
-		#region Private Static Fields
-
 		/// <summary>
 		///    Contains the file identifier.
 		/// </summary>
-		static readonly ByteVector magic_signature_base = "Opus";
+		private static readonly ByteVector magic_signature_base = "Opus";
 
-		static readonly ByteVector magic_signature_header = "OpusHead";
-		static readonly ByteVector magic_signature_comment = "OpusTags";
-		static readonly int magic_signature_length = 8;
+		private static readonly ByteVector magic_signature_header = "OpusHead";
+		private static readonly ByteVector magic_signature_comment = "OpusTags";
+		private static readonly int magic_signature_length = 8;
 
-		#endregion
-
-
-
-		#region Private Fields
 
 		/// <summary>
 		///    Contains the header packet.
 		/// </summary>
-		HeaderPacket header;
+		private HeaderPacket header;
 
 		/// <summary>
 		///    Contains the comment data.
 		/// </summary>
-		ByteVector comment_data;
+		private ByteVector comment_data;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="Opus" />.
 		/// </summary>
-		Opus ()
+		private Opus ()
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Reads a Ogg packet that has been encountered in the
@@ -188,11 +171,6 @@ namespace TagLib.Ogg.Codecs
 				packets.Insert (1, data);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the bitrate of the audio represented by the current
@@ -271,11 +249,6 @@ namespace TagLib.Ogg.Codecs
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Implements the <see cref="T:CodecProvider" /> delegate to
@@ -296,11 +269,6 @@ namespace TagLib.Ogg.Codecs
 			return (MagicSignature (packet) == magic_signature_header) ? new Opus () : null;
 		}
 
-		#endregion
-
-
-
-		#region Private Static Methods
 
 		/// <summary>
 		///    Gets the magic signature for a specified Opus packet.
@@ -313,7 +281,7 @@ namespace TagLib.Ogg.Codecs
 		///    A <see cref="ByteVector" /> value containing the magic
 		///    signature or null if the packet is invalid.
 		/// </returns>
-		static ByteVector MagicSignature (ByteVector packet)
+		private static ByteVector MagicSignature (ByteVector packet)
 		{
 			if (packet.Count < magic_signature_length)
 				return null;
@@ -325,12 +293,10 @@ namespace TagLib.Ogg.Codecs
 			return packet.Mid (0, magic_signature_length);
 		}
 
-		#endregion
-
 		/// <summary>
 		///    This structure represents a Opus header packet.
 		/// </summary>
-		struct HeaderPacket
+		private struct HeaderPacket
 		{
 			public uint opus_version;
 			public uint channel_count;

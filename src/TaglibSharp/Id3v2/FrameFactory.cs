@@ -89,7 +89,7 @@ namespace TagLib.Id3v2
 		/// <summary>
 		///    Contains registered frame creators.
 		/// </summary>
-		static readonly List<FrameCreator> frame_creators = new List<FrameCreator> ();
+		private static readonly List<FrameCreator> frame_creators = new List<FrameCreator> ();
 
 		/// <summary>
 		///    Creates a <see cref="Frame" /> object by reading it from

@@ -35,18 +35,11 @@ namespace TagLib.Asf
 	/// </summary>
 	public class MetadataLibraryObject : Object, IEnumerable<DescriptionRecord>
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the description records.
 		/// </summary>
-		readonly List<DescriptionRecord> records = new List<DescriptionRecord> ();
+		private readonly List<DescriptionRecord> records = new List<DescriptionRecord> ();
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -98,11 +91,6 @@ namespace TagLib.Asf
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets whether or not the current instance is empty.
@@ -116,11 +104,6 @@ namespace TagLib.Asf
 			get { return records.Count == 0; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw ASF object.
@@ -259,11 +242,6 @@ namespace TagLib.Asf
 			this.records.InsertRange (position, records);
 		}
 
-		#endregion
-
-
-
-		#region IEnumerable
 
 		/// <summary>
 		///    Gets an enumerator for enumerating through the
@@ -282,7 +260,5 @@ namespace TagLib.Asf
 		{
 			return records.GetEnumerator ();
 		}
-
-		#endregion
 	}
 }

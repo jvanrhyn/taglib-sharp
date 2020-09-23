@@ -34,18 +34,11 @@ namespace TagLib.Id3v2
 	/// </summary>
 	public class PopularimeterFrame : Frame
 	{
-		#region Private Properties
-
 		/// <summary>
 		///    Contains the email of the user this frame belongs to.
 		/// </summary>
-		string user = string.Empty;
+		private string user = string.Empty;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -109,11 +102,6 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the user to whom the current instance
@@ -146,11 +134,6 @@ namespace TagLib.Id3v2
 		/// </value>
 		public ulong PlayCount { get; set; }
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a popularimeter frame from a specified tag,
@@ -191,11 +174,6 @@ namespace TagLib.Id3v2
 			return popm;
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -249,11 +227,6 @@ namespace TagLib.Id3v2
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -270,7 +243,5 @@ namespace TagLib.Id3v2
 			};
 			return frame;
 		}
-
-		#endregion
 	}
 }

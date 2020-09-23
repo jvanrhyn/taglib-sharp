@@ -7,11 +7,11 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class WavFormatTest : IFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample.wav";
-		static readonly string sample_picture = TestPath.Samples + "sample_gimp.gif";
-		static readonly string sample_other = TestPath.Samples + "apple_tags.m4a";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite.wav";
-		File file;
+		private static readonly string sample_file = TestPath.Samples + "sample.wav";
+		private static readonly string sample_picture = TestPath.Samples + "sample_gimp.gif";
+		private static readonly string sample_other = TestPath.Samples + "apple_tags.m4a";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite.wav";
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

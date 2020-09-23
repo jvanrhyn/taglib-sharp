@@ -33,33 +33,26 @@ namespace TagLib.Asf
 	/// </summary>
 	public class FilePropertiesObject : Object
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the GUID for the file.
 		/// </summary>
-		System.Guid file_id;
+		private System.Guid file_id;
 
 		/// <summary>
 		///    Contains the creation date.
 		/// </summary>
-		readonly ulong creation_date;
+		private readonly ulong creation_date;
 
 		/// <summary>
 		///    Contains the play duration.
 		/// </summary>
-		readonly ulong play_duration;
+		private readonly ulong play_duration;
 
 		/// <summary>
 		///    Contains the send duration.
 		/// </summary>
-		readonly ulong send_duration;
+		private readonly ulong send_duration;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -107,11 +100,6 @@ namespace TagLib.Asf
 			MaximumBitrate = file.ReadDWord ();
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the GUID for the file described by the current
@@ -234,11 +222,6 @@ namespace TagLib.Asf
 		/// </value>
 		public uint MaximumBitrate { get; private set; }
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw ASF object.
@@ -263,7 +246,5 @@ namespace TagLib.Asf
 
 			return Render (output);
 		}
-
-		#endregion
 	}
 }

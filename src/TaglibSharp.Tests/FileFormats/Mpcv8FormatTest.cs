@@ -7,9 +7,9 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class MpcV8FormatTest : IFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample_v8.mpc";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite_v8.mpc";
-		File file;
+		private static readonly string sample_file = TestPath.Samples + "sample_v8.mpc";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite_v8.mpc";
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

@@ -7,10 +7,10 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class AiffFormatTest : IFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample.aif";
-		static readonly string corrupt_file = TestPath.Samples + "corrupta.aif";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite.aif";
-		File file;
+		private static readonly string sample_file = TestPath.Samples + "sample.aif";
+		private static readonly string corrupt_file = TestPath.Samples + "corrupta.aif";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite.aif";
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

@@ -31,8 +31,6 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class AppleDataBox : FullBox
 	{
-		#region Enums
-
 		/// <summary>
 		///    Specifies the type of data contained in a box.
 		/// </summary>
@@ -70,22 +68,12 @@ namespace TagLib.Mpeg4
 
 		}
 
-		#endregion
-
-
-
-		#region Private Fields
 
 		/// <summary>
 		///    Contains the box data.
 		/// </summary>
-		ByteVector data;
+		private ByteVector data;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -131,11 +119,6 @@ namespace TagLib.Mpeg4
 			Data = data;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the position of the data contained in the current
@@ -180,11 +163,6 @@ namespace TagLib.Mpeg4
 			}
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Renders the current instance, including its children, to
@@ -206,7 +184,5 @@ namespace TagLib.Mpeg4
 			};
 			return base.Render (output);
 		}
-
-		#endregion
 	}
 }

@@ -36,9 +36,6 @@ namespace TagLib.Mpeg
 	/// </summary>
 	public struct VBRIHeader
 	{
-
-		#region Public Fields
-
 		/// <summary>
 		///    Contains te VBRI identifier.
 		/// </summary>
@@ -52,11 +49,6 @@ namespace TagLib.Mpeg
 		/// </summary>
 		public static readonly VBRIHeader Unknown = new VBRIHeader (0, 0);
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -71,7 +63,7 @@ namespace TagLib.Mpeg
 		///    A <see cref="uint" /> value specifying the stream size of
 		///    the audio represented by the new instance.
 		/// </param>
-		VBRIHeader (uint frame, uint size)
+		private VBRIHeader (uint frame, uint size)
 		{
 			TotalFrames = frame;
 			TotalSize = size;
@@ -115,11 +107,6 @@ namespace TagLib.Mpeg
 			Present = true;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the total number of frames in the file, as indicated
@@ -151,11 +138,6 @@ namespace TagLib.Mpeg
 		/// </value>
 		public bool Present { get; private set; }
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets the offset at which a VBRI header would appear in an
@@ -172,7 +154,5 @@ namespace TagLib.Mpeg
 			// of the first MPEG Header. So it's position 36 (0x24).
 			return 0x24;
 		}
-
-		#endregion
 	}
 }

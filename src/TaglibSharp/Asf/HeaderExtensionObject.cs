@@ -34,18 +34,11 @@ namespace TagLib.Asf
 	/// </summary>
 	public class HeaderExtensionObject : Object
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the child objects.
 		/// </summary>
-		readonly List<Object> children = new List<Object> ();
+		private readonly List<Object> children = new List<Object> ();
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -94,11 +87,6 @@ namespace TagLib.Asf
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the child objects contained in the current instance.
@@ -111,11 +99,6 @@ namespace TagLib.Asf
 			get { return children; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw ASF object.
@@ -168,7 +151,5 @@ namespace TagLib.Asf
 
 			children.Add (obj);
 		}
-
-		#endregion
 	}
 }

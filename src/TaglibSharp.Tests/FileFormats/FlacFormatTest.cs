@@ -7,9 +7,9 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class FlacFormatTest : IFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample.flac";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite.flac";
-		File file;
+		private static readonly string sample_file = TestPath.Samples + "sample.flac";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite.flac";
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

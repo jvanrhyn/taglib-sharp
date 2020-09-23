@@ -33,23 +33,17 @@ namespace TagLib.Ogg
 	/// </summary>
 	public class GroupedComment : Tag
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains a mapping between stream serial numbers and
 		///    comments.
 		/// </summary>
-		readonly Dictionary<uint, XiphComment> comment_hash;
+		private readonly Dictionary<uint, XiphComment> comment_hash;
 
 		/// <summary>
 		///    Contains comments in the order they are added.
 		/// </summary>
-		readonly List<XiphComment> tags;
+		private readonly List<XiphComment> tags;
 
-		#endregion
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -124,11 +118,6 @@ namespace TagLib.Ogg
 			AddComment (streamSerialNumber, new XiphComment (data));
 		}
 
-		#endregion
-
-
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -1481,7 +1470,5 @@ namespace TagLib.Ogg
 			foreach (XiphComment tag in tags)
 				tag.Clear ();
 		}
-
-		#endregion
 	}
 }

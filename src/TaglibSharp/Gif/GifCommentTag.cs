@@ -32,8 +32,6 @@ namespace TagLib.Gif
 	/// </summary>
 	public class GifCommentTag : ImageTag
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructor.
 		/// </summary>
@@ -53,10 +51,6 @@ namespace TagLib.Gif
 			Value = null;
 		}
 
-		#endregion
-
-		#region Public Properties
-
 		/// <summary>
 		///    The value of the comment represented by the current instance.
 		/// </summary>
@@ -75,10 +69,6 @@ namespace TagLib.Gif
 			set { Value = value; }
 		}
 
-		#endregion
-
-		#region Public Methods
-
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
 		/// </summary>
@@ -96,7 +86,5 @@ namespace TagLib.Gif
 		{
 			Value = null;
 		}
-
-		#endregion
 	}
 }

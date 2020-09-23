@@ -2,7 +2,7 @@
 // BitStream.cs: Helper to read bits from a byte array.
 //
 // Copyright (C) 2009 Patrick Dehne
-// 
+//
 // This library is free software; you can redistribute it and/or modify
 // it  under the terms of the GNU Lesser General Public License version
 // 2.1 as published by the Free Software Foundation.
@@ -30,11 +30,9 @@ namespace TagLib.Aac
 	/// </summary>
 	public class BitStream
 	{
-		readonly BitArray bits;
-		int bitindex;
+		private readonly BitArray _bits;
+		private int _bitindex;
 
-
-		#region Constructors
 
 		/// <summary>
 		///    Construct a new <see cref="BitStream"/>.
@@ -49,25 +47,20 @@ namespace TagLib.Aac
 			if (buffer.Length != 7)
 				throw new ArgumentException ("Buffer size must be 7 bytes");
 
-			// Reverse bits            
-			bits = new BitArray (buffer.Length * 8);
+			// Reverse bits
+			_bits = new BitArray (buffer.Length * 8);
 			for (int i = 0; i < buffer.Length; i++) {
 				for (int y = 0; y < 8; y++) {
-					bits[i * 8 + y] = ((buffer[i] & (1 << (7 - y))) > 0);
+					_bits[i * 8 + y] = ((buffer[i] & (1 << (7 - y))) > 0);
 				}
 			}
 
-			bitindex = 0;
+			_bitindex = 0;
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
-		///    Reads an Int32 from the bitstream        
+		///    Reads an Int32 from the bitstream
 		/// </summary>
 		/// <param name="numberOfBits">
 		///    A <see cref="int" /> value containing the number
@@ -85,16 +78,14 @@ namespace TagLib.Aac
 				throw new ArgumentException ("Number of bits to read must be <= 32");
 
 			int value = 0;
-			int start = bitindex + numberOfBits - 1;
+			int start = _bitindex + numberOfBits - 1;
 			for (int i = 0; i < numberOfBits; i++) {
-				value += bits[start] ? (1 << i) : 0;
-				bitindex++;
+				value += _bits[start] ? (1 << i) : 0;
+				_bitindex++;
 				start--;
 			}
 
 			return value;
 		}
-
-		#endregion
 	}
 }

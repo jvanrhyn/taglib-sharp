@@ -40,41 +40,35 @@ namespace TagLib.Dsf
 	[SupportedMimeType ("application/x-dsf")]
 	public class File : TagLib.File
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the address of the DSF header block.
 		/// </summary>
-		ByteVector header_block;
+		private ByteVector header_block;
 
 		/// <summary>
 		///  Contains the Id3v2 tag.
 		/// </summary>
-		Id3v2.Tag tag;
+		private Id3v2.Tag tag;
 
 		/// <summary>
 		///  Contains the media properties.
 		/// </summary>
-		Properties properties;
+		private Properties properties;
 
 		/// <summary>
 		/// Contains the size of the DSF File
 		/// </summary>
-		readonly uint dsf_size;
+		private readonly uint dsf_size;
 
 		/// <summary>
 		/// Contains the start position of the Tag
 		/// </summary>
-		long tag_start;
+		private long tag_start;
 
 		/// <summary>
 		/// Contains the end position of the Tag
 		/// </summary>
-		long tag_end;
-
-		#endregion
-
-		#region Public Static Fields
+		private long tag_end;
 
 		/// <summary>
 		///    The identifier used to recognize a DSF file.
@@ -99,10 +93,6 @@ namespace TagLib.Dsf
 		///    "ID3 "
 		/// </value>
 		public static readonly ReadOnlyByteVector ID3Identifier = "ID3";
-
-		#endregion
-
-		#region Public Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -192,10 +182,6 @@ namespace TagLib.Dsf
 		{
 		}
 
-		#endregion
-
-		#region Public Properties
-
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
 		///    current instance.
@@ -220,10 +206,6 @@ namespace TagLib.Dsf
 		public override Properties Properties {
 			get { return properties; }
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Saves the changes made in the current instance to the
@@ -327,10 +309,6 @@ namespace TagLib.Dsf
 			return id32_tag;
 		}
 
-		#endregion
-
-		#region Private Methods
-
 		/// <summary>
 		///    Reads the contents of the current instance determining
 		///    the size of the dsf data, the area the tagging is in,
@@ -362,7 +340,7 @@ namespace TagLib.Dsf
 		///    The file does not begin with <see cref="FileIdentifier"
 		///    />.
 		/// </exception>
-		void Read (bool read_tags, ReadStyle style, out uint dsf_size, out long tag_start, out long tag_end)
+		private void Read (bool read_tags, ReadStyle style, out uint dsf_size, out long tag_start, out long tag_end)
 		{
 			Seek (0);
 			if (ReadBlock (4) != FileIdentifier)
@@ -406,6 +384,5 @@ namespace TagLib.Dsf
 				}
 			}
 		}
-		#endregion
 	}
 }

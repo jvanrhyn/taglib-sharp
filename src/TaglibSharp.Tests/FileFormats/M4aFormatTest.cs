@@ -13,7 +13,7 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class M4aFormatTest : IFormatTest
 	{
-		class Mpeg4TestFile : File
+		private class Mpeg4TestFile : File
 		{
 			public Mpeg4TestFile (string path) : base (path)
 			{
@@ -23,11 +23,11 @@ namespace TaglibSharp.Tests.FileFormats
 			public new List<IsoUserDataBox> UdtaBoxes => base.UdtaBoxes;
 		}
 
-		static readonly string sample_file = TestPath.Samples + "sample.m4a";
-		static readonly string sample_file_rg = TestPath.Samples + "sample_replaygain.m4a";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite.m4a";
-		static readonly string aac_broken_tags = TestPath.Samples + "bgo_658920.m4a";
-		TagLib.File file;
+		private static readonly string sample_file = TestPath.Samples + "sample.m4a";
+		private static readonly string sample_file_rg = TestPath.Samples + "sample_replaygain.m4a";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite.m4a";
+		private static readonly string aac_broken_tags = TestPath.Samples + "bgo_658920.m4a";
+		private TagLib.File file;
 
 		[OneTimeSetUp]
 		public void Init ()

@@ -49,8 +49,6 @@ namespace TagLib.Matroska
 	/// </summary>
 	public class UIDElement : IUIDElement
 	{
-		#region Constructors
-
 		/// <summary>
 		/// Create a UIDElement Stub
 		/// </summary>
@@ -70,12 +68,7 @@ namespace TagLib.Matroska
 		}
 
 
-		#endregion
-
-
-		#region Statics
-
-		static readonly Random random = new Random ();
+		private static readonly Random random = new Random ();
 
 		/// <summary>
 		/// Generate a new random UID
@@ -92,10 +85,6 @@ namespace TagLib.Matroska
 			return ret;
 		}
 
-		#endregion
-
-
-		#region IUIDElement Boilerplate
 
 		/// <summary>
 		/// Unique ID representing the element, as random as possible (setting zero will generate automatically a new one).
@@ -105,15 +94,12 @@ namespace TagLib.Matroska
 			set { _UID = GenUID (value); }
 		}
 
-		ulong _UID = GenUID ();
+		private ulong _UID = GenUID ();
 
 
 		/// <summary>
 		/// Get the Tag type the UID should be represented by, or 0 if undefined
 		/// </summary>
 		public MatroskaID UIDType { get; private set; } = 0;
-
-		#endregion
-
 	}
 }

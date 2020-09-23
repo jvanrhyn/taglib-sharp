@@ -9,11 +9,11 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class Id3V2FormatTest : IFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample_v2_only.mp3";
-		static readonly string corrupt_file = TestPath.Samples + "corrupt/null_title_v2.mp3";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite_v2_only.mp3";
-		static readonly string ext_header_file = TestPath.Samples + "sample_v2_3_ext_header.mp3";
-		File file;
+		private static readonly string sample_file = TestPath.Samples + "sample_v2_only.mp3";
+		private static readonly string corrupt_file = TestPath.Samples + "corrupt/null_title_v2.mp3";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite_v2_only.mp3";
+		private static readonly string ext_header_file = TestPath.Samples + "sample_v2_3_ext_header.mp3";
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

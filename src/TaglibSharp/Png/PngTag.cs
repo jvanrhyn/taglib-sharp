@@ -36,9 +36,6 @@ namespace TagLib.Png
 	/// </summary>
 	public class PngTag : ImageTag, IEnumerable
 	{
-
-		#region defined PNG keywords
-
 		/// <summary>
 		///    Short (one line) title or caption for image
 		/// </summary>
@@ -89,18 +86,10 @@ namespace TagLib.Png
 		/// </summary>
 		public static readonly string COMMENT = "Comment";
 
-		#endregion
-
-		#region Private Fieds
-
 		/// <summary>
 		///    Store the keywords with their values
 		/// </summary>
-		readonly Dictionary<string, string> keyword_store = new Dictionary<string, string> ();
-
-		#endregion
-
-		#region Constructors
+		private readonly Dictionary<string, string> keyword_store = new Dictionary<string, string> ();
 
 		/// <summary>
 		///    Constructor.
@@ -108,10 +97,6 @@ namespace TagLib.Png
 		public PngTag ()
 		{
 		}
-
-		#endregion
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets or sets the comment for the image described
@@ -220,10 +205,6 @@ namespace TagLib.Png
 			}
 		}
 
-		#endregion
-
-		#region Public Methods
-
 		/// <summary>
 		///    Sets a keyword of to the given value.
 		/// </summary>
@@ -296,7 +277,5 @@ namespace TagLib.Png
 		{
 			return keyword_store.GetEnumerator ();
 		}
-
-		#endregion
 	}
 }

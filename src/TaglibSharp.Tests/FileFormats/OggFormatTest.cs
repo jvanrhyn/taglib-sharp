@@ -7,9 +7,9 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class OggFormatTest : IFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample.ogg";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite.ogg";
-		File file;
+		private static readonly string sample_file = TestPath.Samples + "sample.ogg";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite.ogg";
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

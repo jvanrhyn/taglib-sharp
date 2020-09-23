@@ -179,7 +179,7 @@ namespace TaglibSharp.Tests.Images
 			Assert.AreEqual (3.0, ifd_tag.Altitude);
 		}
 
-		static void AddGPSTest (string sample_file, string tmp_file, bool contains_tiff, double latitude, double longitude, double altitude)
+		private static void AddGPSTest (string sample_file, string tmp_file, bool contains_tiff, double latitude, double longitude, double altitude)
 		{
 			var file = Utils.CreateTmpFile (sample_file, tmp_file);
 			IFDTag ifd;
@@ -218,7 +218,7 @@ namespace TaglibSharp.Tests.Images
 			AssertEqualDouble (altitude, ifd.Altitude.Value, 0.00000001);
 		}
 
-		static void AssertEqualDouble (double d1, double d2, double acc)
+		private static void AssertEqualDouble (double d1, double d2, double acc)
 		{
 			Assert.Less (d1 - acc, d2);
 			Assert.Greater (d1 + acc, d2);

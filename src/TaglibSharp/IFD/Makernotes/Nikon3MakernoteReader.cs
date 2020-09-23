@@ -32,8 +32,6 @@ namespace TagLib.IFD.Makernotes
 	/// </summary>
 	public class Nikon3MakernoteReader : IFDReader
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructor. Reads an IFD from given file, using the given endianness.
 		/// </summary>
@@ -65,10 +63,6 @@ namespace TagLib.IFD.Makernotes
 			base (file, is_bigendian, structure, base_offset, ifd_offset, max_offset)
 		{
 		}
-
-		#endregion
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Try to parse the given IFD entry, used to discover format-specific entries.
@@ -117,8 +111,5 @@ namespace TagLib.IFD.Makernotes
 			}
 			return base.ParseIFDEntry (tag, type, count, base_offset, offset);
 		}
-
-		#endregion
-
 	}
 }

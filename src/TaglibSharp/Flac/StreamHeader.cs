@@ -35,28 +35,21 @@ namespace TagLib.Flac
 	/// </summary>
 	public struct StreamHeader : IAudioCodec, ILosslessAudioCodec
 	{
-		#region Private Properties
-
 		/// <summary>
 		///    Contains the flags.
 		/// </summary>
-		readonly uint flags;
+		private readonly uint flags;
 
 		/// <summary>
 		///    Contains the low portion of the length.
 		/// </summary>
-		readonly uint low_length;
+		private readonly uint low_length;
 
 		/// <summary>
 		///    Contains the stream length.
 		/// </summary>
-		readonly long stream_length;
+		private readonly long stream_length;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -90,11 +83,6 @@ namespace TagLib.Flac
 			low_length = data.Mid (14, 4).ToUInt (true);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the duration of the media represented by the current
@@ -204,11 +192,6 @@ namespace TagLib.Flac
 			get { return "Flac Audio"; }
 		}
 
-		#endregion
-
-
-
-		#region Private Properties
 
 		/// <summary>
 		///    Gets a high portion of the length of the audio
@@ -218,7 +201,7 @@ namespace TagLib.Flac
 		///    A <see cref="uint" /> value containing the high portion
 		///    of the length.
 		/// </value>
-		uint HighLength {
+		private uint HighLength {
 			get {
 				// The last 4 bits are the most significant 4
 				// bits for the 36 bit stream length in samples.
@@ -228,7 +211,5 @@ namespace TagLib.Flac
 					AudioSampleRate) << 4 : 0);
 			}
 		}
-
-		#endregion
 	}
 }

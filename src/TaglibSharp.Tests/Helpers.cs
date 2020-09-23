@@ -45,7 +45,7 @@ namespace TaglibSharp.Tests
 			Console.WriteLine ();
 		}
 
-		static void WriteByte2 (byte data)
+		private static void WriteByte2 (byte data)
 		{
 			foreach (char c in allowed)
 				if (c == data) {
@@ -56,14 +56,14 @@ namespace TaglibSharp.Tests
 			Console.Write (".");
 		}
 
-		static readonly string allowed = "0123456789abcdefghijklmnopqr" +
-			"stuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`~!@#$%^&*()_+-={}" +
-			"[];:'\",.<>?/\\|";
+		private static readonly string allowed = "0123456789abcdefghijklmnopqr" +
+		                                         "stuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`~!@#$%^&*()_+-={}" +
+		                                         "[];:'\",.<>?/\\|";
 	}
 
 	public class MemoryFileAbstraction : File.IFileAbstraction
 	{
-		readonly MemoryStream stream;
+		private readonly MemoryStream stream;
 
 		public MemoryFileAbstraction (int maxSize, byte[] data)
 		{
@@ -87,9 +87,9 @@ namespace TaglibSharp.Tests
 
 	public class CodeTimer : IDisposable
 	{
-		readonly DateTime start;
-		TimeSpan elapsed_time = TimeSpan.Zero;
-		readonly string label;
+		private readonly DateTime start;
+		private TimeSpan elapsed_time = TimeSpan.Zero;
+		private readonly string label;
 
 		public CodeTimer ()
 		{

@@ -372,17 +372,15 @@ namespace TagLib.Id3v2
 	/// </remarks>
 	public class TextInformationFrame : Frame
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the encoding to use for the text.
 		/// </summary>
-		StringType encoding = Tag.DefaultEncoding;
+		private StringType encoding = Tag.DefaultEncoding;
 
 		/// <summary>
 		///    Contains the text fields.
 		/// </summary>
-		string[] text_fields = Array.Empty<string> ();
+		private string[] text_fields = Array.Empty<string> ();
 
 		/// <summary>
 		///    Contains the raw data from the frame, or <see
@@ -393,23 +391,18 @@ namespace TagLib.Id3v2
 		///    it is parsed on demand, reducing the ammount of
 		///    unnecessary conversion.
 		/// </remarks>
-		ByteVector raw_data;
+		private ByteVector raw_data;
 
 		/// <summary>
 		///    Contains the ID3v2 version of <see cref="raw_data" />.
 		/// </summary>
-		byte raw_version;
+		private byte raw_version;
 
 		/// <summary>
 		///    Contains the Encoding of the raw_data
 		/// </summary>
-		StringType raw_encoding = StringType.Latin1;
+		private StringType raw_encoding = StringType.Latin1;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -491,11 +484,6 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the text contained in the current instance.
@@ -575,11 +563,6 @@ namespace TagLib.Id3v2
 			set { encoding = value; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Sets the text contained in the current instance.
@@ -666,11 +649,6 @@ namespace TagLib.Id3v2
 			return output;
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a <see cref="TextInformationFrame" /> object of a
@@ -798,11 +776,6 @@ namespace TagLib.Id3v2
 			return Get (tag, ident, false);
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -979,12 +952,6 @@ namespace TagLib.Id3v2
 		}
 
 
-		#endregion
-
-
-
-		#region ICloneable
-
 		/// <summary>
 		///    Creates a deep copy of the current instance.
 		/// </summary>
@@ -1001,8 +968,6 @@ namespace TagLib.Id3v2
 			frame.raw_version = raw_version;
 			return frame;
 		}
-
-		#endregion
 	}
 
 
@@ -1013,8 +978,6 @@ namespace TagLib.Id3v2
 	/// </summary>
 	public class UserTextInformationFrame : TextInformationFrame
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="UserTextInformationFrame" /> with a specified
@@ -1105,11 +1068,6 @@ namespace TagLib.Id3v2
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the description stored in the current
@@ -1177,11 +1135,6 @@ namespace TagLib.Id3v2
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets a string representation of the current instance.
@@ -1197,11 +1150,6 @@ namespace TagLib.Id3v2
 				.Append (base.ToString ()).ToString ();
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a specified user text frame from the specified tag,
@@ -1336,7 +1284,5 @@ namespace TagLib.Id3v2
 		{
 			return Get (tag, description, false);
 		}
-
-		#endregion
 	}
 }

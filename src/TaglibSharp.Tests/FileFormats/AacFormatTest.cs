@@ -10,9 +10,9 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class AacFormatTest : IFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample.aac";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite.aac";
-		File file;
+		private static readonly string sample_file = TestPath.Samples + "sample.aac";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite.aac";
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

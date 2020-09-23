@@ -39,15 +39,9 @@ namespace TagLib.Matroska
 	/// </remarks>
 	public class EBMLreader
 	{
-		#region Private Fields
-
-		File file;
-		ulong offset;
-		uint ebml_id;
-
-		#endregion
-
-		#region Constructors
+		private File file;
+		private ulong offset;
+		private uint ebml_id;
 
 		/// <summary>
 		/// Constructs a root <see cref="EBMLreader" /> instance, by reading from
@@ -122,10 +116,6 @@ namespace TagLib.Matroska
 			DataSize = size;
 		}
 
-		#endregion
-
-		#region Public Properties
-
 		/// <summary>
 		/// EBML Element Identifier.
 		/// </summary>
@@ -175,10 +165,6 @@ namespace TagLib.Matroska
 			get { return offset == DataOffset; }
 		}
 
-
-		#endregion
-
-		#region Public Methods for Reading
 
 		/// <summary>
 		/// Read EBML header and data-size if it is an abstract one. 
@@ -345,10 +331,6 @@ namespace TagLib.Matroska
 		}
 
 
-		#endregion
-
-		#region Public Methods for Writing
-
 		/// <summary>
 		/// Write the <see cref="DataSize"/> to the EBML file.
 		/// Resize the data-size length to 8 bytes.
@@ -477,7 +459,5 @@ namespace TagLib.Matroska
 
 			return ret;
 		}
-
-		#endregion
 	}
 }

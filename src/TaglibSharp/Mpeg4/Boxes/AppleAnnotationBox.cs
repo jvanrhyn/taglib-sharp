@@ -32,8 +32,6 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class AppleAnnotationBox : Box
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="AppleAnnotationBox" /> with a provided header and
@@ -78,11 +76,6 @@ namespace TagLib.Mpeg4
 			Children = new List<Box> ();
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the children of the current instance.
@@ -92,7 +85,5 @@ namespace TagLib.Mpeg4
 		///    children of the current instance.
 		/// </value>
 		public override IEnumerable<Box> Children { get; }
-
-		#endregion
 	}
 }

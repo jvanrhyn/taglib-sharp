@@ -38,23 +38,16 @@ namespace TagLib.Asf
 	[SupportedMimeType ("video/x-ms-asf")]
 	public class File : TagLib.File
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the file's tag.
 		/// </summary>
-		Tag asf_tag;
+		private Tag asf_tag;
 
 		/// <summary>
 		///    Contains the file's properties.
 		/// </summary>
-		Properties properties;
+		private Properties properties;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -138,11 +131,6 @@ namespace TagLib.Asf
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
@@ -169,11 +157,6 @@ namespace TagLib.Asf
 			get { return properties; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Saves the changes made in the current instance to the
@@ -396,11 +379,6 @@ namespace TagLib.Asf
 			return new UnknownObject (this, position);
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Reads the contents of the current instance.
@@ -410,7 +388,7 @@ namespace TagLib.Asf
 		///    of accuracy to read the media properties, or <see
 		///    cref="ReadStyle.None" /> to ignore the properties.
 		/// </param>
-		void Read (ReadStyle propertiesStyle)
+		private void Read (ReadStyle propertiesStyle)
 		{
 			Mode = AccessMode.Read;
 			try {
@@ -430,7 +408,5 @@ namespace TagLib.Asf
 				Mode = AccessMode.Closed;
 			}
 		}
-
-		#endregion
 	}
 }

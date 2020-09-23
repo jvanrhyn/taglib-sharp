@@ -49,24 +49,18 @@ namespace TagLib.Matroska
 	/// </summary>
 	public class VideoTrack : Track, IVideoCodec
 	{
-		#region Private fields
-
 #pragma warning disable 414 // Assigned, never used
-		readonly ulong width;
-		readonly ulong height;
-		readonly ulong disp_width;
-		readonly ulong disp_height;
-		readonly double framerate;
-		readonly bool interlaced;
-		readonly VideoAspectRatioType ratio_type;
-		readonly ByteVector fourcc;
+		private readonly ulong width;
+		private readonly ulong height;
+		private readonly ulong disp_width;
+		private readonly ulong disp_height;
+		private readonly double framerate;
+		private readonly bool interlaced;
+		private readonly VideoAspectRatioType ratio_type;
+		private readonly ByteVector fourcc;
 #pragma warning restore 414
 
-		readonly List<EBMLreader> unknown_elems = new List<EBMLreader> ();
-
-		#endregion
-
-		#region Constructors
+		private readonly List<EBMLreader> unknown_elems = new List<EBMLreader> ();
 
 		/// <summary>
 		/// Constructs a <see cref="VideoTrack" /> parsing from provided
@@ -140,10 +134,6 @@ namespace TagLib.Matroska
 			}
 		}
 
-		#endregion
-
-		#region Public fields
-
 		/// <summary>
 		/// List of unknown elements encountered while parsing.
 		/// </summary>
@@ -151,24 +141,12 @@ namespace TagLib.Matroska
 			get { return unknown_elems; }
 		}
 
-		#endregion
-
-		#region Public methods
-
-		#endregion
-
-		#region ICodec
-
 		/// <summary>
 		/// This type of track only has video media type.
 		/// </summary>
 		public override MediaTypes MediaTypes {
 			get { return MediaTypes.Video; }
 		}
-
-		#endregion
-
-		#region IVideoCodec
 
 		/// <summary>
 		/// Describes video track width in pixels.
@@ -183,7 +161,5 @@ namespace TagLib.Matroska
 		public int VideoHeight {
 			get { return (int)height; }
 		}
-
-		#endregion
 	}
 }

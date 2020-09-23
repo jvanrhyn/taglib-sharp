@@ -8,8 +8,8 @@ namespace TaglibSharp.Tests.FileFormats
 {
 	public static class StandardTests
 	{
-		static readonly string sample_picture = TestPath.Samples + "sample_gimp.gif";
-		static readonly string sample_other = TestPath.Samples + "apple_tags.m4a";
+		private static readonly string sample_picture = TestPath.Samples + "sample_gimp.gif";
+		private static readonly string sample_other = TestPath.Samples + "apple_tags.m4a";
 
 		public enum TestTagLevel
 		{

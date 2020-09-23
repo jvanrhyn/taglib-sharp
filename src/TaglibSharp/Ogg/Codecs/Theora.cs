@@ -32,48 +32,31 @@ namespace TagLib.Ogg.Codecs
 	/// </summary>
 	public class Theora : Codec, IVideoCodec
 	{
-		#region Private Static Fields
-
 		/// <summary>
 		///    Contains the file identifier.
 		/// </summary>
-		static readonly ByteVector id = "theora";
+		private static readonly ByteVector id = "theora";
 
-		#endregion
-
-
-
-		#region Private Fields
 
 		/// <summary>
 		///    Contains the header packet.
 		/// </summary>
-		HeaderPacket header;
+		private HeaderPacket header;
 
 		/// <summary>
 		///    Contains the comment data.
 		/// </summary>
-		ByteVector comment_data;
+		private ByteVector comment_data;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="Theora" />.
 		/// </summary>
-		Theora ()
+		private Theora ()
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Reads a Ogg packet that has been encountered in the
@@ -186,11 +169,6 @@ namespace TagLib.Ogg.Codecs
 				packets.Insert (1, data);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the width of the video represented by the current
@@ -252,11 +230,6 @@ namespace TagLib.Ogg.Codecs
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Implements the <see cref="T:CodecProvider" /> delegate to
@@ -277,11 +250,6 @@ namespace TagLib.Ogg.Codecs
 			return (PacketType (packet) == 0x80) ? new Theora () : null;
 		}
 
-		#endregion
-
-
-
-		#region Private Static Methods
 
 		/// <summary>
 		///    Gets the packet type for a specified Theora packet.
@@ -294,7 +262,7 @@ namespace TagLib.Ogg.Codecs
 		///    A <see cref="int" /> value containing the packet type or
 		///    -1 if the packet is invalid.
 		/// </returns>
-		static int PacketType (ByteVector packet)
+		private static int PacketType (ByteVector packet)
 		{
 			if (packet.Count <= id.Count || packet[0] < 0x80)
 				return -1;
@@ -306,12 +274,10 @@ namespace TagLib.Ogg.Codecs
 			return packet[0];
 		}
 
-		#endregion
-
 		/// <summary>
 		///    This structure represents a Theora header packet.
 		/// </summary>
-		struct HeaderPacket
+		private struct HeaderPacket
 		{
 			public byte major_version;
 			public byte minor_version;

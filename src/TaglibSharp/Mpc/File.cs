@@ -46,8 +46,6 @@ namespace TagLib.MusePack
 	[SupportedMimeType ("audio/x-musepack")]
 	public class File : TagLib.NonContainer.File
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="File" /> for a specified path in the local file
@@ -128,11 +126,6 @@ namespace TagLib.MusePack
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets a tag of a specified type from the current instance,
@@ -174,11 +167,6 @@ namespace TagLib.MusePack
 			};
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Reads format specific information at the end of the
@@ -227,7 +215,5 @@ namespace TagLib.MusePack
 
 			return new Properties (TimeSpan.Zero, header);
 		}
-
-		#endregion
 	}
 }

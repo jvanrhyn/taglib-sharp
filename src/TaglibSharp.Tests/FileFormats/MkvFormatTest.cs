@@ -9,11 +9,11 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class MkvFormatTest : IFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "Turning Lime.mkv";
-		static readonly string sample_picture = TestPath.Samples + "sample_gimp.gif";
-		static readonly string sample_other = TestPath.Samples + "apple_tags.m4a";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite.mkv";
-		File file;
+		private static readonly string sample_file = TestPath.Samples + "Turning Lime.mkv";
+		private static readonly string sample_picture = TestPath.Samples + "sample_gimp.gif";
+		private static readonly string sample_other = TestPath.Samples + "apple_tags.m4a";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite.mkv";
+		private File file;
 
 
 		[OneTimeSetUp]

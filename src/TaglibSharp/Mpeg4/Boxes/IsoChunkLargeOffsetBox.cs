@@ -39,8 +39,6 @@ namespace TagLib.Mpeg4
 	/// </remarks>
 	public class IsoChunkLargeOffsetBox : FullBox
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="IsoChunkLargeOffsetBox" /> with a provided header
@@ -71,11 +69,6 @@ namespace TagLib.Mpeg4
 				Offsets[i] = box_data.Mid (4 + i * 8, 8).ToULong ();
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the data contained in the current instance.
@@ -103,11 +96,6 @@ namespace TagLib.Mpeg4
         /// </value>
         public ulong[] Offsets { get; private set; }
 
-        #endregion
-
-
-
-        #region Public Methods
 
         /// <summary>
         ///    Overwrites the existing box in the file after updating
@@ -163,7 +151,5 @@ namespace TagLib.Mpeg4
 
 			return Render ();
 		}
-
-		#endregion
 	}
 }

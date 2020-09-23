@@ -12,8 +12,8 @@ namespace TaglibSharp.Tests.Images.Validators
 {
 	public class ImageTest
 	{
-		string pre_hash;
-		string post_hash;
+		private string pre_hash;
+		private string post_hash;
 
 		public static bool CompareLargeImages => Environment.GetEnvironmentVariable ("COMPARE_LARGE_FILES") == "1";
 
@@ -61,7 +61,7 @@ namespace TaglibSharp.Tests.Images.Validators
 			}
 		}
 
-		void TestImage ()
+		private void TestImage ()
 		{
 			var file = ParseUnmodifiedFile ();
 
@@ -78,7 +78,7 @@ namespace TaglibSharp.Tests.Images.Validators
 		/// <summary>
 		///    Parse the unmodified file.
 		/// </summary>
-		TagLib.Image.File ParseUnmodifiedFile ()
+		private TagLib.Image.File ParseUnmodifiedFile ()
 		{
 			var file = ReadFile (ImageFile);
 			InvariantValidator.ValidateMetadataInvariants (file);
@@ -91,7 +91,7 @@ namespace TaglibSharp.Tests.Images.Validators
 		/// <summary>
 		///    Modify and save the file.
 		/// </summary>
-		void ModifyFile ()
+		private void ModifyFile ()
 		{
 			CreateTmpFile ();
 			var tmp = ReadFile (TempImageFile);
@@ -107,7 +107,7 @@ namespace TaglibSharp.Tests.Images.Validators
 		/// <summary>
 		///    Re-parse the modified file.
 		/// </summary>
-		void ParseModifiedFile ()
+		private void ParseModifiedFile ()
 		{
 			var tmp = ReadFile (TempImageFile);
 			InvariantValidator.ValidateMetadataInvariants (tmp);
@@ -118,7 +118,7 @@ namespace TaglibSharp.Tests.Images.Validators
 			}
 		}
 
-		TagLib.Image.File ReadFile (string path)
+		private TagLib.Image.File ReadFile (string path)
 		{
 			return File.Create (path) as TagLib.Image.File;
 		}
@@ -128,12 +128,12 @@ namespace TaglibSharp.Tests.Images.Validators
 		///    this just means adding the type here. RAW files need extra
 		///    attention.
 		/// </summary>
-		bool IsSupportedImageFile (TagLib.Image.File file)
+		private bool IsSupportedImageFile (TagLib.Image.File file)
 		{
 			return (file is TagLib.Jpeg.File) || (file is TagLib.Tiff.File) || (file is TagLib.Gif.File) || (file is TagLib.Png.File);
 		}
 
-		string ReadImageData (TagLib.Image.File file)
+		private string ReadImageData (TagLib.Image.File file)
 		{
 			if (!IsSupportedImageFile (file))
 				Assert.Fail ("Unsupported type for data reading: " + file);
@@ -155,13 +155,13 @@ namespace TaglibSharp.Tests.Images.Validators
 			return md5Sum;
 		}
 
-		void ValidateImageData ()
+		private void ValidateImageData ()
 		{
 			string label = $"Image data mismatch for {ImageFileName}/{ModificationValidator}";
 			Assert.AreEqual (pre_hash, post_hash, label);
 		}
 
-		void CreateTmpFile ()
+		private void CreateTmpFile ()
 		{
 			if (System.IO.File.Exists (TempImageFile))
 				System.IO.File.Delete (TempImageFile);
@@ -171,17 +171,17 @@ namespace TaglibSharp.Tests.Images.Validators
 		/// <summary>
 		///    The filename of the file to test. Name only, no paths.
 		/// </summary>
-		string ImageFileName { get; set; }
+		private string ImageFileName { get; set; }
 
-		string TempImageFileName => $"tmpwrite_{ImageFileName}";
+		private string TempImageFileName => $"tmpwrite_{ImageFileName}";
 
-		string ImageDirectory { get; set; }
+		private string ImageDirectory { get; set; }
 
-		string TempDirectory { get; set; }
+		private string TempDirectory { get; set; }
 
-		string ImageFile => $"{ImageDirectory}/{ImageFileName}";
+		private string ImageFile => $"{ImageDirectory}/{ImageFileName}";
 
-		string TempImageFile => $"{TempDirectory}/{TempImageFileName}";
+		private string TempImageFile => $"{TempDirectory}/{TempImageFileName}";
 
 		/// <summary>
 		///    The invariant validator tests for properties that are

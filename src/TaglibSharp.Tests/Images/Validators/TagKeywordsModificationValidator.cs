@@ -9,8 +9,8 @@ namespace TaglibSharp.Tests.Images.Validators
 	/// </summary>
 	public class TagKeywordsModificationValidator : KeywordsModificationValidator
 	{
-		readonly bool tag_present;
-		readonly TagTypes type;
+		private readonly bool tag_present;
+		private readonly TagTypes type;
 
 		public TagKeywordsModificationValidator (TagTypes type, bool tag_present) : this (System.Array.Empty<string> (), type, tag_present) { }
 

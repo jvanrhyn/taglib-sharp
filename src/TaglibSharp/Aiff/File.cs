@@ -39,26 +39,20 @@ namespace TagLib.Aiff
 	[SupportedMimeType ("application/x-aiff")]
 	public class File : TagLib.File
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the address of the AIFF header block.
 		/// </summary>
-		ByteVector header_block;
+		private ByteVector header_block;
 
 		/// <summary>
 		///  Contains the Id3v2 tag.
 		/// </summary>
-		Id3v2.Tag tag;
+		private Id3v2.Tag tag;
 
 		/// <summary>
 		///  Contains the media properties.
 		/// </summary>
-		Properties properties;
-
-		#endregion
-
-		#region Public Static Fields
+		private Properties properties;
 
 		/// <summary>
 		///    The identifier used to recognize a AIFF files.
@@ -99,10 +93,6 @@ namespace TagLib.Aiff
 		///    "AIFF"
 		/// </value>
 		public static readonly ReadOnlyByteVector AIFFFormType = "AIFF";
-
-		#endregion
-
-		#region Public Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -193,10 +183,6 @@ namespace TagLib.Aiff
 		{
 		}
 
-		#endregion
-
-		#region Public Properties
-
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
 		///    current instance.
@@ -221,10 +207,6 @@ namespace TagLib.Aiff
 		public override Properties Properties {
 			get { return properties; }
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Saves the changes made in the current instance to the
@@ -340,10 +322,6 @@ namespace TagLib.Aiff
 			return id32_tag;
 		}
 
-		#endregion
-
-		#region Private Methods
-
 		/// <summary>
 		///    Search the file for a chunk whose name is given by
 		///    the chunkName parameter, starting from startPos.
@@ -356,7 +334,7 @@ namespace TagLib.Aiff
 		///    Position of the chunk in the stream, or -1
 		///    if no chunk was found.
 		/// </returns>
-		long FindChunk (ByteVector chunkName, long startPos)
+		private long FindChunk (ByteVector chunkName, long startPos)
 		{
 			long initialPos = Tell;
 
@@ -420,7 +398,7 @@ namespace TagLib.Aiff
 		///    The file does not begin with <see cref="FileIdentifier"
 		///    />.
 		/// </exception>
-		void Read (bool read_tags, ReadStyle style, out uint aiff_size, out long tag_start, out long tag_end)
+		private void Read (bool read_tags, ReadStyle style, out uint aiff_size, out long tag_start, out long tag_end)
 		{
 			Seek (0);
 			if (ReadBlock (4) != FileIdentifier)
@@ -480,7 +458,5 @@ namespace TagLib.Aiff
 				tag_end = InvariantEndPosition = tag_start + tag_size;
 			}
 		}
-
-		#endregion
 	}
 }

@@ -31,8 +31,6 @@ namespace TagLib.Riff
 	/// </summary>
 	public class InfoTag : ListTag
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="InfoTag" /> with no contents.
@@ -85,11 +83,6 @@ namespace TagLib.Riff
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance enclosed in a "INFO" item.
@@ -103,11 +96,6 @@ namespace TagLib.Riff
 			return RenderEnclosed ("INFO");
 		}
 
-		#endregion
-
-
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -387,6 +375,5 @@ namespace TagLib.Riff
 			}
 			set { SetValue ("ICOP", value); }
 		}
-		#endregion
 	}
 }

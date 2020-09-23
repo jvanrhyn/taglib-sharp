@@ -59,23 +59,16 @@ namespace TagLib.Ape
 	/// </summary>
 	public class Item : ICloneable
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the item value.
 		/// </summary>
-		ReadOnlyByteVector data;
+		private ReadOnlyByteVector data;
 
 		/// <summary>
 		///    Contains the item text.
 		/// </summary>
-		string[] text;
+		private string[] text;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -219,7 +212,7 @@ namespace TagLib.Ape
 				data = new ReadOnlyByteVector (value);
 		}
 
-		Item (Item item)
+		private Item (Item item)
 		{
 			Type = item.Type;
 			Key = item.Key;
@@ -234,11 +227,6 @@ namespace TagLib.Ape
 			Size = item.Size;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the key used to identify the current instance.
@@ -313,11 +301,6 @@ namespace TagLib.Ape
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets the contents of the current instance as a <see
@@ -407,10 +390,6 @@ namespace TagLib.Ape
 			return output;
 		}
 
-		#endregion
-
-		#region Protected Methods
-
 		/// <summary>
 		///    Populates the current instance by reading in a raw APEv2
 		///    item.
@@ -466,11 +445,6 @@ namespace TagLib.Ape
 				text = data.Mid (pos + 1, (int)value_length).ToStrings (StringType.UTF8, 0);
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -488,7 +462,5 @@ namespace TagLib.Ape
 		{
 			return Clone ();
 		}
-
-		#endregion
 	}
 }

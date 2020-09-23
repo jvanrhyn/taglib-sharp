@@ -45,7 +45,7 @@ namespace TagLib
 		///    Contains a mapping between mime-types and the <see
 		///    cref="File" /> subclasses that support them.
 		/// </summary>
-		static Dictionary<string, Type> file_types;
+		private static Dictionary<string, Type> file_types;
 
 		/// <summary>
 		///    Contains a static array of file types contained in the
@@ -58,7 +58,7 @@ namespace TagLib
 		///    Mono. Not reflecting taglib-sharp.dll saves about 120KB
 		///    of heap.
 		/// </remarks>
-		static readonly Type[] static_file_types = new[] {
+		private static readonly Type[] static_file_types = new[] {
 			typeof(Aac.File),
 			typeof(Aiff.File),
 			typeof(Ape.File),

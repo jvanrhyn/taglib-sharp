@@ -87,18 +87,11 @@ namespace TagLib.Id3v2
 	/// </summary>
 	public class RelativeVolumeFrame : Frame
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the channel data.
 		/// </summary>
-		readonly ChannelData[] channels = new ChannelData[9];
+		private readonly ChannelData[] channels = new ChannelData[9];
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -161,11 +154,6 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the identification used for the current instance.
@@ -194,11 +182,6 @@ namespace TagLib.Id3v2
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Creates a text description of the current instance.
@@ -372,11 +355,6 @@ namespace TagLib.Id3v2
 			channels[(int)type].PeakVolume = peak;
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a specified volume adjustment frame from the
@@ -423,11 +401,6 @@ namespace TagLib.Id3v2
 			return rva2;
 		}
 
-		#endregion
-
-
-
-		#region Protected Properties
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -515,11 +488,6 @@ namespace TagLib.Id3v2
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -536,24 +504,14 @@ namespace TagLib.Id3v2
 			return frame;
 		}
 
-		#endregion
 
-
-
-		#region Private Static Methods
-
-		static int BitsToBytes (int i)
+		private static int BitsToBytes (int i)
 		{
 			return i % 8 == 0 ? i / 8 : (i - i % 8) / 8 + 1;
 		}
 
-		#endregion
 
-
-
-		#region Classes
-
-		struct ChannelData
+		private struct ChannelData
 		{
 			public short VolumeAdjustmentIndex;
 			public ulong PeakVolumeIndex;
@@ -575,7 +533,5 @@ namespace TagLib.Id3v2
 				set { PeakVolumeIndex = (ulong)(value * 512.0); }
 			}
 		}
-
-		#endregion
 	}
 }

@@ -10,7 +10,7 @@ namespace TaglibSharp.Tests.Images
 	[TestFixture]
 	public class XmpNullEndedTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample_xmpnullended.jpg";
+		private static readonly string sample_file = TestPath.Samples + "sample_xmpnullended.jpg";
 
 		[Test]
 		public void ParseXmp ()

@@ -127,35 +127,28 @@ namespace TagLib.IFD.Entries
 	/// </remarks>
 	public class MakernoteIFDEntry : IFDEntry
 	{
-
-		#region Private Fields
-
 		/// <value>
 		///    Stores the prefix of the makernote
 		/// </value>
-		readonly ByteVector prefix;
+		private readonly ByteVector prefix;
 
 		/// <value>
 		///    Stores the offset of the IFD contained in makernote
 		/// </value>
-		readonly uint ifd_offset;
+		private readonly uint ifd_offset;
 
 		/// <value>
 		///    Indicates, if the offsets are relative to the current makernote
 		///    or absolut to the base_offset of the surrounding IFD.
 		/// </value>
-		readonly bool absolute_offset;
+		private readonly bool absolute_offset;
 
 		/// <value>
 		///    Stores, if the makernote is encoded in big- or little endian.
 		///    If the field is <see langword="null"/>, the endianess of the
 		///    surrounding IFD is used.
 		/// </value>
-		readonly bool? is_bigendian;
-
-		#endregion
-
-		#region Properties
+		private readonly bool? is_bigendian;
 
 		/// <value>
 		///    The ID of the tag, the current instance belongs to
@@ -172,10 +165,6 @@ namespace TagLib.IFD.Entries
 		///    makernote.
 		/// </value>
 		public IFDStructure Structure { get; private set; }
-
-		#endregion
-
-		#region Constructors
 
 		/// <summary>
 		///    Construcor.
@@ -238,10 +227,6 @@ namespace TagLib.IFD.Entries
 		public MakernoteIFDEntry (ushort tag, IFDStructure structure, MakernoteType makernote_type)
 			: this (tag, structure, makernote_type, null, 0, true, null) { }
 
-		#endregion
-
-		#region Public Methods
-
 		/// <summary>
 		///    Renders the current instance to a <see cref="ByteVector"/>
 		/// </summary>
@@ -273,7 +258,5 @@ namespace TagLib.IFD.Entries
 			count = (uint)data.Count;
 			return data;
 		}
-
-		#endregion
 	}
 }

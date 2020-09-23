@@ -12,12 +12,12 @@ namespace TaglibSharp.Tests.Images
 	[TestFixture]
 	public class JpegOlympus2Test
 	{
-		static readonly string sample_file = TestPath.Samples + "sample_olympus2.jpg";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite_olympus2.jpg";
+		private static readonly string sample_file = TestPath.Samples + "sample_olympus2.jpg";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite_olympus2.jpg";
 
-		readonly TagTypes contained_types = TagTypes.TiffIFD | TagTypes.XMP;
+		private readonly TagTypes contained_types = TagTypes.TiffIFD | TagTypes.XMP;
 
-		File file;
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

@@ -32,8 +32,6 @@ namespace TagLib.Aiff
 	/// </summary>
 	public struct StreamHeader : IAudioCodec, ILosslessAudioCodec
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the number of channels.
 		/// </summary>
@@ -42,7 +40,7 @@ namespace TagLib.Aiff
 		///    1 is monophonic, 2 is stereo, 4 means 4 channels, etc..
 		///    any number of audio channels may be represented
 		/// </remarks>
-		readonly ushort channels;
+		private readonly ushort channels;
 
 		/// <summary>
 		///    Contains the number of sample frames in the Sound Data chunk.
@@ -50,7 +48,7 @@ namespace TagLib.Aiff
 		/// <remarks>
 		///    This value is stored in bytes (11-14).
 		/// </remarks>
-		readonly ulong total_frames;
+		private readonly ulong total_frames;
 
 		/// <summary>
 		///    Contains the number of bits per sample.
@@ -59,7 +57,7 @@ namespace TagLib.Aiff
 		///    This value is stored in bytes (15,16).
 		///    It can be any number from 1 to 32.
 		/// </remarks>
-		readonly ushort bits_per_sample;
+		private readonly ushort bits_per_sample;
 
 		/// <summary>
 		///    Contains the sample rate.
@@ -69,7 +67,7 @@ namespace TagLib.Aiff
 		///    the sample rate at which the sound is to be played back, 
 		///    in sample frames per second
 		/// </remarks>
-		readonly ulong sample_rate;
+		private readonly ulong sample_rate;
 
 		/// <summary>
 		///    Contains the length of the audio stream.
@@ -77,11 +75,7 @@ namespace TagLib.Aiff
 		/// <remarks>
 		///    This value is provided by the constructor.
 		/// </remarks>
-		readonly long stream_length;
-
-		#endregion
-
-		#region Public Static Fields
+		private readonly long stream_length;
 
 		/// <summary>
 		///    The size of an AIFF Common chunk
@@ -97,10 +91,6 @@ namespace TagLib.Aiff
 		///    "COMM"
 		/// </value>
 		public static readonly ReadOnlyByteVector FileIdentifier = "COMM";
-
-		#endregion
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -187,10 +177,6 @@ namespace TagLib.Aiff
 				break;
 			}
 		}
-
-		#endregion
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the duration of the media represented by the current
@@ -289,7 +275,5 @@ namespace TagLib.Aiff
 		public int BitsPerSample {
 			get { return bits_per_sample; }
 		}
-
-		#endregion
 	}
 }

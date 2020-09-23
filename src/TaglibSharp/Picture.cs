@@ -222,14 +222,11 @@ namespace TagLib
 	/// </summary>
 	public class Picture : IPicture
 	{
-
-		#region Constants
-
 		/// <summary>
 		///    Look-Up-Table associating a file-extension to 
 		///    a Mime-Type 
 		/// </summary>
-		static readonly string[] lutExtensionMime = new[] {
+		private static readonly string[] lutExtensionMime = new[] {
 			"aac", "audio/aac", // AAC audio file
 			"abw", "application/x-abiword", // AbiWord document
 			"arc", "application/octet-stream", // Archive document (multiple files embedded)
@@ -306,10 +303,6 @@ namespace TagLib
 			"3g2", "video/3gpp2", // 3GPP2 audio/video container
 			"7z", "application/x-7z-compressed", // 7-zip archive
 		};
-
-		#endregion
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -429,10 +422,6 @@ namespace TagLib
 			Data = picture.Data;
 		}
 
-		#endregion
-
-
-		#region Legacy Factory methods
 
 		/// <summary>
 		///    Creates a new <see cref="Picture" />, populating it with
@@ -472,11 +461,6 @@ namespace TagLib
 			return new Picture (abstraction);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the mime-type of the picture data
@@ -529,11 +513,6 @@ namespace TagLib
 		/// </value>
 		public ByteVector Data { get; set; }
 
-		#endregion
-
-
-
-		#region Public static Methods (class functions)
 
 		/// <summary>
 		///    Retrieve a mime type from raw file data by reading
@@ -623,7 +602,5 @@ namespace TagLib
 
 			return mime_type;
 		}
-
-		#endregion
 	}
 }

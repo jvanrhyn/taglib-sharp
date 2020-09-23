@@ -5,7 +5,7 @@
 // http://www.hydrogenaudio.org/forums/lofiversion/index.php/t21617.html
 //
 // Copyright (C) 2009 Patrick Dehne
-// 
+//
 // This library is free software; you can redistribute it and/or modify
 // it  under the terms of the GNU Lesser General Public License version
 // 2.1 as published by the Free Software Foundation.
@@ -41,18 +41,11 @@ namespace TagLib.Aac
 	[SupportedMimeType ("audio/aac")]
 	public class File : TagLib.NonContainer.File
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the first audio header.
 		/// </summary>
-		AudioHeader first_header;
+		private AudioHeader _firstHeader;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -133,11 +126,6 @@ namespace TagLib.Aac
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets a tag of a specified type from the current instance,
@@ -179,11 +167,6 @@ namespace TagLib.Aac
 			};
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Reads format specific information at the start of the
@@ -208,7 +191,7 @@ namespace TagLib.Aac
 			// Only check the first 16 bytes so we're not stuck
 			// reading a bad file forever.
 			if ((propertiesStyle & ReadStyle.Average) != 0 &&
-				!AudioHeader.Find (out first_header, this, start, 0x4000))
+				!AudioHeader.Find (out _firstHeader, this, start, 0x4000))
 				throw new CorruptFileException ("ADTS audio header not found.");
 		}
 
@@ -256,10 +239,8 @@ namespace TagLib.Aac
 		/// </returns>
 		protected override Properties ReadProperties (long start, long end, ReadStyle propertiesStyle)
 		{
-			first_header.SetStreamLength (end - start);
-			return new Properties (TimeSpan.Zero, first_header);
+			_firstHeader.SetStreamLength (end - start);
+			return new Properties (TimeSpan.Zero, _firstHeader);
 		}
-
-		#endregion
 	}
 }

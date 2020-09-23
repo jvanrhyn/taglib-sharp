@@ -58,18 +58,11 @@ namespace TagLib.Mpeg
 	[SupportedMimeType ("audio/x-mp1")]
 	public class AudioFile : TagLib.NonContainer.File
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the first audio header.
 		/// </summary>
-		AudioHeader first_header;
+		private AudioHeader first_header;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -151,11 +144,6 @@ namespace TagLib.Mpeg
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets a tag of a specified type from the current instance,
@@ -197,11 +185,6 @@ namespace TagLib.Mpeg
 			};
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Reads format specific information at the start of the
@@ -277,7 +260,5 @@ namespace TagLib.Mpeg
 			first_header.SetStreamLength (end - start);
 			return new Properties (TimeSpan.Zero, first_header);
 		}
-
-		#endregion
 	}
 }

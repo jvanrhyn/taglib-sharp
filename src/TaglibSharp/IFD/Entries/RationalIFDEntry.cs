@@ -30,9 +30,6 @@ namespace TagLib.IFD.Entries
 	/// </summary>
 	public class RationalIFDEntry : IFDEntry
 	{
-
-		#region Properties
-
 		/// <value>
 		///    The ID of the tag, the current instance belongs to
 		/// </value>
@@ -42,10 +39,6 @@ namespace TagLib.IFD.Entries
 		///    The value which is stored by the current instance
 		/// </value>
 		public Rational Value { get; private set; }
-
-		#endregion
-
-		#region Constructors
 
 		/// <summary>
 		///    Construcor.
@@ -62,10 +55,6 @@ namespace TagLib.IFD.Entries
 			Tag = tag;
 			Value = value;
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance to a <see cref="ByteVector"/>
@@ -98,8 +87,5 @@ namespace TagLib.IFD.Entries
 
 			return data;
 		}
-
-		#endregion
-
 	}
 }

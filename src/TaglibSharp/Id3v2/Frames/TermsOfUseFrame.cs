@@ -33,18 +33,12 @@ namespace TagLib.Id3v2
 	/// </remarks>
 	public class TermsOfUseFrame : Frame
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the ISO-639-2 language code of the current
 		///    instance.
 		/// </summary>
-		string language;
+		private string language;
 
-		#endregion
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and intializes a new instance of <see
@@ -136,11 +130,6 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the text encoding to use when storing the
@@ -188,11 +177,6 @@ namespace TagLib.Id3v2
 		/// </value>
 		public string Text { get; set; }
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets a string representation of the current instance.
@@ -205,11 +189,6 @@ namespace TagLib.Id3v2
 			return Text;
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a specified terms of use frame from the specified
@@ -281,11 +260,6 @@ namespace TagLib.Id3v2
 			return best;
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -334,11 +308,6 @@ namespace TagLib.Id3v2
 			return v;
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -354,7 +323,5 @@ namespace TagLib.Id3v2
 			};
 			return frame;
 		}
-
-		#endregion
 	}
 }

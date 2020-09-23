@@ -123,8 +123,6 @@ namespace TagLib.Id3v2
 	/// </example>
 	public class MusicCdIdentifierFrame : Frame
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="MusicCdIdentifierFrame" /> with empty
@@ -186,13 +184,8 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-        #endregion
 
-
-
-        #region Public Properties
-
-        /// <summary>
+		/// <summary>
         ///    Gets and sets the identifier data stored in the current
         ///    instance.
         /// </summary>
@@ -202,12 +195,8 @@ namespace TagLib.Id3v2
         /// </value>
         public ByteVector Data { get; set; }
 
-        #endregion
 
-
-        #region Public Static Methods
-
-        /// <summary>
+		/// <summary>
         ///    Gets a music CD identifier frame from a specified tag,
         ///    optionally creating it if it does not exist.
         /// </summary>
@@ -242,11 +231,6 @@ namespace TagLib.Id3v2
 			return mcdi;
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -282,11 +266,6 @@ namespace TagLib.Id3v2
 			return Data ?? new ByteVector ();
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -302,7 +281,5 @@ namespace TagLib.Id3v2
 				frame.Data = new ByteVector (Data);
 			return frame;
 		}
-
-		#endregion
 	}
 }

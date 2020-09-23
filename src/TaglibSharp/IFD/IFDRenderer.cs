@@ -34,29 +34,22 @@ namespace TagLib.IFD
 	/// </summary>
 	public class IFDRenderer
 	{
-
-		#region Private Fields
-
 		/// <summary>
 		///    The IFD structure that will be rendered.
 		/// </summary>
-		readonly IFDStructure structure;
+		private readonly IFDStructure structure;
 
 		/// <summary>
 		///    If IFD should be encoded in BigEndian or not.
 		/// </summary>
-		readonly bool is_bigendian;
+		private readonly bool is_bigendian;
 
 		/// <summary>
 		///    A <see cref="System.UInt32"/> value with the offset of the
 		///    current IFD. All offsets inside the IFD must be adjusted
 		///    according to this given offset.
 		/// </summary>
-		readonly uint ifd_offset;
-
-		#endregion
-
-		#region Constructors
+		private readonly uint ifd_offset;
 
 		/// <summary>
 		///    Constructor. Will render the given IFD structure.
@@ -78,10 +71,6 @@ namespace TagLib.IFD
 			this.structure = structure;
 			this.ifd_offset = ifd_offset;
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance to a <see cref="ByteVector"/>.
@@ -105,10 +94,6 @@ namespace TagLib.IFD
 			return ifd_data;
 		}
 
-		#endregion
-
-		#region Private Methods
-
 		/// <summary>
 		///    Renders the IFD to an ByteVector where the offset of the IFD
 		///    itself is <paramref name="ifd_offset"/> and all offsets
@@ -130,7 +115,7 @@ namespace TagLib.IFD
 		/// <returns>
 		///    A <see cref="ByteVector"/> with the rendered IFD.
 		/// </returns>
-		ByteVector RenderIFD (IFDDirectory directory, uint ifd_offset, bool last)
+		private ByteVector RenderIFD (IFDDirectory directory, uint ifd_offset, bool last)
 		{
 			if (directory.Count > ushort.MaxValue)
 				throw new Exception ($"Directory has too much entries: {directory.Count}");
@@ -172,10 +157,6 @@ namespace TagLib.IFD
 
 			return entry_data;
 		}
-
-		#endregion
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Adds the data of a single entry to <paramref name="entry_data"/>.
@@ -268,7 +249,5 @@ namespace TagLib.IFD
 		{
 			return new IFDRenderer (is_bigendian, structure, ifd_offset);
 		}
-
-		#endregion
 	}
 }

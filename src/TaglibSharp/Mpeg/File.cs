@@ -99,55 +99,44 @@ namespace TagLib.Mpeg
 	[SupportedMimeType ("video/mpeg")]
 	public class File : TagLib.NonContainer.File
 	{
-		#region Private Static Fields
+		private static readonly ByteVector MarkerStart = new byte[] { 0, 0, 1 };
 
-		static readonly ByteVector MarkerStart = new byte[] { 0, 0, 1 };
-
-		#endregion
-
-
-		#region Private Fields
 
 		/// <summary>
 		///    Contains the MPEG version.
 		/// </summary>
-		Version version;
+		private Version version;
 
 		/// <summary>
 		///    Contains the first audio header.
 		/// </summary>
-		AudioHeader audio_header;
+		private AudioHeader audio_header;
 
 		/// <summary>
 		///    Contains the first video header.
 		/// </summary>
-		VideoHeader video_header;
+		private VideoHeader video_header;
 
 		/// <summary>
 		///    Indicates whether or not audio was found.
 		/// </summary>
-		bool video_found;
+		private bool video_found;
 
 		/// <summary>
 		///    Indicates whether or not video was found.
 		/// </summary>
-		bool audio_found;
+		private bool audio_found;
 
 		/// <summary>
 		///    Contains the start time of the file.
 		/// </summary>
-		double? start_time;
+		private double? start_time;
 
 		/// <summary>
 		///    Contains the end time of the file.
 		/// </summary>
-		double end_time;
+		private double end_time;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -229,11 +218,6 @@ namespace TagLib.Mpeg
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets a tag of a specified type from the current instance,
@@ -275,11 +259,6 @@ namespace TagLib.Mpeg
 			};
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Reads format specific information at the start of the
@@ -522,11 +501,6 @@ namespace TagLib.Mpeg
 			}
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Reads an audio packet, assigning the audio header and
@@ -537,7 +511,7 @@ namespace TagLib.Mpeg
 		///    position at which to start reading the packet. This value
 		///    is updated to the position of the next packet.
 		/// </param>
-		void ReadAudioPacket (ref long position)
+		private void ReadAudioPacket (ref long position)
 		{
 			Seek (position + 4);
 			int length = ReadBlock (2).ToUShort ();
@@ -556,7 +530,7 @@ namespace TagLib.Mpeg
 		///    position at which to start reading the packet. This value
 		///    is updated to the position of the next packet.
 		/// </param>
-		void ReadVideoPacket (ref long position)
+		private void ReadVideoPacket (ref long position)
 		{
 			Seek (position + 4);
 			int length = ReadBlock (2).ToUShort ();
@@ -591,7 +565,7 @@ namespace TagLib.Mpeg
 		/// <exception cref="UnsupportedFormatException">
 		///    The MPEG version contained in the packet is unknown.
 		/// </exception>
-		void ReadSystemSyncPacket (ref long position)
+		private void ReadSystemSyncPacket (ref long position)
 		{
 			int packet_size = 0;
 			Seek (position + 4);
@@ -626,7 +600,7 @@ namespace TagLib.Mpeg
 		///    A <see cref="double" /> value containing the read time in
 		///    seconds.
 		/// </returns>
-		double ReadTimestamp (long position)
+		private double ReadTimestamp (long position)
 		{
 			double high;
 			uint low;
@@ -657,7 +631,5 @@ namespace TagLib.Mpeg
 
 			return (((high * 0x10000) * 0x10000) + low) / 90000.0;
 		}
-
-		#endregion
 	}
 }

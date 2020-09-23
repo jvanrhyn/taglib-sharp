@@ -39,9 +39,6 @@ namespace TagLib.Tiff.Dng
 	[SupportedMimeType ("image/x-adobe-dng")]
 	public class File : TagLib.Tiff.File
 	{
-
-		#region public Properties
-
 		/// <summary>
 		///    Indicates if tags can be written back to the current file or not
 		/// </summary>
@@ -53,10 +50,6 @@ namespace TagLib.Tiff.Dng
 			get { return false; }
 		}
 
-
-		#endregion
-
-		#region constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -136,10 +129,6 @@ namespace TagLib.Tiff.Dng
 		{
 		}
 
-		#endregion
-
-		#region Public Methods
-
 		/// <summary>
 		///    Saves the changes made in the current instance to the
 		///    file it represents.
@@ -148,8 +137,6 @@ namespace TagLib.Tiff.Dng
 		{
 			throw new NotSupportedException ();
 		}
-
-		#endregion
 
 		/// <summary>
 		///    Attempts to extract the media properties of the main

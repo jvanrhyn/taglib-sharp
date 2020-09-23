@@ -36,8 +36,6 @@ namespace TagLib.Asf
 	/// </summary>
 	public class Tag : TagLib.Tag, IEnumerable<ContentDescriptor>
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="Tag" /> with no contents.
@@ -76,11 +74,6 @@ namespace TagLib.Asf
 					MetadataLibraryObject = child as MetadataLibraryObject;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the ASF Content Description object used by the
@@ -116,11 +109,6 @@ namespace TagLib.Asf
 		/// </value>
 		public MetadataLibraryObject MetadataLibraryObject { get; private set; } = new MetadataLibraryObject ();
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets the string contained in a specific descriptor in the
@@ -337,11 +325,6 @@ namespace TagLib.Asf
 			ExtendedContentDescriptionObject.AddDescriptor (descriptor);
 		}
 
-		#endregion
-
-
-
-		#region Private Static Methods
 
 		/// <summary>
 		///    Converts a raw ASF picture into an <see cref="IPicture"
@@ -355,7 +338,7 @@ namespace TagLib.Asf
 		///    A <see cref="IPicture" /> object to read from the raw
 		///    data.
 		/// </returns>
-		static IPicture PictureFromData (ByteVector data)
+		private static IPicture PictureFromData (ByteVector data)
 		{
 			if (data.Count < 9)
 				return null;
@@ -406,7 +389,7 @@ namespace TagLib.Asf
 		///    A <see cref="ByteVector" /> object containing raw ASF
 		///    picture data.
 		/// </returns>
-		static ByteVector PictureToData (IPicture picture)
+		private static ByteVector PictureToData (IPicture picture)
 		{
 			var v = new ByteVector ((byte)picture.Type) {
 				Object.RenderDWord ((uint)picture.Data.Count),
@@ -427,7 +410,7 @@ namespace TagLib.Asf
 		/// <returns>
 		///    A <see cref="T:string[]" /> containing the split text.
 		/// </returns>
-		static string[] SplitAndClean (string s)
+		private static string[] SplitAndClean (string s)
 		{
 			if (s == null || s.Trim ().Length == 0)
 				return Array.Empty<string> ();
@@ -440,11 +423,6 @@ namespace TagLib.Asf
 			return result;
 		}
 
-		#endregion
-
-
-
-		#region IEnumerable
 
 		/// <summary>
 		///    Gets an enumerator for enumerating through the content
@@ -464,11 +442,6 @@ namespace TagLib.Asf
 			return ExtendedContentDescriptionObject.GetEnumerator ();
 		}
 
-		#endregion
-
-
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -1530,7 +1503,5 @@ namespace TagLib.Asf
 			ExtendedContentDescriptionObject = new ExtendedContentDescriptionObject ();
 			MetadataLibraryObject.RemoveRecords (0, 0, "WM/Picture");
 		}
-
-		#endregion
 	}
 }

@@ -6,7 +6,7 @@ namespace TaglibSharp.Tests.Collections
 	[TestFixture]
 	public class ByteVectorCollectionTest
 	{
-		static ByteVectorCollection BuildList ()
+		private static ByteVectorCollection BuildList ()
 		{
 			var list = new ByteVectorCollection {
 				"ABC",

@@ -35,8 +35,6 @@ namespace TagLib.Id3v2
 	/// </summary>
 	public abstract class Frame : ICloneable
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the frame's header.
 		/// </summary>
@@ -45,18 +43,13 @@ namespace TagLib.Id3v2
 		/// <summary>
 		///    Contains the frame's grouping ID.
 		/// </summary>
-		byte group_id;
+		private byte group_id;
 
 		/// <summary>
 		///    Contains the frame's encryption ID.
 		/// </summary>
-		byte encryption_id;
+		private byte encryption_id;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -103,11 +96,6 @@ namespace TagLib.Id3v2
 			this.header = header;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the frame ID for the current instance.
@@ -210,11 +198,6 @@ namespace TagLib.Id3v2
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance, encoded in a specified
@@ -291,11 +274,6 @@ namespace TagLib.Id3v2
 			return header_data;
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets the text delimiter for a specified encoding.
@@ -314,11 +292,6 @@ namespace TagLib.Id3v2
 			return ByteVector.TextDelimiter (type);
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Converts an encoding to be a supported encoding for a
@@ -491,11 +464,6 @@ namespace TagLib.Id3v2
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -522,7 +490,5 @@ namespace TagLib.Id3v2
 		{
 			return Clone ();
 		}
-
-		#endregion
 	}
 }

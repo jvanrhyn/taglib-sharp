@@ -32,9 +32,6 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class IsoHandlerBox : FullBox
 	{
-
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="IsoHandlerBox" /> with a provided header and
@@ -105,11 +102,6 @@ namespace TagLib.Mpeg4
 			Name = name;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the data contained in the current instance.
@@ -149,7 +141,5 @@ namespace TagLib.Mpeg4
 		///    current instance.
 		/// </value>
 		public string Name { get; private set; }
-
-		#endregion
 	}
 }

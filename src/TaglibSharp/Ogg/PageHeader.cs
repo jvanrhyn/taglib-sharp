@@ -63,29 +63,22 @@ namespace TagLib.Ogg
 	/// </summary>
 	public struct PageHeader
 	{
-		#region Private Propertis
-
 		/// <summary>
 		///    Contains the sizes of the packets contained in the
 		///    current instance.
 		/// </summary>
-		readonly List<int> packet_sizes;
+		private readonly List<int> packet_sizes;
 
 		/// <summary>
 		///    Contains the OGG version.
 		/// </summary>
-		readonly byte version;
+		private readonly byte version;
 
 		/// <summary>
 		///    Contains the page absolute granular postion.
 		/// </summary>
-		readonly ulong absolute_granular_position;
+		private readonly ulong absolute_granular_position;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -235,11 +228,6 @@ namespace TagLib.Ogg
 				Flags |= PageFlags.FirstPageOfStream;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the sizes for the packets in the page
@@ -315,11 +303,6 @@ namespace TagLib.Ogg
 		/// </value>
 		public uint DataSize { get; private set; }
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw Ogg page header.
@@ -349,11 +332,6 @@ namespace TagLib.Ogg
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region Private Properties
 
 		/// <summary>
 		///    Gets the rendered lacing values for the current instance.
@@ -362,7 +340,7 @@ namespace TagLib.Ogg
 		///    A <see cref="ByteVector" /> object containing the
 		///    rendered lacing values.
 		/// </value>
-		ByteVector LacingValues {
+		private ByteVector LacingValues {
 			get {
 				ByteVector data = new ByteVector ();
 
@@ -392,11 +370,6 @@ namespace TagLib.Ogg
 			}
 		}
 
-		#endregion
-
-
-
-		#region IEquatable
 
 		/// <summary>
 		///    Generates a hash code for the current instance.
@@ -405,7 +378,8 @@ namespace TagLib.Ogg
 		///    A <see cref="int" /> value containing the hash code for
 		///    the current instance.
 		/// </returns>
-		public override int GetHashCode ()		{
+		public override int GetHashCode ()
+		{
 			unchecked {
 				return (int)(LacingValues.GetHashCode () ^
 					version ^ (int)Flags ^
@@ -504,7 +478,5 @@ namespace TagLib.Ogg
 		{
 			return !first.Equals (second);
 		}
-
-		#endregion
 	}
 }

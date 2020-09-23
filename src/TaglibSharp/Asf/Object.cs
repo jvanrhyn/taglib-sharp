@@ -32,18 +32,11 @@ namespace TagLib.Asf
 	/// </summary>
 	public abstract class Object
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the GUID of the object.
 		/// </summary>
-		readonly System.Guid id;
+		private readonly System.Guid id;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -92,11 +85,6 @@ namespace TagLib.Asf
 			id = guid;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the GUID for the current instance.
@@ -118,11 +106,6 @@ namespace TagLib.Asf
 		/// </value>
 		public ulong OriginalSize { get; private set; }
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw ASF object.
@@ -134,11 +117,6 @@ namespace TagLib.Asf
 		/// <seealso cref="Render(ByteVector)" />
 		public abstract ByteVector Render ();
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Renders a Unicode (wide) string.
@@ -206,11 +184,6 @@ namespace TagLib.Asf
 			return ByteVector.FromUShort (value, false);
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw ASF object
@@ -238,7 +211,5 @@ namespace TagLib.Asf
 			v.Add (data);
 			return v;
 		}
-
-		#endregion
 	}
 }

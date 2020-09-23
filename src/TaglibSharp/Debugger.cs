@@ -26,7 +26,7 @@ using System.Collections.Generic;
 
 namespace TagLib
 {
-	static class Debugger
+	internal static class Debugger
 	{
 		public delegate void DebugMessageSentHandler (string message);
 
@@ -69,7 +69,7 @@ namespace TagLib
 			Console.WriteLine ();
 		}
 
-		static void WriteByte2 (byte data)
+		private static void WriteByte2 (byte data)
 		{
 			foreach (char c in allowed)
 				if (c == data) {
@@ -80,12 +80,12 @@ namespace TagLib
 			Console.Write (".");
 		}
 
-		static readonly string allowed = "0123456789abcdefghijklmnopqr" +
-			"stuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`~!@#$%^&*()_+-={}" +
-			"[];:'\",.<>?/\\|";
+		private static readonly string allowed = "0123456789abcdefghijklmnopqr" +
+		                                         "stuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`~!@#$%^&*()_+-={}" +
+		                                         "[];:'\",.<>?/\\|";
 
 
-		static readonly Dictionary<object, Dictionary<object, DebugTimeData>>
+		private static readonly Dictionary<object, Dictionary<object, DebugTimeData>>
 			debug_times = new Dictionary<object, Dictionary<object, DebugTimeData>> ();
 
 		public static void AddDebugTime (object o1, object o2, DateTime start)
@@ -122,7 +122,7 @@ namespace TagLib
 			debug_times.Remove (o1);
 		}
 
-		struct DebugTimeData
+		private struct DebugTimeData
 		{
 			public TimeSpan time;
 			public long occurances;

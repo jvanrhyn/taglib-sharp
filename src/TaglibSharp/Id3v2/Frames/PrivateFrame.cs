@@ -155,8 +155,6 @@ namespace TagLib.Id3v2
 	/// </example>
 	public class PrivateFrame : Frame
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="PrivateFrame" /> for a specified owner and data.
@@ -244,11 +242,6 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the owner of the current instance.
@@ -273,11 +266,6 @@ namespace TagLib.Id3v2
 		/// </value>
 		public ByteVector PrivateData { get; set; }
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a specified private frame from the specified tag,
@@ -317,11 +305,6 @@ namespace TagLib.Id3v2
 			return priv;
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -378,11 +361,6 @@ namespace TagLib.Id3v2
 			return v;
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -398,7 +376,5 @@ namespace TagLib.Id3v2
 				frame.PrivateData = new ByteVector (PrivateData);
 			return frame;
 		}
-
-		#endregion
 	}
 }

@@ -30,9 +30,6 @@ namespace TagLib.IFD.Entries
 	/// </summary>
 	public class SubIFDEntry : IFDEntry
 	{
-
-		#region Properties
-
 		/// <value>
 		///    The ID of the tag, the current instance belongs to
 		/// </value>
@@ -90,10 +87,6 @@ namespace TagLib.IFD.Entries
 			Structure = structure;
 		}
 
-		#endregion
-
-		#region Public Methods
-
 		/// <summary>
 		///    Renders the current instance to a <see cref="ByteVector"/>
 		/// </summary>
@@ -119,8 +112,5 @@ namespace TagLib.IFD.Entries
 			count = Count;
 			return new IFDRenderer (is_bigendian, Structure, offset).Render ();
 		}
-
-		#endregion
-
 	}
 }

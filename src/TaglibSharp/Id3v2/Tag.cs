@@ -42,51 +42,39 @@ namespace TagLib.Id3v2
 	/// </summary>
 	public class Tag : TagLib.Tag, IEnumerable<Frame>, ICloneable
 	{
-		#region Private Static Fields
-
 		/// <summary>
 		///    Contains the language to use for language specific
 		///    fields.
 		/// </summary>
-		static string language = CultureInfo.CurrentCulture.ThreeLetterISOLanguageName;
+		private static string language = CultureInfo.CurrentCulture.ThreeLetterISOLanguageName;
 
 		/// <summary>
 		///    Contains the field to use for new tags.
 		/// </summary>
-		static byte default_version = 3;
+		private static byte default_version = 3;
 
-		#endregion
-
-
-
-		#region Private Fields
 
 		/// <summary>
 		///    Contains the tag's header.
 		/// </summary>
-		Header header;
+		private Header header;
 
 		/// <summary>
 		///    Contains the tag's extended header.
 		/// </summary>
-		ExtendedHeader extended_header;
+		private ExtendedHeader extended_header;
 
 		/// <summary>
 		///    Contains the tag's frames.
 		/// </summary>
-		readonly List<Frame> frame_list = new List<Frame> ();
+		private readonly List<Frame> frame_list = new List<Frame> ();
 
 
 		/// <summary>
 		/// Store the PerformersRole property
 		/// </summary>
-		string[] performers_role;
+		private string[] performers_role;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -169,11 +157,6 @@ namespace TagLib.Id3v2
 			Parse (data.Mid ((int)Header.Size, (int)header.TagSize), null, 0, ReadStyle.None);
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets the text value from a specified Text Information
@@ -651,11 +634,6 @@ namespace TagLib.Id3v2
 			return tag_data;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the header flags applied to the current
@@ -692,11 +670,6 @@ namespace TagLib.Id3v2
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Static Properties
 
 		/// <summary>
 		///    Gets and sets the ISO-639-2 language code to use when
@@ -793,11 +766,6 @@ namespace TagLib.Id3v2
 		/// </remarks>
 		public static bool UseNumericGenres { get; set; } = true;
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the current instance be reading in a tag from
@@ -998,11 +966,6 @@ namespace TagLib.Id3v2
 			tdrc.Text = new [] { tdrc_text.ToString () };
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Gets the text values from a specified Text Information
@@ -1018,7 +981,7 @@ namespace TagLib.Id3v2
 		///    specified frame, or an empty array if no values were
 		///    found.
 		/// </returns>
-		string[] GetTextAsArray (ByteVector ident)
+		private string[] GetTextAsArray (ByteVector ident)
 		{
 			var frame = TextInformationFrame.Get (this, ident, false);
 
@@ -1041,7 +1004,7 @@ namespace TagLib.Id3v2
 		///    A <see cref="uint" /> value read from the list in the
 		///    frame, or 0 if the value wasn't found.
 		/// </returns>
-		uint GetTextAsUInt32 (ByteVector ident, int index)
+		private uint GetTextAsUInt32 (ByteVector ident, int index)
 		{
 			string text = GetTextAsString (ident);
 
@@ -1067,7 +1030,7 @@ namespace TagLib.Id3v2
 		/// <param name="description">String containing the description field</param>
 		/// <param name="caseSensitive">case-sensitive search if true.</param>
 		/// <returns>UserTextInformationFrame (TXXX) that corresponds to the description</returns>
-		string GetUserTextAsString (string description, bool caseSensitive)
+		private string GetUserTextAsString (string description, bool caseSensitive)
 		{
 			//Gets the TXXX frame, frame will be null if nonexistant
 			var frame = UserTextInformationFrame.Get (this, description, DefaultEncoding, false, caseSensitive);
@@ -1084,7 +1047,7 @@ namespace TagLib.Id3v2
 		/// </summary>
 		/// <param name="description">String containing the description field</param>
 		/// <returns>UserTextInformationFrame (TXXX) that corresponds to the description</returns>
-		string GetUserTextAsString (string description)
+		private string GetUserTextAsString (string description)
 		{
 			return GetUserTextAsString (description, true);
 		}
@@ -1097,7 +1060,7 @@ namespace TagLib.Id3v2
 		/// TXXX frame</param>
 		/// <param name="text">String containing the Text field for the TXXX frame</param>
 		/// <param name="caseSensitive">case-sensitive search if true.</param>
-		void SetUserTextAsString (string description, string text, bool caseSensitive)
+		private void SetUserTextAsString (string description, string text, bool caseSensitive)
 		{
 			//Get the TXXX frame, create a new one if needed
 			var frame = UserTextInformationFrame.Get (this, description, DefaultEncoding, true, caseSensitive);
@@ -1117,7 +1080,7 @@ namespace TagLib.Id3v2
 		/// <param name="description">String containing the Description field for the
 		/// TXXX frame</param>
 		/// <param name="text">String containing the Text field for the TXXX frame</param>
-		void SetUserTextAsString (string description, string text)
+		private void SetUserTextAsString (string description, string text)
 		{
 			SetUserTextAsString (description, text, true);
 		}
@@ -1127,7 +1090,7 @@ namespace TagLib.Id3v2
 		/// </summary>
 		/// <param name="owner">String containing the "Owner" data</param>
 		/// <returns>String containing the text from the UFID frame, or null</returns>
-		string GetUfidText (string owner)
+		private string GetUfidText (string owner)
 		{
 			//Get the UFID frame, frame will be null if nonexistant
 			var frame = UniqueFileIdentifierFrame.Get (this, owner, false);
@@ -1142,7 +1105,7 @@ namespace TagLib.Id3v2
 		/// </summary>
 		/// <param name="owner">String containing the Owner field</param>
 		/// <param name="text">String containing the text to set for the frame</param>
-		void SetUfidText (string owner, string text)
+		private void SetUfidText (string owner, string text)
 		{
 
 			//Get a UFID frame, create if necessary
@@ -1166,7 +1129,7 @@ namespace TagLib.Id3v2
 		///    A <see cref="Frame" /> object to make the first of its
 		///    type.
 		/// </param>
-		void MakeFirstOfType (Frame frame)
+		private void MakeFirstOfType (Frame frame)
 		{
 			ByteVector type = frame.FrameId;
 			Frame swapping = null;
@@ -1190,11 +1153,6 @@ namespace TagLib.Id3v2
 				frame_list.Add (swapping);
 		}
 
-		#endregion
-
-
-
-		#region IEnumerable
 
 		/// <summary>
 		///    Gets an enumerator for enumerating through the frames.
@@ -1213,11 +1171,6 @@ namespace TagLib.Id3v2
 			return frame_list.GetEnumerator ();
 		}
 
-		#endregion
-
-
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -2411,11 +2364,6 @@ namespace TagLib.Id3v2
 			}
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -2442,7 +2390,5 @@ namespace TagLib.Id3v2
 		{
 			return Clone ();
 		}
-
-		#endregion
 	}
 }

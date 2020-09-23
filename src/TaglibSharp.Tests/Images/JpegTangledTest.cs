@@ -12,12 +12,12 @@ namespace TaglibSharp.Tests.Images
 	[TestFixture]
 	public class JpegTangledTest
 	{
-		static readonly int count = 6;
+		private static readonly int count = 6;
 
-		static readonly string sample_file = TestPath.Samples + "sample_tangled{0}.jpg";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite_tangled{0}.jpg";
+		private static readonly string sample_file = TestPath.Samples + "sample_tangled{0}.jpg";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite_tangled{0}.jpg";
 
-		static readonly TagTypes[] contained_types = {
+		private static readonly TagTypes[] contained_types = {
 				TagTypes.JpegComment | TagTypes.TiffIFD | TagTypes.XMP,
 				TagTypes.JpegComment | TagTypes.TiffIFD,
 				TagTypes.JpegComment | TagTypes.TiffIFD | TagTypes.XMP,
@@ -26,14 +26,14 @@ namespace TaglibSharp.Tests.Images
 				TagTypes.JpegComment
 		};
 
-		File[] files;
+		private File[] files;
 
-		static string GetSampleFilename (int i)
+		private static string GetSampleFilename (int i)
 		{
 			return string.Format (sample_file, i + 1);
 		}
 
-		static string GetTmpFilename (int i)
+		private static string GetTmpFilename (int i)
 		{
 			return string.Format (tmp_file, i + 1);
 		}

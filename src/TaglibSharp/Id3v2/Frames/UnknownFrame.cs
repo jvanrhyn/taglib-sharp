@@ -33,8 +33,6 @@ namespace TagLib.Id3v2
 	/// </summary>
 	public class UnknownFrame : Frame
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="UnknownFrame" /> with a specified type.
@@ -111,13 +109,8 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-        #endregion
 
-
-
-        #region Public Properties
-
-        /// <summary>
+		/// <summary>
         ///    Gets and sets the field data in the current instance.
         /// </summary>
         /// <value>
@@ -125,10 +118,6 @@ namespace TagLib.Id3v2
         /// </value>
         public ByteVector Data { get; set; }
 
-		#endregion
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -163,7 +152,5 @@ namespace TagLib.Id3v2
 		{
 			return Data ?? new ByteVector ();
 		}
-
-		#endregion
 	}
 }

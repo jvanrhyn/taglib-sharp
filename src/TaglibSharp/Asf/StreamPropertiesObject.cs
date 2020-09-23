@@ -33,23 +33,16 @@ namespace TagLib.Asf
 	/// </summary>
 	public class StreamPropertiesObject : Object
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the time offset of the stream.
 		/// </summary>
-		readonly ulong time_offset;
+		private readonly ulong time_offset;
 
 		/// <summary>
 		///    Contains the reserved data.
 		/// </summary>
-		readonly uint reserved;
+		private readonly uint reserved;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -97,11 +90,6 @@ namespace TagLib.Asf
 			ErrorCorrectionData = file.ReadBlock (error_correction_data_length);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the codec information contained in the current
@@ -193,11 +181,6 @@ namespace TagLib.Asf
 		/// </remarks>
 		public ByteVector ErrorCorrectionData { get; private set; }
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw ASF object.
@@ -220,7 +203,5 @@ namespace TagLib.Asf
 
 			return Render (output);
 		}
-
-		#endregion
 	}
 }

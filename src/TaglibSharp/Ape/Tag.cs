@@ -40,14 +40,11 @@ namespace TagLib.Ape
 	/// </summary>
 	public class Tag : TagLib.Tag, IEnumerable<string>
 	{
-
-		#region Private Static Fields
-
 		/// <summary>
 		///    Contains names of picture fields, indexed to correspond
 		///    to their picture item names.
 		/// </summary>
-		static readonly string[] picture_item_names = new[] {
+		private static readonly string[] picture_item_names = new[] {
 			"Cover Art (other)",
 			"Cover Art (icon)",
 			"Cover Art (other icon)",
@@ -72,27 +69,17 @@ namespace TagLib.Ape
 			"Embedded Object"
 		};
 
-		#endregion
-
-
-
-		#region Private Fields
 
 		/// <summary>
 		///    Contains the tag footer.
 		/// </summary>
-		Footer footer;
+		private Footer footer;
 
 		/// <summary>
 		///    Contains the items in the tag.
 		/// </summary>
-		readonly List<Item> items = new List<Item> ();
+		private readonly List<Item> items = new List<Item> ();
 
-		#endregion
-
-
-
-		#region Public Static Properties
 
 		/// <summary>
 		///    Specifies the identifier used find an APEv2 tag in a
@@ -104,11 +91,6 @@ namespace TagLib.Ape
 		[Obsolete ("Use Footer.FileIdentifer")]
 		public static readonly ReadOnlyByteVector FileIdentifier = Footer.FileIdentifier;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -191,11 +173,6 @@ namespace TagLib.Ape
 			Parse (data.Mid ((int)(data.Count - footer.TagSize), (int)(footer.TagSize - Footer.Size)));
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets whether or not the current instance has a
@@ -218,11 +195,6 @@ namespace TagLib.Ape
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Adds a number to the value stored in a specified item.
@@ -560,11 +532,6 @@ namespace TagLib.Ape
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the current instance be reading in a tag from
@@ -642,11 +609,6 @@ namespace TagLib.Ape
 			}
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Gets the index of an item in the current instance.
@@ -663,7 +625,7 @@ namespace TagLib.Ape
 		/// <remarks>
 		///    Keys are compared in a case insensitive manner.
 		/// </remarks>
-		int GetItemIndex (string key)
+		private int GetItemIndex (string key)
 		{
 			var comparison = StringComparison.InvariantCultureIgnoreCase;
 
@@ -686,7 +648,7 @@ namespace TagLib.Ape
 		///    specified frame, or <see langword="null" /> if no value
 		///    was found.
 		/// </returns>
-		string GetItemAsString (string key)
+		private string GetItemAsString (string key)
 		{
 			Item item = GetItem (key);
 			return item?.ToString ();
@@ -704,7 +666,7 @@ namespace TagLib.Ape
 		///    specified frame, or an empty array if no values were
 		///    found.
 		/// </returns>
-		string[] GetItemAsStrings (string key)
+		private string[] GetItemAsStrings (string key)
 		{
 			Item item = GetItem (key);
 			return item != null ? item.ToStringArray () : Array.Empty<string> ();
@@ -726,7 +688,7 @@ namespace TagLib.Ape
 		///    A <see cref="uint" /> value read from the list in the
 		///    frame, or 0 if the value wasn't found.
 		/// </returns>
-		uint GetItemAsUInt32 (string key, int index)
+		private uint GetItemAsUInt32 (string key, int index)
 		{
 			string text = GetItemAsString (key);
 
@@ -744,11 +706,6 @@ namespace TagLib.Ape
 			return 0;
 		}
 
-		#endregion
-
-
-
-		#region IEnumerable
 
 		/// <summary>
 		///    Gets the enumerator for the current instance.
@@ -775,11 +732,6 @@ namespace TagLib.Ape
 			return GetEnumerator ();
 		}
 
-		#endregion
-
-
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -1818,7 +1770,5 @@ namespace TagLib.Ape
 				match.items.Add (item.Clone ());
 			}
 		}
-
-		#endregion
 	}
 }

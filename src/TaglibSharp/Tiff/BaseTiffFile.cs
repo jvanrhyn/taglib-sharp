@@ -34,9 +34,6 @@ namespace TagLib.Tiff
 	/// </summary>
 	public abstract class BaseTiffFile : TagLib.Image.File
 	{
-
-		#region Public Properties
-
 		/// <summary>
 		///    Indicates if the current file is in big endian or little endian format.
 		/// </summary>
@@ -46,18 +43,10 @@ namespace TagLib.Tiff
 		/// </remarks>
 		public bool IsBigEndian { get; private set; }
 
-		#endregion
-
-		#region Protected Properties
-
 		/// <summary>
 		///    The identifier used to recognize the file. This is 42 for most TIFF files.
 		/// </summary>
 		protected ushort Magic { get; set; }
-
-		#endregion
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -94,10 +83,6 @@ namespace TagLib.Tiff
 		{
 			Magic = 42;
 		}
-
-		#endregion
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Reads and validates the TIFF header at the current position.
@@ -238,8 +223,5 @@ namespace TagLib.Tiff
 
 			return data;
 		}
-
-		#endregion
-
 	}
 }

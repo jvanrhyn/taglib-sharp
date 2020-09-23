@@ -9,13 +9,13 @@ namespace TaglibSharp.Tests.TaggingFormats
 	[TestFixture]
 	public class InfoTagTest
 	{
-		static readonly string val_sing =
+		private static readonly string val_sing =
 			"01234567890123456789012345678901234567890123456789";
 
-		static readonly string[] val_mult = {"A123456789",
+		private static readonly string[] val_mult = {"A123456789",
 			"B123456789", "C123456789", "D123456789", "E123456789"};
 
-		static readonly string[] val_gnre = {"Rap",
+		private static readonly string[] val_gnre = {"Rap",
 			"Jazz", "Non-Genre", "Blues"};
 
 		[TestCase (StringType.Latin1)]
@@ -481,9 +481,9 @@ namespace TaglibSharp.Tests.TaggingFormats
 			Assert.IsTrue (tag.IsEmpty, "Should be empty.");
 		}
 
-		delegate void TagTestFunc (TagLib.Riff.InfoTag tag, string msg);
+		private delegate void TagTestFunc (TagLib.Riff.InfoTag tag, string msg);
 
-		void TagTestWithSave (ref TagLib.Riff.InfoTag tag, TagTestFunc testFunc)
+		private void TagTestWithSave (ref TagLib.Riff.InfoTag tag, TagTestFunc testFunc)
 		{
 			testFunc (tag, "Before Save");
 			//Extras.DumpHex (tag.Render ().Data);

@@ -30,9 +30,6 @@ namespace TagLib.IFD.Entries
 	/// </summary>
 	public class SShortArrayIFDEntry : ArrayIFDEntry<short>
 	{
-
-		#region Constructors
-
 		/// <summary>
 		///    Construcor.
 		/// </summary>
@@ -47,10 +44,6 @@ namespace TagLib.IFD.Entries
 		{
 			Values = values;
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance to a <see cref="ByteVector"/>
@@ -82,8 +75,5 @@ namespace TagLib.IFD.Entries
 
 			return data;
 		}
-
-		#endregion
-
 	}
 }

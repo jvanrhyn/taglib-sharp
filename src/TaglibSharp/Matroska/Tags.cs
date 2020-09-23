@@ -33,17 +33,11 @@ namespace TagLib.Matroska
 	/// </summary>
 	public class Tags : Collection<Tag>
 	{
-		#region Private fields/Properties
-
 		// Store the Attachments
-		Attachment[] attachments = Array.Empty<Attachment> ();
+		private Attachment[] attachments = Array.Empty<Attachment> ();
 
-		readonly List<Track> _Tracks;
+		private readonly List<Track> _Tracks;
 
-		#endregion
-
-
-		#region Constructors
 
 		/// <summary>
 		/// Constructor
@@ -54,11 +48,6 @@ namespace TagLib.Matroska
 			_Tracks = tracks;
 		}
 
-
-		#endregion
-
-
-		#region Override Collection, to keep the items ordered
 
 		/// <summary>
 		/// Try to Insert an element to the Tag list at a given index, but can insert it at another index if the 
@@ -124,11 +113,6 @@ namespace TagLib.Matroska
 		}
 
 
-		#endregion
-
-
-		#region Methods
-
 		/// <summary>
 		/// Find the first Tag of a given TargetTypeValue
 		/// </summary>
@@ -191,13 +175,6 @@ namespace TagLib.Matroska
 
 			return null;
 		}
-
-
-
-		#endregion
-
-
-		#region Properties
 
 
 		/// <summary>
@@ -286,7 +263,5 @@ namespace TagLib.Matroska
 		public ReadOnlyCollection<Track> Tracks {
 			get { return _Tracks.AsReadOnly (); }
 		}
-		
-		#endregion
 	}
 }

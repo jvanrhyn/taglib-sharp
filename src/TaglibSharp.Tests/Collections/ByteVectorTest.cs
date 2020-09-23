@@ -8,8 +8,8 @@ namespace TaglibSharp.Tests.Collections
 	[TestFixture]
 	public class ByteVectorTest
 	{
-		static readonly string TestInput = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		static readonly ByteVector TestVector = ByteVector.FromString (TestInput, StringType.UTF8);
+		private static readonly string TestInput = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		private static readonly ByteVector TestVector = ByteVector.FromString (TestInput, StringType.UTF8);
 
 		[Test]
 		public void Length ()
@@ -150,7 +150,7 @@ namespace TaglibSharp.Tests.Collections
 			Assert.AreEqual (2, split.Length);
 		}
 
-		static string MD5Hash (byte[] bytes)
+		private static string MD5Hash (byte[] bytes)
 		{
 			var md5 = new MD5CryptoServiceProvider ();
 			byte[] hash_bytes = md5.ComputeHash (bytes);

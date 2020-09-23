@@ -38,48 +38,42 @@ namespace TagLib
 	/// </summary>
 	public class PictureLazy : IPicture, ILazy
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the mime-type.
 		/// </summary>
-		string mime_type;
+		private string mime_type;
 
 		/// <summary>
 		///    Contains the content type.
 		/// </summary>
-		PictureType type;
+		private PictureType type;
 
 		/// <summary>
 		///    Contains the filename.
 		/// </summary>
-		string filename;
+		private string filename;
 
 		/// <summary>
 		///    Contains the picture data.
 		/// </summary>
-		ByteVector data;
+		private ByteVector data;
 
 
 		/// <summary>
 		/// Stream where the picture is located
 		/// </summary>
-		File.IFileAbstraction file;
+		private File.IFileAbstraction file;
 
 		/// <summary>
 		/// Offset from where the picture start in the <see cref="file"/>
 		/// </summary>
-		readonly long stream_offset;
+		private readonly long stream_offset;
 
 		/// <summary>
 		/// Size of the picture in the <see cref="file"/> (-1 = until end of Stream)
 		/// </summary>
-		readonly long stream_size = -1;
+		private readonly long stream_size = -1;
 
-		#endregion
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -203,12 +197,6 @@ namespace TagLib
 		}
 
 
-
-		#endregion
-
-
-		#region Public Methods
-
 		/// <summary>
 		/// Load the picture data from the file,
 		/// if not done yet.
@@ -274,10 +262,6 @@ namespace TagLib
 			}
 		}
 
-		#endregion
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the mime-type of the picture data
@@ -367,8 +351,5 @@ namespace TagLib
 				return data != null;
 			}
 		}
-
-		#endregion
-
 	}
 }

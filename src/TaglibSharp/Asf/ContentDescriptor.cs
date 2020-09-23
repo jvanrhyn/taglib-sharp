@@ -76,28 +76,21 @@ namespace TagLib.Asf
 	/// </summary>
 	public class ContentDescriptor
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the string value.
 		/// </summary>
-		string strValue;
+		private string strValue;
 
 		/// <summary>
 		///    Contains the byte value.
 		/// </summary>
-		ByteVector byteValue;
+		private ByteVector byteValue;
 
 		/// <summary>
 		///    Contains the long value.
 		/// </summary>
-		ulong longValue;
+		private ulong longValue;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -246,11 +239,6 @@ namespace TagLib.Asf
 				throw new CorruptFileException ("Failed to parse content descriptor.");
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the name of the current instance.
@@ -270,11 +258,6 @@ namespace TagLib.Asf
 		/// </value>
 		public DataType Type { get; private set; } = DataType.Unicode;
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets a string representation of the current instance.
@@ -411,11 +394,6 @@ namespace TagLib.Asf
 			return output;
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the current instance by reading in the contents
@@ -468,7 +446,5 @@ namespace TagLib.Asf
 
 			return true;
 		}
-
-		#endregion
 	}
 }

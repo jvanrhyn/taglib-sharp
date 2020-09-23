@@ -32,8 +32,6 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class IsoSampleEntry : Box
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="IsoSampleEntry" /> with a provided header and
@@ -64,11 +62,6 @@ namespace TagLib.Mpeg4
 			DataReferenceIndex = file.ReadBlock (2).ToUShort ();
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the position of the data contained in the current
@@ -90,7 +83,5 @@ namespace TagLib.Mpeg4
         ///    reference index of the current instance.
         /// </value>
         public ushort DataReferenceIndex { get; private set; }
-
-        #endregion
-    }
+	}
 }

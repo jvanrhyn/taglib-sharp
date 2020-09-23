@@ -31,24 +31,16 @@ namespace TagLib.Id3v2
 	/// </summary>
 	public class SynchronisedLyricsFrame : Frame
 	{
-
-		#region Private Properties
-
 		/// <summary>
 		///    Contains the ISO-639-2 language code.
 		/// </summary>
-		string language;
+		private string language;
 
 		/// <summary>
 		///    Contains the text.
 		/// </summary>
-		SynchedText[] text = System.Array.Empty<SynchedText> ();
+		private SynchedText[] text = System.Array.Empty<SynchedText> ();
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -159,10 +151,6 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-		#endregion
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the text encoding to use when storing the
@@ -247,11 +235,6 @@ namespace TagLib.Id3v2
 			set { text = value ?? (System.Array.Empty<SynchedText> ()); }
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a specified lyrics frame from the specified tag,
@@ -386,11 +369,6 @@ namespace TagLib.Id3v2
 			return best_frame;
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -478,11 +456,6 @@ namespace TagLib.Id3v2
 			return v;
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -499,8 +472,6 @@ namespace TagLib.Id3v2
 			};
 			return frame;
 		}
-
-		#endregion
 	}
 
 

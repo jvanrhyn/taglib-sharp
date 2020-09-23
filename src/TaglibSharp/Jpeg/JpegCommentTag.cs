@@ -30,8 +30,6 @@ namespace TagLib.Jpeg
 	/// </summary>
 	public class JpegCommentTag : ImageTag
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructor.
 		/// </summary>
@@ -51,10 +49,6 @@ namespace TagLib.Jpeg
 			Value = null;
 		}
 
-		#endregion
-
-		#region Public Properties
-
 		/// <summary>
 		///    The value of the comment represented by the current instance.
 		/// </summary>
@@ -73,10 +67,6 @@ namespace TagLib.Jpeg
 			set { Value = value; }
 		}
 
-		#endregion
-
-		#region Public Methods
-
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
 		/// </summary>
@@ -94,7 +84,5 @@ namespace TagLib.Jpeg
 		{
 			Value = null;
 		}
-
-		#endregion
 	}
 }

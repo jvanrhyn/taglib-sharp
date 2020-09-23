@@ -33,8 +33,6 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class IsoUserDataBox : Box
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="IsoUserDataBox" /> with a provided header and
@@ -73,11 +71,6 @@ namespace TagLib.Mpeg4
 			Children = new List<Box> ();
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the children of the current instance.
@@ -99,7 +92,5 @@ namespace TagLib.Mpeg4
         ///    langword="null" /> if none is present.
         /// </value>
         public BoxHeader[] ParentTree { get; set; }
-
-        #endregion
-    }
+	}
 }

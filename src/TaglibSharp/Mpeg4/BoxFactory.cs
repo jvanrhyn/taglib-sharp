@@ -55,7 +55,7 @@ namespace TagLib.Mpeg4
 		/// <returns>
 		///    A newly created <see cref="Box" /> object.
 		/// </returns>
-		static Box CreateBox (TagLib.File file,
+		private static Box CreateBox (TagLib.File file,
 									  BoxHeader header,
 									  BoxHeader parent,
 									  IsoHandlerBox handler,

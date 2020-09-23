@@ -31,9 +31,6 @@ namespace TagLib.Matroska
 	/// </summary>
 	public class EBMLelement
 	{
-
-		#region Constructors
-
 		/// <summary>
 		/// Constructs an empty <see cref="EBMLelement" />.
 		/// </summary>
@@ -76,10 +73,6 @@ namespace TagLib.Matroska
 		}
 
 
-		#endregion
-
-		#region Public Properties
-
 		/// <summary>
 		/// EBML Element Identifier.
 		/// </summary>
@@ -104,11 +97,6 @@ namespace TagLib.Matroska
 		/// </summary>
 		public bool IncSize;
 
-
-		#endregion
-
-
-		#region Public Methods
 
 		/// <summary>
 		/// EBML Element size in bytes.
@@ -234,10 +222,6 @@ namespace TagLib.Matroska
 		}
 
 
-		#endregion
-
-		#region Class functions
-
 		/// <summary>
 		/// Get the byte-size required to encode an EBML value with the leading 1. 
 		/// </summary>
@@ -261,11 +245,6 @@ namespace TagLib.Matroska
 
 			return size_length;
 		}
-
-		#endregion
-
-
-		#region Public Methods Data access
 
 
 		/// <summary>
@@ -364,11 +343,6 @@ namespace TagLib.Matroska
 		}
 
 
-		#endregion
-
-
-		#region Public Methods Write to file
-
 		/// <summary>
 		/// Write the EMBL (and all its data/content) to a file.
 		/// </summary>
@@ -413,8 +387,5 @@ namespace TagLib.Matroska
 				}
 			}
 		}
-
-
-		#endregion
 	}
 }

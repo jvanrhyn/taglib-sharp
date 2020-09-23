@@ -38,12 +38,10 @@ namespace TagLib.Mpeg4
 	/// </remarks>
 	public class AppleElementaryStreamDescriptor : FullBox
 	{
-		#region Private Fields
-
 		/// <summary>
 		/// Descriptor Tags
 		/// </summary>
-		enum DescriptorTag
+		private enum DescriptorTag
 		{
 			Forbidden_00 = 0,
 			ObjectDescrTag = 1,
@@ -99,58 +97,53 @@ namespace TagLib.Mpeg4
 		/// <summary>
 		/// the ES_ID of another elementary stream on which this elementary stream depends
 		/// </summary>
-		ushort dependsOn_ES_ID;
+		private ushort dependsOn_ES_ID;
 
 		/// <summary>
 		/// Indicates that a dependsOn_ES_ID will follow
 		/// </summary>
-		readonly bool stream_dependence_flag;
+		private readonly bool stream_dependence_flag;
 
 		/// <summary>
 		/// OCR Stream Flag
 		/// </summary>
-		readonly bool ocr_stream_flag;
+		private readonly bool ocr_stream_flag;
 
 		/// <summary>
 		/// OCR ES_ID
 		/// </summary>
-		ushort OCR_ES_Id;
+		private ushort OCR_ES_Id;
 
 		/// <summary>
 		/// Indicates that a URLstring will follow
 		/// </summary>
-		readonly bool URL_flag;
+		private readonly bool URL_flag;
 
 		/// <summary>
 		/// Length of URL String
 		/// </summary>
-		readonly byte URLlength;
+		private readonly byte URLlength;
 
 		/// <summary>
 		/// URL String of URLlength, contains a URL that shall point to the location of an SL-packetized stream by name
 		/// </summary>
-		string URLstring;
+		private string URLstring;
 
 		/// <summary>
 		/// Indicates that this stream is used for upstream information
 		/// </summary>
-		bool upStream;
+		private bool upStream;
 
 		/// <summary>
 		///    Contains the maximum bitrate.
 		/// </summary>
-		readonly uint max_bitrate;
+		private readonly uint max_bitrate;
 
 		/// <summary>
 		///    Contains the average bitrate.
 		/// </summary>
-		readonly uint average_bitrate;
+		private readonly uint average_bitrate;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -307,11 +300,6 @@ namespace TagLib.Mpeg4
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the ID of the stream described by the current
@@ -394,11 +382,6 @@ namespace TagLib.Mpeg4
         /// </value>
         public ByteVector DecoderConfig { get; }
 
-        #endregion
-
-
-
-        #region Private Methods
 
         /// <summary>
         ///    Reads a section length and updates the offset to the end
@@ -416,7 +399,7 @@ namespace TagLib.Mpeg4
         ///    A <see cref="uint" /> value containing the length that
         ///    was read.
         /// </returns>
-        static uint ReadLength (ByteVector data, ref int offset)
+        private static uint ReadLength (ByteVector data, ref int offset)
 		{
 			byte b;
 			int end = offset + 4;
@@ -429,7 +412,5 @@ namespace TagLib.Mpeg4
 
 			return length;
 		}
-
-		#endregion
 	}
 }

@@ -33,36 +33,30 @@ namespace TagLib.Asf
 	/// </summary>
 	public class ContentDescriptionObject : Object
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the media title.
 		/// </summary>
-		string title = string.Empty;
+		private string title = string.Empty;
 
 		/// <summary>
 		///    Contains the author/performer.
 		/// </summary>
-		string author = string.Empty;
+		private string author = string.Empty;
 
 		/// <summary>
 		///    Contains the copyright information.
 		/// </summary>
-		string copyright = string.Empty;
+		private string copyright = string.Empty;
 
 		/// <summary>
 		///    Contains the description of the media.
 		/// </summary>
-		string description = string.Empty;
+		private string description = string.Empty;
 
 		/// <summary>
 		///    Contains the rating of the media.
 		/// </summary>
-		string rating = string.Empty;
-
-		#endregion
-
-		#region Constructors
+		private string rating = string.Empty;
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -119,11 +113,6 @@ namespace TagLib.Asf
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Region
 
 		/// <summary>
 		///    Gets and sets the title of the media described by the
@@ -220,11 +209,6 @@ namespace TagLib.Asf
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Region
 
 		/// <summary>
 		///    Renders the current instance as a raw ASF object.
@@ -257,7 +241,5 @@ namespace TagLib.Asf
 
 			return Render (output);
 		}
-
-		#endregion
 	}
 }

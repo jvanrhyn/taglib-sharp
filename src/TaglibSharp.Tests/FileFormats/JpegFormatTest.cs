@@ -14,10 +14,10 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class JpegFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample.jpg";
-		TagLib.Image.File file;
+		private static readonly string sample_file = TestPath.Samples + "sample.jpg";
+		private TagLib.Image.File file;
 
-		readonly TagTypes contained_types =
+		private readonly TagTypes contained_types =
 				TagTypes.JpegComment |
 				TagTypes.TiffIFD |
 				TagTypes.XMP;
@@ -118,7 +118,7 @@ namespace TaglibSharp.Tests.FileFormats
 			Assert.IsNull (file.Properties, "properties");
 		}
 
-		void TestBagNode (XmpTag tag, string ns, string name, string[] values)
+		private void TestBagNode (XmpTag tag, string ns, string name, string[] values)
 		{
 			var node = tag.FindNode (ns, name);
 			Assert.IsFalse (node == null);
@@ -133,7 +133,7 @@ namespace TaglibSharp.Tests.FileFormats
 			}
 		}
 
-		void TestAltNode (XmpTag tag, string ns, string name, string[] values)
+		private void TestAltNode (XmpTag tag, string ns, string name, string[] values)
 		{
 			var node = tag.FindNode (ns, name);
 			Assert.IsFalse (node == null);

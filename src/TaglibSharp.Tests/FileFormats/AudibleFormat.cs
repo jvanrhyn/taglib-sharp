@@ -7,7 +7,7 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class AudibleFormatTest
 	{
-		static readonly string BaseDirectory = TestPath.Samples + "audible";
+		private static readonly string BaseDirectory = TestPath.Samples + "audible";
 
 		[Test]
 		public void First ()

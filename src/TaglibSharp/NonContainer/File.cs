@@ -59,23 +59,16 @@ namespace TagLib.NonContainer
 	/// </remarks>
 	public abstract class File : TagLib.File
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the tags.
 		/// </summary>
-		Tag tag;
+		private Tag tag;
 
 		/// <summary>
 		///    Contains the media properties.
 		/// </summary>
-		Properties properties;
+		private Properties properties;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -158,11 +151,6 @@ namespace TagLib.NonContainer
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
@@ -189,11 +177,6 @@ namespace TagLib.NonContainer
 			get { return properties; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Saves the changes made in the current instance to the
@@ -230,11 +213,6 @@ namespace TagLib.NonContainer
 			tag.RemoveTags (types);
 		}
 
-		#endregion
-
-
-
-		#region Protected Properties
 
 		/// <summary>
 		///    Gets the collection of tags appearing at the start of the
@@ -260,11 +238,6 @@ namespace TagLib.NonContainer
 			get { return tag.EndTag; }
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Reads format specific information at the start of the
@@ -349,11 +322,6 @@ namespace TagLib.NonContainer
 		/// </remarks>
 		protected abstract Properties ReadProperties (long start, long end, ReadStyle propertiesStyle);
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Reads the file with a specified read style.
@@ -363,7 +331,7 @@ namespace TagLib.NonContainer
 		///    of accuracy to read the media properties, or <see
 		///    cref="ReadStyle.None" /> to ignore the properties.
 		/// </param>
-		void Read (ReadStyle propertiesStyle)
+		private void Read (ReadStyle propertiesStyle)
 		{
 			Mode = AccessMode.Read;
 			try {
@@ -392,7 +360,5 @@ namespace TagLib.NonContainer
 				Mode = AccessMode.Closed;
 			}
 		}
-
-		#endregion
 	}
 }

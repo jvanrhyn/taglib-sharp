@@ -38,8 +38,6 @@ namespace TagLib.NonContainer
 	/// </summary>
 	public class Tag : CombinedTag
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="Tag" /> for a specified <see cref="TagLib.File" />.
@@ -61,11 +59,6 @@ namespace TagLib.NonContainer
 			AddTag (EndTag);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the collection of tags appearing at the start of the
@@ -119,11 +112,6 @@ namespace TagLib.NonContainer
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets a tag of a specified type from the current instance.
@@ -240,7 +228,5 @@ namespace TagLib.NonContainer
 			start = StartTag.Write ();
 			end = EndTag.Write ();
 		}
-
-		#endregion
 	}
 }

@@ -79,12 +79,10 @@ namespace TagLib
 	/// </summary>
 	public class ByteVector : IList<byte>, IComparable<ByteVector>
 	{
-		#region Private Static Fields
-
 		/// <summary>
 		///    Contains values to use in CRC calculation.
 		/// </summary>
-		static readonly uint[] crc_table = new uint[256] {
+		private static readonly uint[] crc_table = new uint[256] {
 			0x00000000, 0x04c11db7, 0x09823b6e, 0x0d4326d9,
 			0x130476dc, 0x17c56b6b, 0x1a864db2, 0x1e475005,
 			0x2608edb8, 0x22c9f00f, 0x2f8ad6d6, 0x2b4bcb61,
@@ -155,18 +153,18 @@ namespace TagLib
 		///    Specifies whether or not to use a broken Latin-1
 		///    behavior.
 		/// </summary>
-		static bool use_broken_latin1;
+		private static bool use_broken_latin1;
 
 		/// <summary>
 		///    Contains a one byte text delimiter.
 		/// </summary>
-		static readonly ReadOnlyByteVector td1 =
+		private static readonly ReadOnlyByteVector td1 =
 			new ReadOnlyByteVector (1);
 
 		/// <summary>
 		///    Contains a two byte text delimiter.
 		/// </summary>
-		static readonly ReadOnlyByteVector td2 =
+		private static readonly ReadOnlyByteVector td2 =
 			new ReadOnlyByteVector (2);
 
 		/// <summary>
@@ -178,25 +176,15 @@ namespace TagLib
 		///    this field will inform the file what encoding to use for
 		///    the second string.
 		/// </remarks>
-		static Encoding last_utf16_encoding =
+		private static Encoding last_utf16_encoding =
 			Encoding.Unicode;
 
-		#endregion
-
-
-
-		#region Private Fields
 
 		/// <summary>
 		///    Contains the internal byte list.
 		/// </summary>
-		readonly List<byte> data = new List<byte> ();
+		private readonly List<byte> data = new List<byte> ();
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -325,11 +313,6 @@ namespace TagLib
 			this.data.AddRange (data);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the data stored in the current instance.
@@ -372,11 +355,6 @@ namespace TagLib
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Static Properties
 
 		/// <summary>
 		///    Gets and sets whether or not to use a broken behavior for
@@ -405,11 +383,6 @@ namespace TagLib
 			set { use_broken_latin1 = value; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Creates a new instance of <see cref="ByteVector" />
@@ -1076,11 +1049,6 @@ namespace TagLib
 			data.RemoveRange (index, count);
 		}
 
-		#endregion
-
-
-
-		#region Conversions
 
 		/// <summary>
 		///    Converts an first four bytes of the current instance to
@@ -1585,11 +1553,6 @@ namespace TagLib
 			return list.ToArray ();
 		}
 
-		#endregion
-
-
-
-		#region Operators
 
 		/// <summary>
 		///    Determines whether two specified <see cref="ByteVector"
@@ -1829,11 +1792,6 @@ namespace TagLib
 			return FromString (value, StringType.UTF8);
 		}
 
-		#endregion
-
-
-
-		#region Static Conversions
 
 		/// <summary>
 		///    Converts a value into a data representation.
@@ -2377,11 +2335,6 @@ namespace TagLib
 			return vector;
 		}
 
-		#endregion
-
-
-
-		#region Utilities
 
 		/// <summary>
 		///    Gets the text delimiter for nil separated string lists of
@@ -2424,7 +2377,7 @@ namespace TagLib
 		///    encoding is big or little endian. If it does not contain
 		///    BOM data, the previously used endian format is used.
 		/// </remarks>
-		static Encoding StringTypeToEncoding (StringType type, ByteVector bom)
+		private static Encoding StringTypeToEncoding (StringType type, ByteVector bom)
 		{
 			switch (type) {
 			case StringType.UTF16:
@@ -2467,11 +2420,6 @@ namespace TagLib
 			}
 		}
 
-		#endregion
-
-
-
-		#region System.Object
 
 		/// <summary>
 		///    Determines whether another object is equal to the current
@@ -2525,11 +2473,6 @@ namespace TagLib
 			unchecked { return (int)Checksum; }
 		}
 
-		#endregion
-
-
-
-		#region IComparable<T>
 
 		/// <summary>
 		///    Compares the current instance to another to determine if
@@ -2559,11 +2502,6 @@ namespace TagLib
 			return diff;
 		}
 
-		#endregion
-
-
-
-		#region IEnumerable<T>
 
 		/// <summary>
 		///    Gets an enumerator for enumerating through the the bytes
@@ -2583,11 +2521,6 @@ namespace TagLib
 			return data.GetEnumerator ();
 		}
 
-		#endregion
-
-
-
-		#region ICollection<T>
 
 		/// <summary>
 		///    Clears the current instance.
@@ -2709,11 +2642,6 @@ namespace TagLib
 			get { return this; }
 		}
 
-		#endregion
-
-
-
-		#region IList<T>
 
 		/// <summary>
 		///    Removes the byte at the specified index.
@@ -2809,7 +2737,5 @@ namespace TagLib
 				data[index] = value;
 			}
 		}
-
-		#endregion
 	}
 }

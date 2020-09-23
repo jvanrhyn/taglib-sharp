@@ -35,9 +35,6 @@ namespace TagLib.Id3v2
 	/// </summary>
 	public class UniqueFileIdentifierFrame : Frame
 	{
-
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="UniqueFileIdentifierFrame" /> with a specified
@@ -137,11 +134,6 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the owner of the current instance.
@@ -166,11 +158,6 @@ namespace TagLib.Id3v2
 		/// </value>
 		public ByteVector Identifier { get; set; }
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a specified unique file identifer frame from the
@@ -215,11 +202,6 @@ namespace TagLib.Id3v2
 			return ufid;
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -267,11 +249,6 @@ namespace TagLib.Id3v2
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -287,7 +264,5 @@ namespace TagLib.Id3v2
 				frame.Identifier = new ByteVector (Identifier);
 			return frame;
 		}
-
-		#endregion
 	}
 }

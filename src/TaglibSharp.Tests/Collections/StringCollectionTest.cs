@@ -6,7 +6,7 @@ namespace TaglibSharp.Tests.Collections
 	[TestFixture]
 	public class StringCollectionTest
 	{
-		static StringCollection BuildList ()
+		private static StringCollection BuildList ()
 		{
 			var list = new StringCollection {
 				"ABC",

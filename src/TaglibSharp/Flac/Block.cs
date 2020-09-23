@@ -30,18 +30,11 @@ namespace TagLib.Flac
 	/// </summary>
 	public class Block
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the block header.
 		/// </summary>
-		readonly BlockHeader header;
+		private readonly BlockHeader header;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -101,11 +94,6 @@ namespace TagLib.Flac
 			Data = data;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the type of data contained in the current instance.
@@ -158,11 +146,6 @@ namespace TagLib.Flac
 		/// </value>
 		public ByteVector Data { get; private set; }
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw Flac metadata
@@ -185,7 +168,5 @@ namespace TagLib.Flac
 			data.Add (Data);
 			return data;
 		}
-
-		#endregion
 	}
 }

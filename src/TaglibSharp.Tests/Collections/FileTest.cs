@@ -6,18 +6,18 @@ namespace TaglibSharp.Tests.Collections
 	[TestFixture]
 	public class FileTest
 	{
-		static readonly string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		static readonly string Pattern1 = "efg";
-		static readonly string Pattern3 = "bbbbba";
+		private static readonly string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		private static readonly string Pattern1 = "efg";
+		private static readonly string Pattern3 = "bbbbba";
 
 		// length1 is smaller than the used buffer size
 		// length2 is bigger than the used buffer size
 		// length3 is even more bigger than length2 and used to catch some special cases
-		static readonly int length1 = (int)(0.75 * File.BufferSize);
-		static readonly int length2 = (int)(1.5 * File.BufferSize);
-		static readonly int length3 = (int)(3.1 * File.BufferSize);
+		private static readonly int length1 = (int)(0.75 * File.BufferSize);
+		private static readonly int length2 = (int)(1.5 * File.BufferSize);
+		private static readonly int length3 = (int)(3.1 * File.BufferSize);
 
-		File CreateFile (int length)
+		private File CreateFile (int length)
 		{
 			byte[] data = new byte[length];
 

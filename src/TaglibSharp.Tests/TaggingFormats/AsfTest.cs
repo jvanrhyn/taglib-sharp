@@ -7,13 +7,13 @@ namespace TaglibSharp.Tests.TaggingFormats
 	[TestFixture]
 	public class AsfTest
 	{
-		static readonly string val_sing =
+		private static readonly string val_sing =
 			"01234567890123456789012345678901234567890123456789";
 
-		static readonly string[] val_mult = {"A123456789",
+		private static readonly string[] val_mult = {"A123456789",
 			"B123456789", "C123456789", "D123456789", "E123456789"};
 
-		static readonly string[] val_gnre = { "Rap", "Jazz", "Non-Genre", "Blues" };
+		private static readonly string[] val_gnre = { "Rap", "Jazz", "Non-Genre", "Blues" };
 
 		[Test]
 		public void TestTitle ()
@@ -832,7 +832,7 @@ namespace TaglibSharp.Tests.TaggingFormats
 			Assert.IsTrue (file.Tag.IsEmpty, "Should be empty.");
 		}
 
-		File CreateFile (out MemoryFileAbstraction abst)
+		private File CreateFile (out MemoryFileAbstraction abst)
 		{
 			byte[] data = {
 				0x30, 0x26, 0xb2, 0x75, 0x8e, 0x66, 0xcf, 0x11,
@@ -851,9 +851,9 @@ namespace TaglibSharp.Tests.TaggingFormats
 			return new File (abst);
 		}
 
-		delegate void TagTestFunc (Tag tag, string msg);
+		private delegate void TagTestFunc (Tag tag, string msg);
 
-		void TagTestWithSave (ref File file, MemoryFileAbstraction abst, TagTestFunc testFunc)
+		private void TagTestWithSave (ref File file, MemoryFileAbstraction abst, TagTestFunc testFunc)
 		{
 			testFunc (file.Tag, "Before Save");
 			file.Save ();

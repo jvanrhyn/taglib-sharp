@@ -38,20 +38,13 @@ namespace TagLib.IFD
 	/// </summary>
 	public class IFDReader
 	{
-
-		#region Private Constants
-
-		static readonly string PANASONIC_HEADER = "Panasonic\0\0\0";
-		static readonly string PENTAX_HEADER = "AOC\0";
-		static readonly string NIKON_HEADER = "Nikon\0";
-		static readonly string OLYMPUS1_HEADER = "OLYMP\0";
-		static readonly string OLYMPUS2_HEADER = "OLYMPUS\0";
-		static readonly string SONY_HEADER = "SONY DSC \0\0\0";
-		static readonly string LEICA_HEADER = "LEICA\0\0\0";
-
-		#endregion
-
-		#region Protected Fields
+		private static readonly string PANASONIC_HEADER = "Panasonic\0\0\0";
+		private static readonly string PENTAX_HEADER = "AOC\0";
+		private static readonly string NIKON_HEADER = "Nikon\0";
+		private static readonly string OLYMPUS1_HEADER = "OLYMP\0";
+		private static readonly string OLYMPUS2_HEADER = "OLYMPUS\0";
+		private static readonly string SONY_HEADER = "SONY DSC \0\0\0";
+		private static readonly string LEICA_HEADER = "LEICA\0\0\0";
 
 		/// <summary>
 		///    The <see cref="File" /> where this IFD is found in.
@@ -93,8 +86,6 @@ namespace TagLib.IFD
 		/// </summary>
 		protected bool parse_makernote = true;
 
-		#endregion
-
 		/// <summary>
 		///    Whether or not the makernote should be parsed.
 		/// </summary>
@@ -102,8 +93,6 @@ namespace TagLib.IFD
 			get { return parse_makernote; }
 			set { parse_makernote = value; }
 		}
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructor. Reads an IFD from given file, using the given endianness.
@@ -141,10 +130,6 @@ namespace TagLib.IFD
 			this.ifd_offset = ifd_offset;
 			this.max_offset = max_offset;
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Read all IFD segments from the file.
@@ -189,14 +174,10 @@ namespace TagLib.IFD
 			}
 		}
 
-		#endregion
-
-		#region Private Methods
-
 		/// <summary>
 		///    Add to the reference count for the IFD loop detection.
 		/// </summary>
-		void StartIFDLoopDetect ()
+		private void StartIFDLoopDetect ()
 		{
 			if (!ifd_offsets.ContainsKey (file)) {
 				ifd_offsets[file] = new List<long> ();
@@ -216,7 +197,7 @@ namespace TagLib.IFD
 		/// <returns>
 		///    True if we have gone into a loop, false otherwise.
 		/// </returns>
-		bool DetectIFDLoop (long offset)
+		private bool DetectIFDLoop (long offset)
 		{
 			if (offset == 0)
 				return false;
@@ -229,7 +210,7 @@ namespace TagLib.IFD
 		/// <summary>
 		///    End the IFD loop detection, cleanup if we're the last.
 		/// </summary>
-		void StopIFDLoopDetect ()
+		private void StopIFDLoopDetect ()
 		{
 			ifd_loopdetect_refs[file]--;
 			if (ifd_loopdetect_refs[file] == 0) {
@@ -238,8 +219,8 @@ namespace TagLib.IFD
 			}
 		}
 
-		static readonly Dictionary<File, List<long>> ifd_offsets = new Dictionary<File, List<long>> ();
-		static readonly Dictionary<File, int> ifd_loopdetect_refs = new Dictionary<File, int> ();
+		private static readonly Dictionary<File, List<long>> ifd_offsets = new Dictionary<File, List<long>> ();
+		private static readonly Dictionary<File, int> ifd_loopdetect_refs = new Dictionary<File, int> ();
 
 		/// <summary>
 		///    Reads an IFD from file at position <paramref name="offset"/> relative
@@ -261,7 +242,7 @@ namespace TagLib.IFD
 		///    A <see cref="System.UInt32"/> with the offset of the next IFD, the
 		///    offset is also relative to <paramref name="baseOffset"/>
 		/// </returns>
-		uint ReadIFD (long baseOffset, uint offset, uint maxOffset)
+		private uint ReadIFD (long baseOffset, uint offset, uint maxOffset)
 		{
 			long length = 0;
 			try {
@@ -357,7 +338,7 @@ namespace TagLib.IFD
 		/// <returns>
 		///    A <see cref="IFDEntry"/> with the given parameter.
 		/// </returns>
-		IFDEntry CreateIFDEntry (ushort tag, ushort type, uint count, long baseOffset, ByteVector offsetData, uint maxOffset)
+		private IFDEntry CreateIFDEntry (ushort tag, ushort type, uint count, long baseOffset, ByteVector offsetData, uint maxOffset)
 		{
 			uint offset = offsetData.ToUInt (is_bigendian);
 
@@ -552,7 +533,7 @@ namespace TagLib.IFD
 		///    A <see cref="short" /> value containing the short read
 		///    from the current instance.
 		/// </returns>
-		short ReadShort ()
+		private short ReadShort ()
 		{
 			return file.ReadBlock (2).ToShort (is_bigendian);
 		}
@@ -564,7 +545,7 @@ namespace TagLib.IFD
 		///    A <see cref="ushort" /> value containing the short read
 		///    from the current instance.
 		/// </returns>
-		ushort ReadUShort ()
+		private ushort ReadUShort ()
 		{
 			return file.ReadBlock (2).ToUShort (is_bigendian);
 		}
@@ -576,7 +557,7 @@ namespace TagLib.IFD
 		///    A <see cref="uint" /> value containing the int read
 		///    from the current instance.
 		/// </returns>
-		int ReadInt ()
+		private int ReadInt ()
 		{
 			return file.ReadBlock (4).ToInt (is_bigendian);
 		}
@@ -588,7 +569,7 @@ namespace TagLib.IFD
 		///    A <see cref="uint" /> value containing the int read
 		///    from the current instance.
 		/// </returns>
-		uint ReadUInt ()
+		private uint ReadUInt ()
 		{
 			return file.ReadBlock (4).ToUInt (is_bigendian);
 		}
@@ -600,7 +581,7 @@ namespace TagLib.IFD
 		/// <returns>
 		///    A <see cref="Rational"/> value created by the read values.
 		/// </returns>
-		Rational ReadRational ()
+		private Rational ReadRational ()
 		{
 			uint numerator = ReadUInt ();
 			uint denominator = ReadUInt ();
@@ -621,7 +602,7 @@ namespace TagLib.IFD
 		/// <returns>
 		///    A <see cref="SRational"/> value created by the read values.
 		/// </returns>
-		SRational ReadSRational ()
+		private SRational ReadSRational ()
 		{
 			int numerator = ReadInt ();
 			int denominator = ReadInt ();
@@ -642,7 +623,7 @@ namespace TagLib.IFD
 		///    An array of <see cref="ushort" /> values containing the
 		///    shorts read from the current instance.
 		/// </returns>
-		ushort[] ReadUShortArray (uint count)
+		private ushort[] ReadUShortArray (uint count)
 		{
 			ushort[] data = new ushort[count];
 			for (int i = 0; i < count; i++)
@@ -657,7 +638,7 @@ namespace TagLib.IFD
 		///    An array of <see cref="short" /> values containing the
 		///    shorts read from the current instance.
 		/// </returns>
-		short[] ReadShortArray (uint count)
+		private short[] ReadShortArray (uint count)
 		{
 			short[] data = new short[count];
 			for (int i = 0; i < count; i++)
@@ -672,7 +653,7 @@ namespace TagLib.IFD
 		///    An array of <see cref="int" /> values containing the
 		///    shorts read from the current instance.
 		/// </returns>
-		int[] ReadIntArray (uint count)
+		private int[] ReadIntArray (uint count)
 		{
 			int[] data = new int[count];
 			for (int i = 0; i < count; i++)
@@ -687,7 +668,7 @@ namespace TagLib.IFD
 		///    An array of <see cref="uint" /> values containing the
 		///    shorts read from the current instance.
 		/// </returns>
-		uint[] ReadUIntArray (uint count)
+		private uint[] ReadUIntArray (uint count)
 		{
 			uint[] data = new uint[count];
 			for (int i = 0; i < count; i++)
@@ -710,7 +691,7 @@ namespace TagLib.IFD
 		///    Part 3 (Storeage in Files), and process the ASCII string only
 		///    to the first '\0'.
 		/// </remarks>
-		string ReadAsciiString (int count)
+		private string ReadAsciiString (int count)
 		{
 			string str = file.ReadBlock (count).ToString ();
 			int term = str.IndexOf ('\0');
@@ -734,7 +715,7 @@ namespace TagLib.IFD
 		/// <param name="directory">
 		///    A <see cref="IFDDirectory"/> instance which was read and needs fixes.
 		/// </param>
-		void FixupDirectory (long baseOffset, IFDDirectory directory)
+		private void FixupDirectory (long baseOffset, IFDDirectory directory)
 		{
 			// The following two entries refer to thumbnail data, where one is  the offset
 			// to the data and the other is the length. Unnaturally both are used to describe
@@ -790,7 +771,7 @@ namespace TagLib.IFD
 			}
 		}
 
-		IFDEntry ParseMakernote (ushort tag, ushort type, uint count, long baseOffset, uint offset)
+		private IFDEntry ParseMakernote (ushort tag, ushort type, uint count, long baseOffset, uint offset)
 		{
 			long makernote_offset = baseOffset + offset;
 			var ifd_structure = new IFDStructure ();
@@ -900,10 +881,6 @@ namespace TagLib.IFD
 				return null;
 			}
 		}
-
-		#endregion
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Try to parse the given IFD entry, used to discover format-specific entries.
@@ -1015,7 +992,5 @@ namespace TagLib.IFD
 		{
 			return new IFDReader (file, isBigendian, structure, baseOffset, offset, maxOffset);
 		}
-
-		#endregion
 	}
 }

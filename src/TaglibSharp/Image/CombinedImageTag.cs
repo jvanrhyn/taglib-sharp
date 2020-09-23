@@ -37,9 +37,6 @@ namespace TagLib.Image
 	/// </summary>
 	public class CombinedImageTag : ImageTag
 	{
-
-		#region Private Fields
-
 		/// <summary>
 		///    Direct access to the Exif (IFD) tag (if any)
 		/// </summary>
@@ -80,11 +77,7 @@ namespace TagLib.Image
 			}
 		}
 
-		List<ImageTag> all_tags;
-
-		#endregion
-
-		#region Constructors
+		private List<ImageTag> all_tags;
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -101,10 +94,6 @@ namespace TagLib.Image
 			AllowedTypes = allowedTypes;
 			OtherTags = new List<ImageTag> ();
 		}
-
-		#endregion
-
-		#region Protected Methods
 
 		internal void AddTag (ImageTag tag)
 		{
@@ -153,10 +142,6 @@ namespace TagLib.Image
 			all_tags = null;
 		}
 
-		#endregion
-
-		#region Public Methods (Tag)
-
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
 		/// </summary>
@@ -184,10 +169,6 @@ namespace TagLib.Image
 			foreach (ImageTag tag in AllTags)
 				tag.Clear ();
 		}
-
-		#endregion
-
-		#region Public Properties (ImageTag)
 
 		/// <summary>
 		///    Gets or sets the keywords for the image described
@@ -578,10 +559,6 @@ namespace TagLib.Image
 			}
 		}
 
-		#endregion
-
-		#region Public Properties (Tag)
-
 
 		/// <summary>
 		///    Gets and sets the title for the media described by the
@@ -660,7 +637,5 @@ namespace TagLib.Image
 					tag.Copyright = value;
 			}
 		}
-
-		#endregion
 	}
 }

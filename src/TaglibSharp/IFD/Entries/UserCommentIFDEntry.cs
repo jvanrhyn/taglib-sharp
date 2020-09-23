@@ -30,9 +30,6 @@ namespace TagLib.IFD.Entries
 	/// </summary>
 	public class UserCommentIFDEntry : IFDEntry
 	{
-
-		#region Constant Values
-
 		/// <summary>
 		///   Marker for an ASCII-encoded UserComment tag.
 		/// </summary>
@@ -58,10 +55,6 @@ namespace TagLib.IFD.Entries
 		/// </summary>
 		public static readonly ByteVector COMMENT_UNDEFINED_CODE = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
-		#endregion
-
-		#region Properties
-
 		/// <value>
 		///    The ID of the tag, the current instance belongs to
 		/// </value>
@@ -71,10 +64,6 @@ namespace TagLib.IFD.Entries
 		///    The value which is stored by the current instance
 		/// </value>
 		public string Value { get; private set; }
-
-		#endregion
-
-		#region Constructors
 
 		/// <summary>
 		///    Construcor.
@@ -159,17 +148,13 @@ namespace TagLib.IFD.Entries
 			Value = TrimNull (data.ToString (StringType.UTF8, offset, length));
 		}
 
-		string TrimNull (string value)
+		private string TrimNull (string value)
 		{
 			int term = value.IndexOf ('\0');
 			if (term > -1)
 				value = value.Substring (0, term);
 			return value;
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance to a <see cref="ByteVector"/>
@@ -203,7 +188,5 @@ namespace TagLib.IFD.Entries
 
 			return data;
 		}
-
-		#endregion
 	}
 }

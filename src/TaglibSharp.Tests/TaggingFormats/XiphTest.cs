@@ -9,13 +9,13 @@ namespace TaglibSharp.Tests.TaggingFormats
 	[TestFixture]
 	public class OggTest
 	{
-		static readonly string val_sing =
+		private static readonly string val_sing =
 			"01234567890123456789012345678901234567890123456789";
 
-		static readonly string[] val_mult = {"A123456789",
+		private static readonly string[] val_mult = {"A123456789",
 			"B123456789", "C123456789", "D123456789", "E123456789"};
 
-		static readonly string[] val_gnre = {"Rap",
+		private static readonly string[] val_gnre = {"Rap",
 			"Jazz", "Non-Genre", "Blues"};
 
 		[Test]
@@ -990,9 +990,9 @@ namespace TaglibSharp.Tests.TaggingFormats
 			Assert.IsNull (tag.RemixedBy, "RemixedBy");
 		}
 
-		delegate void TagTestFunc (XiphComment tag, string msg);
+		private delegate void TagTestFunc (XiphComment tag, string msg);
 
-		void TagTestWithSave (ref XiphComment tag, TagTestFunc testFunc)
+		private void TagTestWithSave (ref XiphComment tag, TagTestFunc testFunc)
 		{
 			testFunc (tag, "Before Save");
 			tag = new XiphComment (tag.Render (true));

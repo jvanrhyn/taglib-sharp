@@ -44,43 +44,36 @@ namespace TagLib.Riff
 	[SupportedMimeType ("audio/x-wav")]
 	public class File : TagLib.File
 	{
-		#region Private Fields
-
 		/// <summary>
 		///  Contains all the tags of the file.
 		/// </summary>
-		readonly CombinedTag tag = new CombinedTag ();
+		private readonly CombinedTag tag = new CombinedTag ();
 
 		/// <summary>
 		///  Contains the INFO tag.
 		/// </summary>
-		InfoTag info_tag;
+		private InfoTag info_tag;
 
 		/// <summary>
 		///  Contains the MovieID tag.
 		/// </summary>
-		MovieIdTag mid_tag;
+		private MovieIdTag mid_tag;
 
 		/// <summary>
 		///  Contains the DivX tag.
 		/// </summary>
-		DivXTag divx_tag;
+		private DivXTag divx_tag;
 
 		/// <summary>
 		///  Contains the Id3v2 tag.
 		/// </summary>
-		Id3v2.Tag id32_tag;
+		private Id3v2.Tag id32_tag;
 
 		/// <summary>
 		///  Contains the media properties.
 		/// </summary>
-		Properties properties;
+		private Properties properties;
 
-		#endregion
-
-
-
-		#region Public Static Fields
 
 		/// <summary>
 		///    The identifier used to recognize a RIFF files.
@@ -90,11 +83,6 @@ namespace TagLib.Riff
 		/// </value>
 		public static readonly ReadOnlyByteVector FileIdentifier = "RIFF";
 
-		#endregion
-
-
-
-		#region Public Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -186,11 +174,6 @@ namespace TagLib.Riff
 			: this (abstraction, ReadStyle.Average)
 		{ }
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
@@ -217,11 +200,6 @@ namespace TagLib.Riff
 			get { return properties; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Saves the changes made in the current instance to the
@@ -397,11 +375,6 @@ namespace TagLib.Riff
 			return tag;
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Reads the contents of the current instance determining
@@ -434,7 +407,7 @@ namespace TagLib.Riff
 		///    The file does not begin with <see cref="FileIdentifier"
 		///    />.
 		/// </exception>
-		void Read (bool read_tags, ReadStyle style, out uint riff_size, out long tag_start, out long tag_end)
+		private void Read (bool read_tags, ReadStyle style, out uint riff_size, out long tag_start, out long tag_end)
 		{
 			Seek (0);
 			if (ReadBlock (4) != FileIdentifier)
@@ -606,7 +579,5 @@ namespace TagLib.Riff
 			if (read_tags)
 				tag.SetTags (id32_tag, info_tag, mid_tag, divx_tag);
 		}
-
-		#endregion
 	}
 }

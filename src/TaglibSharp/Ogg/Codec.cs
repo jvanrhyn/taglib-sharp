@@ -38,8 +38,6 @@ namespace TagLib.Ogg
 	/// <seealso cref="AddCodecProvider" />
 	public abstract class Codec : ICodec
 	{
-		#region Public Delegates
-
 		/// <summary>
 		///    Represents a method capable of checking an Ogg header
 		///    packet to see it is matches a given codec.
@@ -79,22 +77,12 @@ namespace TagLib.Ogg
 		/// </example>
 		public delegate Codec CodecProvider (ByteVector packet);
 
-		#endregion
-
-
-
-		#region Private Static Fields
 
 		/// <summary>
 		///    Contains registered codec providers.
 		/// </summary>
-		static readonly List<CodecProvider> providers = new List<CodecProvider> ();
+		private static readonly List<CodecProvider> providers = new List<CodecProvider> ();
 
-		#endregion
-
-
-
-		#region Private Static Methods
 
 		/// <summary>
 		///    Determines the correct codec to use for a stream header
@@ -159,11 +147,6 @@ namespace TagLib.Ogg
 			providers.Insert (0, provider);
 		}
 
-		#endregion
-
-
-
-		#region Private Properties
 
 		/// <summary>
 		///    Gets a text description of the media represented by the
@@ -210,11 +193,6 @@ namespace TagLib.Ogg
 			get { return TimeSpan.Zero; }
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Reads a Ogg packet that has been encountered in the
@@ -282,7 +260,5 @@ namespace TagLib.Ogg
 		///    /> is <see langword="null" />.
 		/// </exception>
 		public abstract void SetCommentPacket (ByteVectorCollection packets, XiphComment comment);
-
-		#endregion
 	}
 }

@@ -35,8 +35,6 @@ namespace TagLib
 	/// </summary>
 	public sealed class ReadOnlyByteVector : ByteVector
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="ReadOnlyByteVector" /> with no contents.
@@ -133,11 +131,6 @@ namespace TagLib
 		{
 		}
 
-		#endregion
-
-
-
-		#region Operators
 
 		/// <summary>
 		///    Implicitly converts a <see cref="byte" /> to a new
@@ -188,11 +181,6 @@ namespace TagLib
 			return new ReadOnlyByteVector (FromString (value, StringType.UTF8));
 		}
 
-		#endregion
-
-
-
-		#region IList<T>
 
 		/// <summary>
 		///    Gets whether or not the current instance is read-only.
@@ -213,7 +201,5 @@ namespace TagLib
 		public override bool IsFixedSize {
 			get { return true; }
 		}
-
-		#endregion
 	}
 }

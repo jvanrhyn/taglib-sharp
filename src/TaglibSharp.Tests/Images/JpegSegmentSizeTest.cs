@@ -11,18 +11,18 @@ namespace TaglibSharp.Tests.Images
 	[TestFixture]
 	public class JpegSegmentSizeTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample.jpg";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite_exceed_segment_size.jpg";
+		private static readonly string sample_file = TestPath.Samples + "sample.jpg";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite_exceed_segment_size.jpg";
 
-		static readonly int max_segment_size = 0xFFFF;
+		private static readonly int max_segment_size = 0xFFFF;
 
-		readonly TagTypes contained_types =
+		private readonly TagTypes contained_types =
 				TagTypes.JpegComment |
 				TagTypes.TiffIFD |
 				TagTypes.XMP;
 
 
-		string CreateDataString (int min_size)
+		private string CreateDataString (int min_size)
 		{
 			string src = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -84,7 +84,7 @@ namespace TaglibSharp.Tests.Images
 			Assert.IsFalse (SaveFile (tmp), "file with exceed comment segment saved");
 		}
 
-		void CheckTags (File file)
+		private void CheckTags (File file)
 		{
 			Assert.IsTrue (file is TagLib.Jpeg.File, "not a Jpeg file");
 
@@ -92,7 +92,7 @@ namespace TaglibSharp.Tests.Images
 			Assert.AreEqual (contained_types, file.TagTypesOnDisk);
 		}
 
-		bool SaveFile (File file)
+		private bool SaveFile (File file)
 		{
 			try {
 				file.Save ();

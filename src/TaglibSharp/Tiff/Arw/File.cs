@@ -35,9 +35,6 @@ namespace TagLib.Tiff.Arw
 	[SupportedMimeType ("image/x-sony-arw")]
 	public class File : TagLib.Tiff.File
 	{
-
-		#region public Properties
-
 		/// <summary>
 		///    Indicates if tags can be written back to the current file or not
 		/// </summary>
@@ -49,10 +46,6 @@ namespace TagLib.Tiff.Arw
 			get { return false; }
 		}
 
-
-		#endregion
-
-		#region constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -133,10 +126,6 @@ namespace TagLib.Tiff.Arw
 		{
 		}
 
-		#endregion
-
-		#region Public Methods
-
 		/// <summary>
 		///    Saves the changes made in the current instance to the
 		///    file it represents.
@@ -145,8 +134,6 @@ namespace TagLib.Tiff.Arw
 		{
 			throw new NotSupportedException ();
 		}
-
-		#endregion
 
 		/// <summary>
 		///    Create a codec that describes the photo properties.

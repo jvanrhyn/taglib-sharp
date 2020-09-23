@@ -11,12 +11,12 @@ namespace TaglibSharp.Tests.Images
 	[TestFixture]
 	public class JpegSony2Test
 	{
-		static readonly string sample_file = TestPath.Samples + "sample_sony2.jpg";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite_sony2.jpg";
+		private static readonly string sample_file = TestPath.Samples + "sample_sony2.jpg";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite_sony2.jpg";
 
-		readonly TagTypes contained_types = TagTypes.TiffIFD;
+		private readonly TagTypes contained_types = TagTypes.TiffIFD;
 
-		File file;
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

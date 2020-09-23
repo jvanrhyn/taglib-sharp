@@ -31,18 +31,11 @@ namespace TagLib.Riff
 	/// </summary>
 	public abstract class ListTag : Tag
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the <see cref="List" /> object.
 		/// </summary>
-		readonly List fields;
+		private readonly List fields;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -122,10 +115,6 @@ namespace TagLib.Riff
 			fields = new List (file, position, length);
 		}
 
-		#endregion
-
-		#region Public Properties
-
 		/// <summary>
 		///    Gets or sets the <see cref="StringType"/> value used for parsing
 		///    and rendering the contents of this tag.
@@ -138,11 +127,6 @@ namespace TagLib.Riff
 			set => fields.StringType = value;
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance enclosed in the appropriate
@@ -470,11 +454,6 @@ namespace TagLib.Riff
 			fields.RemoveValue (id);
 		}
 
-		#endregion
-
-
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets whether or not the current instance is empty.
@@ -494,7 +473,5 @@ namespace TagLib.Riff
 		{
 			fields.Clear ();
 		}
-
-		#endregion
 	}
 }

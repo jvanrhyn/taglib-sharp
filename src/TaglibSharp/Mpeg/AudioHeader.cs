@@ -29,9 +29,6 @@ using System;
 
 namespace TagLib.Mpeg
 {
-
-	#region Enums
-
 	/// <summary>
 	///    Indicates the MPEG version of a file or stream.
 	/// </summary>
@@ -84,20 +81,16 @@ namespace TagLib.Mpeg
 		SingleChannel = 3
 	}
 
-	#endregion
-
 	/// <summary>
 	///    This structure implements <see cref="IAudioCodec" /> and provides
 	///    information about an MPEG audio stream.
 	/// </summary>
 	public struct AudioHeader : IAudioCodec
 	{
-		#region Private Static Value Arrays
-
 		/// <summary>
 		///    Contains a sample rate table for MPEG audio.
 		/// </summary>
-		static readonly int[,] sample_rates = new int[3, 4] {
+		private static readonly int[,] sample_rates = new int[3, 4] {
 			{44100, 48000, 32000, 0}, // Version 1
 			{22050, 24000, 16000, 0}, // Version 2
 			{11025, 12000,  8000, 0}  // Version 2.5
@@ -106,7 +99,7 @@ namespace TagLib.Mpeg
 		/// <summary>
 		///    Contains a block size table for MPEG audio.
 		/// </summary>
-		static readonly int[,] block_size = new int[3, 4] {
+		private static readonly int[,] block_size = new int[3, 4] {
 			{0, 384, 1152, 1152}, // Version 1
 			{0, 384, 1152,  576}, // Version 2
 			{0, 384, 1152,  576}  // Version 2.5
@@ -115,7 +108,7 @@ namespace TagLib.Mpeg
 		/// <summary>
 		///    Contains a bitrate table for MPEG audio.
 		/// </summary>
-		static readonly int[,,] bitrates = new int[2, 3, 16] {
+		private static readonly int[,,] bitrates = new int[2, 3, 16] {
 			{ // Version 1
 				{0, 32, 64, 96, 128, 160, 192, 224, 256, 288,
 					320, 352, 384, 416, 448, -1}, // layer 1
@@ -134,42 +127,32 @@ namespace TagLib.Mpeg
 			}
 		};
 
-		#endregion
-
-
-
-		#region Private Properties
 
 		/// <summary>
 		///    Contains the header flags.
 		/// </summary>
-		readonly uint flags;
+		private readonly uint flags;
 
 		/// <summary>
 		///    Contains the audio stream length.
 		/// </summary>
-		long stream_length;
+		private long stream_length;
 
 		/// <summary>
 		///    Contains the associated Xing header.
 		/// </summary>
-		XingHeader xing_header;
+		private XingHeader xing_header;
 
 		/// <summary>
 		///    Contains the associated VBRI header.
 		/// </summary>
-		readonly VBRIHeader vbri_header;
+		private readonly VBRIHeader vbri_header;
 
 		/// <summary>
 		///    Contains the audio stream duration.
 		/// </summary>
-		TimeSpan duration;
+		private TimeSpan duration;
 
-		#endregion
-
-
-
-		#region Public Fields
 
 		/// <summary>
 		///    An empty and unset header.
@@ -177,11 +160,6 @@ namespace TagLib.Mpeg
 		public static readonly AudioHeader Unknown =
 			new AudioHeader (0, 0, XingHeader.Unknown, VBRIHeader.Unknown);
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -204,7 +182,7 @@ namespace TagLib.Mpeg
 		///    A <see cref="VBRIHeader" /> object representing the VBRI
 		///    header associated with the new instance.
 		/// </param>
-		AudioHeader (uint flags, long streamLength, XingHeader xingHeader, VBRIHeader vbriHeader)
+		private AudioHeader (uint flags, long streamLength, XingHeader xingHeader, VBRIHeader vbriHeader)
 		{
 			this.flags = flags;
 			stream_length = streamLength;
@@ -236,7 +214,7 @@ namespace TagLib.Mpeg
 		///    does not begin with a MPEG audio synch, has a negative
 		///    bitrate, or has a sample rate of zero.
 		/// </exception>
-		AudioHeader (ByteVector data, TagLib.File file, long position)
+		private AudioHeader (ByteVector data, TagLib.File file, long position)
 		{
 			duration = TimeSpan.Zero;
 			stream_length = 0;
@@ -275,11 +253,6 @@ namespace TagLib.Mpeg
 				vbri_header = new VBRIHeader (vbri_data);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the MPEG version used to encode the audio
@@ -600,11 +573,7 @@ namespace TagLib.Mpeg
 		public VBRIHeader VBRIHeader {
 			get { return vbri_header; }
 		}
-		#endregion
 
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Sets the length of the audio stream represented by the
@@ -630,11 +599,6 @@ namespace TagLib.Mpeg
 				duration = TimeSpan.Zero;
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Searches for an audio header in a <see cref="TagLib.File"
@@ -738,7 +702,7 @@ namespace TagLib.Mpeg
 			return Find (out header, file, position, -1);
 		}
 
-		static string GetHeaderError (ByteVector data)
+		private static string GetHeaderError (ByteVector data)
 		{
 			if (data.Count < 4)
 				return "Insufficient header length.";
@@ -765,7 +729,5 @@ namespace TagLib.Mpeg
 
 			return null;
 		}
-
-		#endregion
 	}
 }

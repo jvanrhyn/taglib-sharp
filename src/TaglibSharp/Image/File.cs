@@ -37,8 +37,6 @@ namespace TagLib.Image
 	/// </summary>
 	public abstract class File : TagLib.File
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="File" /> for a specified path in the local file
@@ -73,10 +71,6 @@ namespace TagLib.Image
 		{
 		}
 
-		#endregion
-
-		#region Public Properties
-
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
 		///    current instance.
@@ -96,10 +90,6 @@ namespace TagLib.Image
 		///    representing all image tags stored in the current instance.
 		/// </value>
 		public CombinedImageTag ImageTag { get; protected set; }
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    The method creates all tags which are allowed for the current
@@ -218,7 +208,5 @@ namespace TagLib.Image
 				prop.SetValue (to_tag, value, null);
 			}
 		}
-
-		#endregion
 	}
 }

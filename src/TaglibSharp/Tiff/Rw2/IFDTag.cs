@@ -30,7 +30,7 @@ namespace TagLib.Tiff.Rw2
 	/// </summary>
 	public class IFDTag : TagLib.IFD.IFDTag
 	{
-		readonly File file;
+		private readonly File file;
 
 		internal IFDTag (File file)
 		{

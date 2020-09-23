@@ -32,21 +32,16 @@ namespace TagLib.Riff
 	/// </summary>
 	public struct BitmapInfoHeader : IVideoCodec
 	{
-		#region Private Fields
 		/// <summary>
 		///    Contains the video width.
 		/// </summary>
-		readonly uint width;
+		private readonly uint width;
 
 		/// <summary>
 		///    Contains the video height.
 		/// </summary>
-		readonly uint height;
+		private readonly uint height;
 
-		#endregion
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -116,11 +111,6 @@ namespace TagLib.Riff
 			ImportantColors = data.Mid (offset + 36, 4).ToUInt (false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the size of the structure in bytes.
@@ -208,11 +198,6 @@ namespace TagLib.Riff
 		/// </value>
 		public uint ImportantColors { get; private set; }
 
-		#endregion
-
-
-
-		#region IVideoCodec
 
 		/// <summary>
 		///    Gets the width of the video represented by the current
@@ -668,11 +653,6 @@ namespace TagLib.Riff
 			}
 		}
 
-		#endregion
-
-
-
-		#region IEquatable
 
 		/// <summary>
 		///    Generates a hash code for the current instance.
@@ -778,6 +758,5 @@ namespace TagLib.Riff
 		{
 			return !first.Equals (second);
 		}
-		#endregion
 	}
 }

@@ -8,8 +8,8 @@ namespace TaglibSharp.Tests.Images.Validators
 	/// </summary>
 	public class RemoveMetadataValidator : IMetadataModificationValidator
 	{
-		readonly TagTypes remove_types;
-		readonly TagTypes contained_types;
+		private readonly TagTypes remove_types;
+		private readonly TagTypes contained_types;
 
 		public RemoveMetadataValidator (TagTypes contained_types) : this (contained_types, contained_types) { }
 

@@ -37,56 +37,44 @@ namespace TagLib.MusePack
 	/// </summary>
 	public struct StreamHeader : IAudioCodec
 	{
-		#region Constants
+		private static readonly ushort[] sftable = { 44100, 48000, 37800, 32000 };
 
-		static readonly ushort[] sftable = { 44100, 48000, 37800, 32000 };
-
-		#endregion
-
-
-
-		#region Private Fields
 
 		/// <summary>
 		///    Contains the number of bytes in the stream.
 		/// </summary>
-		readonly long stream_length;
+		private readonly long stream_length;
 
 		/// <summary>
 		///    Contains the MusePack version.
 		/// </summary>
-		int version;
+		private int version;
 
 		/// <summary>
 		///    Contains additional header information.
 		/// </summary>
-		uint header_data;
+		private uint header_data;
 
 		/// <summary>
 		///    Contains the sample rate of the stream.
 		/// </summary>
-		int sample_rate;
+		private int sample_rate;
 
 		/// <summary>
 		///    Contains the number of frames in the stream.
 		/// </summary>
-		uint frames;
+		private uint frames;
 
 		/// <summary>
 		///	   Contains the number of channels in the stream.
 		/// </summary>
-		int channels;
+		private int channels;
 
 		/// <summary>
 		///    Contains the count of frames in the stream. 
 		/// </summary>
-		ulong framecount;
+		private ulong framecount;
 
-		#endregion
-
-
-
-		#region Public Static Fields
 
 		/// <summary>
 		///    The size of a MusePack SV7 header.
@@ -109,11 +97,6 @@ namespace TagLib.MusePack
 		/// </value>
 		public static readonly ReadOnlyByteVector FileIdentifierSv8 = "MPCK";
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -165,13 +148,8 @@ namespace TagLib.MusePack
 				throw new CorruptFileException ("Data does not begin with identifier.");
 		}
 
-		#endregion
 
-
-
-		#region Private Methods
-
-		void ReadSv7Properties (ByteVector data)
+		private void ReadSv7Properties (ByteVector data)
 		{
 			if (data.Count < SizeSV7)
 				throw new CorruptFileException ("Insufficient data in stream header");
@@ -195,7 +173,7 @@ namespace TagLib.MusePack
 		}
 
 
-		void ReadSv8Properties (File file)
+		private void ReadSv8Properties (File file)
 		{
 			bool foundSH = false;
 
@@ -247,7 +225,7 @@ namespace TagLib.MusePack
 			}
 		}
 
-		ulong ReadSize (File file, ref uint packetSizeLength, ref bool eof)
+		private ulong ReadSize (File file, ref uint packetSizeLength, ref bool eof)
 		{
 			uint tmp;
 			ulong size = 0;
@@ -267,7 +245,7 @@ namespace TagLib.MusePack
 			return size;
 		}
 
-		ulong ReadSize (ByteVector data, ref int pos)
+		private ulong ReadSize (ByteVector data, ref int pos)
 		{
 			uint tmp;
 			ulong size = 0;
@@ -279,12 +257,6 @@ namespace TagLib.MusePack
 			return size;
 		}
 
-
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the duration of the media represented by the current
@@ -398,11 +370,6 @@ namespace TagLib.MusePack
 			get { return version; }
 		}
 
-		#endregion
-
-
-
-		#region IEquatable
 
 		/// <summary>
 		///    Generates a hash code for the current instance.
@@ -500,7 +467,5 @@ namespace TagLib.MusePack
 		{
 			return !first.Equals (second);
 		}
-
-		#endregion
 	}
 }

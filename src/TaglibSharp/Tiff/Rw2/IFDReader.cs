@@ -31,9 +31,6 @@ namespace TagLib.Tiff.Rw2
 	/// </summary>
 	public class IFDReader : TagLib.IFD.IFDReader
 	{
-
-		#region Constructors
-
 		/// <summary>
 		///    Constructor. Reads an IFD from given file, using the given endianness.
 		/// </summary>
@@ -65,8 +62,6 @@ namespace TagLib.Tiff.Rw2
 			base (file, is_bigendian, structure, base_offset, ifd_offset, max_offset)
 		{
 		}
-
-		#endregion
 
 		/// <summary>
 		///    Try to parse the given IFD entry, used to discover format-specific entries.
@@ -109,10 +104,10 @@ namespace TagLib.Tiff.Rw2
 			return base.ParseIFDEntry (tag, type, count, base_offset, offset);
 		}
 
-		bool seen_jpgfromraw;
+		private bool seen_jpgfromraw;
 	}
 
-	class StreamJPGAbstraction : TagLib.File.IFileAbstraction
+	internal class StreamJPGAbstraction : TagLib.File.IFileAbstraction
 	{
 		public StreamJPGAbstraction (Stream stream)
 		{

@@ -36,17 +36,10 @@ namespace TagLib.Audible
 	[SupportedMimeType ("taglib/aax", "aax")]
 	public class File : TagLib.File
 	{
-
-		#region Private Fields
-
 		/// <summary>
 		///   Contains the tags for the file.
 		/// </summary>
-		readonly TagLib.Tag tag;
-
-		#endregion
-
-		#region Public Static Fields
+		private readonly TagLib.Tag tag;
 
 		/// <summary>
 		///    The offset to the tag block.
@@ -57,10 +50,6 @@ namespace TagLib.Audible
 		///    The offset to the end of tag pointer.
 		/// </summary>
 		public const short OffsetToEndTagPointer = 0x38;
-
-		#endregion
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -167,10 +156,6 @@ namespace TagLib.Audible
 		{
 		}
 
-		#endregion
-
-		#region Public Methods
-
 		/// <summary>
 		///    Saves the changes made in the current instance to the
 		///    file it represents.
@@ -228,11 +213,7 @@ namespace TagLib.Audible
 			return null;
 
 		}
-		#endregion
 
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
@@ -256,7 +237,5 @@ namespace TagLib.Audible
 		///    instance.
 		/// </value>
 		public override Properties Properties { get; } = new Properties ();
-
-		#endregion
 	}
 }

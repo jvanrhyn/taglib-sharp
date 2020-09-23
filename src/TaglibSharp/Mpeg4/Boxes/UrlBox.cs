@@ -29,18 +29,11 @@ namespace TagLib
 	/// </summary>
 	public class UrlBox : Box
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the box's data.
 		/// </summary>
-		ByteVector data;
+		private ByteVector data;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -71,11 +64,6 @@ namespace TagLib
 			data = LoadData (file);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the box data contained in the current
@@ -89,8 +77,6 @@ namespace TagLib
 			get { return data; }
 			set { data = value; }
 		}
-
-		#endregion
 	}
 }
 

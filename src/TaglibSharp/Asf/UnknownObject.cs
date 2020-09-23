@@ -33,8 +33,6 @@ namespace TagLib.Asf
 	/// </summary>
 	public class UnknownObject : Object
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="UnknownObject" /> by reading the contents from a
@@ -61,13 +59,8 @@ namespace TagLib.Asf
 			Data = file.ReadBlock ((int)(OriginalSize - 24));
 		}
 
-        #endregion
 
-
-
-        #region Public Properties
-
-        /// <summary>
+		/// <summary>
         ///    Gets and sets the data contained in the current instance.
         /// </summary>
         /// <value>
@@ -76,13 +69,8 @@ namespace TagLib.Asf
         /// </value>
         public ByteVector Data { get; set; }
 
-        #endregion
 
-
-
-        #region Public Methods
-
-        /// <summary>
+		/// <summary>
         ///    Renders the current instance as a raw ASF object.
         /// </summary>
         /// <returns>
@@ -93,7 +81,5 @@ namespace TagLib.Asf
 		{
 			return Render (Data);
 		}
-
-		#endregion
 	}
 }

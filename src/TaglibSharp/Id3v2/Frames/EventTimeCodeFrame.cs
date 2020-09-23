@@ -97,9 +97,6 @@ namespace TagLib.Id3v2
 	/// </example>
 	public class EventTimeCodesFrame : Frame
 	{
-
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="EventTimeCodesFrame" /> with empty
@@ -192,10 +189,6 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-		#endregion
-
-		#region Public Properties
-
 		/// <summary>
 		/// Gets or sets the timestamp format for this frame instance.
 		/// </summary>
@@ -212,10 +205,6 @@ namespace TagLib.Id3v2
 		/// A <see cref="List{EventTimeCode}"/> that are stored in this frame instance.
 		/// </value>
 		public List<EventTimeCode> Events { get; set; }
-
-		#endregion
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a play count frame from a specified tag, optionally
@@ -251,10 +240,6 @@ namespace TagLib.Id3v2
 			tag.AddFrame (etco);
 			return etco;
 		}
-
-		#endregion
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -319,10 +304,6 @@ namespace TagLib.Id3v2
 			return new ByteVector (data.ToArray ());
 		}
 
-		#endregion
-
-		#region ICloneable
-
 		/// <summary>
 		///    Creates a deep copy of the current instance.
 		/// </summary>
@@ -338,7 +319,5 @@ namespace TagLib.Id3v2
 			};
 			return frame;
 		}
-
-		#endregion
 	}
 }

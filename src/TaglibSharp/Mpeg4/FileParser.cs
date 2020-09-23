@@ -33,65 +33,58 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class FileParser
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the file to read from.
 		/// </summary>
-		readonly TagLib.File file;
+		private readonly TagLib.File file;
 
 		/// <summary>
 		///    Contains the first header found in the file.
 		/// </summary>
-		readonly BoxHeader first_header;
+		private readonly BoxHeader first_header;
 
 		/// <summary>
 		///    Contains the ISO movie header box.
 		/// </summary>
-		IsoMovieHeaderBox mvhd_box;
+		private IsoMovieHeaderBox mvhd_box;
 
 		/// <summary>
 		///    Contains the ISO user data boxes.
 		/// </summary>
-		readonly List<IsoUserDataBox> udta_boxes = new List<IsoUserDataBox> ();
+		private readonly List<IsoUserDataBox> udta_boxes = new List<IsoUserDataBox> ();
 
 		/// <summary>
 		///    Contains the box headers from the top of the file to the
 		///    "moov" box.
 		/// </summary>
-		BoxHeader[] moov_tree;
+		private BoxHeader[] moov_tree;
 
 		/// <summary>
 		///    Contains the box headers from the top of the file to the
 		///    "udta" box.
 		/// </summary>
-		BoxHeader[] udta_tree;
+		private BoxHeader[] udta_tree;
 
 		/// <summary>
 		///    Contains the "stco" boxes found in the file.
 		/// </summary>
-		readonly List<Box> stco_boxes = new List<Box> ();
+		private readonly List<Box> stco_boxes = new List<Box> ();
 
 		/// <summary>
 		///    Contains the "stsd" boxes found in the file.
 		/// </summary>
-		readonly List<Box> stsd_boxes = new List<Box> ();
+		private readonly List<Box> stsd_boxes = new List<Box> ();
 
 		/// <summary>
 		///    Contains the position at which the "mdat" box starts.
 		/// </summary>
-		long mdat_start = -1;
+		private long mdat_start = -1;
 
 		/// <summary>
 		///    Contains the position at which the "mdat" box ends.
 		/// </summary>
-		long mdat_end = -1;
+		private long mdat_end = -1;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -118,11 +111,6 @@ namespace TagLib.Mpeg4
 				throw new CorruptFileException ("File does not start with 'ftyp' box.");
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the movie header box read by the current instance.
@@ -295,11 +283,6 @@ namespace TagLib.Mpeg4
 			get { return mdat_end; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Parses the file referenced by the current instance,
@@ -358,11 +341,6 @@ namespace TagLib.Mpeg4
 			}
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Parses boxes for a specified range, looking for headers.
@@ -379,7 +357,7 @@ namespace TagLib.Mpeg4
 		///    A <see cref="T:System.Collections.Generic.List`1" /> object containing all the parent
 		///    handlers that apply to the range.
 		/// </param>
-		void ParseBoxHeaders (long start, long end, List<BoxHeader> parents)
+		private void ParseBoxHeaders (long start, long end, List<BoxHeader> parents)
 		{
 			BoxHeader header;
 
@@ -425,7 +403,7 @@ namespace TagLib.Mpeg4
 		/// <param name="parents">
 		///    A <see cref="T:List" /> of <see cref="BoxHeader" /> parents.
 		/// </param>
-		void ParseTag (long start, long end, List<BoxHeader> parents)
+		private void ParseTag (long start, long end, List<BoxHeader> parents)
 		{
 			BoxHeader header;
 
@@ -476,7 +454,7 @@ namespace TagLib.Mpeg4
 		/// <param name="parents">
 		///    A <see cref="T:List" /> of <see cref="BoxHeader" /> parents.
 		/// </param>
-		void ParseTagAndProperties (long start, long end, IsoHandlerBox handler, List<BoxHeader> parents)
+		private void ParseTagAndProperties (long start, long end, IsoHandlerBox handler, List<BoxHeader> parents)
 		{
 			BoxHeader header;
 
@@ -528,7 +506,7 @@ namespace TagLib.Mpeg4
 		///    A <see cref="long" /> value specifying the seek position
 		///    at which to stop reading.
 		/// </param>
-		void ParseChunkOffsets (long start, long end)
+		private void ParseChunkOffsets (long start, long end)
 		{
 			BoxHeader header;
 
@@ -559,7 +537,7 @@ namespace TagLib.Mpeg4
 		/// <summary>
 		///    Resets all internal fields.
 		/// </summary>
-		void ResetFields ()
+		private void ResetFields ()
 		{
 			mvhd_box = null;
 			udta_boxes.Clear ();
@@ -570,10 +548,6 @@ namespace TagLib.Mpeg4
 			mdat_start = -1;
 			mdat_end = -1;
 		}
-
-		#endregion
-
-		#region Private Static Methods
 
 		/// <summary>
 		///    Adds a parent to the end of an existing list of parents.
@@ -589,7 +563,7 @@ namespace TagLib.Mpeg4
 		///    A new <see cref="T:System.Collections.Generic.List`1" /> object containing the list
 		///    of parents, including the added header.
 		/// </returns>
-		static List<BoxHeader> AddParent (List<BoxHeader> parents,
+		private static List<BoxHeader> AddParent (List<BoxHeader> parents,
 												  BoxHeader current)
 		{
 			var boxes = new List<BoxHeader> ();
@@ -598,7 +572,5 @@ namespace TagLib.Mpeg4
 			boxes.Add (current);
 			return boxes;
 		}
-
-		#endregion
 	}
 }

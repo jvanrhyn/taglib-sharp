@@ -36,23 +36,16 @@ namespace TagLib.Id3v2
 	/// </summary>
 	public struct Footer
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the tag's major version.
 		/// </summary>
-		byte major_version;
+		private byte major_version;
 
 		/// <summary>
 		///    Contains tag's flags.
 		/// </summary>
-		HeaderFlags flags;
+		private HeaderFlags flags;
 
-		#endregion
-
-
-
-		#region Public Fields
 
 		/// <summary>
 		///    The size of a ID3v2 footer.
@@ -67,11 +60,6 @@ namespace TagLib.Id3v2
 		/// </value>
 		public static readonly ReadOnlyByteVector FileIdentifier = "3DI";
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -138,11 +126,6 @@ namespace TagLib.Id3v2
 			TagSize = header.TagSize;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the major version of the tag described by
@@ -236,11 +219,6 @@ namespace TagLib.Id3v2
 			get { return TagSize + Header.Size + Size; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw ID3v2 header.
@@ -260,7 +238,5 @@ namespace TagLib.Id3v2
 			};
 			return v;
 		}
-
-		#endregion
 	}
 }

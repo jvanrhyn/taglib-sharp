@@ -33,33 +33,26 @@ namespace TagLib.Asf
 	/// </summary>
 	public class DescriptionRecord
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the string value.
 		/// </summary>
-		string strValue;
+		private string strValue;
 
 		/// <summary>
 		///    Contains the byte value.
 		/// </summary>
-		ByteVector byteValue;
+		private ByteVector byteValue;
 
 		/// <summary>
 		///    Contains the long value.
 		/// </summary>
-		ulong longValue;
+		private ulong longValue;
 
 		/// <summary>
 		///    Contains the GUID value.
 		/// </summary>
-		System.Guid guidValue = System.Guid.Empty;
+		private System.Guid guidValue = System.Guid.Empty;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -298,11 +291,6 @@ namespace TagLib.Asf
 				throw new CorruptFileException ("Failed to parse description record.");
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the index of the language associated with the
@@ -342,11 +330,6 @@ namespace TagLib.Asf
 		/// </value>
 		public DataType Type { get; private set; } = DataType.Unicode;
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets a string representation of the current instance.
@@ -500,11 +483,6 @@ namespace TagLib.Asf
 			return output;
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the current instance by reading in the contents
@@ -562,7 +540,5 @@ namespace TagLib.Asf
 
 			return true;
 		}
-
-		#endregion
 	}
 }

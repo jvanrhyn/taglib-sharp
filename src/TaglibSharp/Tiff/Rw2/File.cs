@@ -40,16 +40,10 @@ namespace TagLib.Tiff.Rw2
 	[SupportedMimeType ("image/x-panasonic-raw")]
 	public class File : BaseTiffFile
 	{
-		#region private fields
-
 		/// <summary>
 		///    The Properties of the image
 		/// </summary>
-		Properties properties;
-
-		#endregion
-
-		#region public Properties
+		private Properties properties;
 
 		/// <summary>
 		///    Gets the media properties of the file represented by the
@@ -82,10 +76,6 @@ namespace TagLib.Tiff.Rw2
 			get;
 			internal set;
 		}
-
-		#endregion
-
-		#region constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -168,10 +158,6 @@ namespace TagLib.Tiff.Rw2
 		{
 		}
 
-		#endregion
-
-		#region Public Methods
-
 		/// <summary>
 		///    Saves the changes made in the current instance to the
 		///    file it represents.
@@ -217,10 +203,6 @@ namespace TagLib.Tiff.Rw2
 			return new_tag;
 		}
 
-		#endregion
-
-		#region private methods
-
 		/// <summary>
 		///    Reads the information from file with a specified read style.
 		/// </summary>
@@ -229,7 +211,7 @@ namespace TagLib.Tiff.Rw2
 		///    of accuracy to read the media properties, or <see
 		///    cref="ReadStyle.None" /> to ignore the properties.
 		/// </param>
-		void Read (ReadStyle propertiesStyle)
+		private void Read (ReadStyle propertiesStyle)
 		{
 			Mode = AccessMode.Read;
 			try {
@@ -250,7 +232,7 @@ namespace TagLib.Tiff.Rw2
 		/// <summary>
 		///    Parses the RW2 file
 		/// </summary>
-		void ReadFile ()
+		private void ReadFile ()
 		{
 			// A RW2 file starts with a Tiff header followed by a RW2 header
 			uint first_ifd_offset = ReadHeader ();
@@ -266,7 +248,7 @@ namespace TagLib.Tiff.Rw2
 		/// <returns>
 		///    A <see cref="System.UInt32"/> with the offset to the IFD with the RAW data.
 		/// </returns>
-		uint ReadAdditionalRW2Header ()
+		private uint ReadAdditionalRW2Header ()
 		{
 			// RW2 Header
 			//
@@ -289,7 +271,7 @@ namespace TagLib.Tiff.Rw2
 		///    at the right values. When no guess at all can be made,
 		///    <see langword="null" /> is returned.
 		/// </returns>
-		Properties ExtractProperties ()
+		private Properties ExtractProperties ()
 		{
 			int width = 0, height = 0;
 
@@ -342,8 +324,5 @@ namespace TagLib.Tiff.Rw2
 		{
 			return new IFDReader (file, is_bigendian, structure, base_offset, ifd_offset, max_offset);
 		}
-
-		#endregion
-
 	}
 }

@@ -38,7 +38,7 @@ namespace TagLib.Id3v2
 		/// <summary>
 		///    Contains the size of the read header.
 		/// </summary>
-		uint size;
+		private uint size;
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -95,8 +95,6 @@ namespace TagLib.Id3v2
 			size = (version == 3 ? 4u : 0u) + SynchData.ToUInt (data.Mid (0, 4));
 		}
 
-		#region ICloneable
-
 		/// <summary>
 		///    Creates a deep copy of the current instance.
 		/// </summary>
@@ -116,7 +114,5 @@ namespace TagLib.Id3v2
 		{
 			return Clone ();
 		}
-
-		#endregion
 	}
 }

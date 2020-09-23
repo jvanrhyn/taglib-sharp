@@ -85,8 +85,6 @@ namespace TagLib
 	/// </remarks>
 	public abstract class File : IDisposable
 	{
-		#region Enums
-
 		/// <summary>
 		///   Specifies the type of file access operations currently
 		///   permitted on an instance of <see cref="File" />.
@@ -110,11 +108,6 @@ namespace TagLib
 			Closed
 		}
 
-		#endregion
-
-
-
-		#region Delegates
 
 		/// <summary>
 		///    This delegate is used for intervening in <see
@@ -157,16 +150,11 @@ namespace TagLib
 		/// </remarks>
 		public delegate File FileTypeResolver (IFileAbstraction abstraction, string mimetype, ReadStyle style);
 
-		#endregion
-
-
-
-		#region Private Properties
 
 		/// <summary>
 		///    Contains the current stream used in reading/writing.
 		/// </summary>
-		Stream file_stream;
+		private Stream file_stream;
 
 		/// <summary>
 		///    Contains the internal file abstraction.
@@ -176,24 +164,19 @@ namespace TagLib
 		/// <summary>
 		///    Contains buffer size to use when reading.
 		/// </summary>
-		static readonly int buffer_size = 1024;
+		private static readonly int buffer_size = 1024;
 
 		/// <summary>
 		///    Contains the file type resolvers to use in <see
 		///    cref="Create(string)" />.
 		/// </summary>
-		static readonly List<FileTypeResolver> file_type_resolvers = new List<FileTypeResolver> ();
+		private static readonly List<FileTypeResolver> file_type_resolvers = new List<FileTypeResolver> ();
 
 		/// <summary>
 		///    The reasons (if any) why this file is marked as corrupt.
 		/// </summary>
-		List<string> corruption_reasons;
+		private List<string> corruption_reasons;
 
-		#endregion
-
-
-
-		#region Public Static Properties
 
 		/// <summary>
 		///    The buffer size to use when reading large blocks of data
@@ -205,10 +188,6 @@ namespace TagLib
 		/// </value>
 		public static uint BufferSize => (uint)buffer_size;
 
-		#endregion
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -247,11 +226,6 @@ namespace TagLib
 			file_abstraction = abstraction ?? throw new ArgumentNullException (nameof (abstraction));
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
@@ -441,11 +415,6 @@ namespace TagLib
 		/// </summary>
 		public IEnumerable<string> CorruptionReasons => corruption_reasons;
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///	   Mark the file as corrupt.
@@ -804,7 +773,7 @@ namespace TagLib
 		/// <exception cref="ArgumentNullException">
 		///    <paramref name="pattern" /> is <see langword="null" />.
 		/// </exception>
-		long RFind (ByteVector pattern, long startPosition, ByteVector after)
+		private long RFind (ByteVector pattern, long startPosition, ByteVector after)
 		{
 			if (pattern == null)
 				throw new ArgumentNullException (nameof (pattern));
@@ -1075,11 +1044,6 @@ namespace TagLib
 			Seek (offset, SeekOrigin.Begin);
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Creates a new instance of a <see cref="File" /> subclass
@@ -1320,11 +1284,6 @@ namespace TagLib
 				file_type_resolvers.Insert (0, resolver);
 		}
 
-		#endregion
-
-
-
-		#region Private/Protected Methods
 
 		/// <summary>
 		///    Prepare to Save the file. Thismust be called at the begining 
@@ -1381,7 +1340,7 @@ namespace TagLib
 		///    tag with a new one of different size, use <see
 		///    cref="Insert(ByteVector,long,long)" />.
 		/// </remarks>
-		void Insert (ByteVector data, long size, long start, long replace)
+		private void Insert (ByteVector data, long size, long start, long replace)
 		{
 			Mode = AccessMode.Write;
 
@@ -1506,7 +1465,7 @@ namespace TagLib
 		/// Causes the original strack trace of the exception to be preserved when it is rethrown
 		/// </summary>
 		/// <param name="ex"></param>
-		static void PrepareExceptionForRethrow (Exception ex)
+		private static void PrepareExceptionForRethrow (Exception ex)
 		{
 			var ctx = new StreamingContext (StreamingContextStates.CrossAppDomain);
 			var mgr = new ObjectManager (null, ctx);
@@ -1517,11 +1476,6 @@ namespace TagLib
 			mgr.DoFixups (); // ObjectManager calls SetObjectData
 		}
 
-		#endregion
-
-
-
-		#region Classes
 
 		/// <summary>
 		///    This class implements <see cref="IFileAbstraction" />
@@ -1537,7 +1491,7 @@ namespace TagLib
 			/// <summary>
 			///    Contains the name used to open the file.
 			/// </summary>
-			readonly string name;
+			private readonly string name;
 
 			/// <summary>
 			///    Constructs and initializes a new instance of
@@ -1611,11 +1565,6 @@ namespace TagLib
 			}
 		}
 
-		#endregion
-
-
-
-		#region Interfaces
 
 		/// <summary>
 		///    This interface provides abstracted access to a file. It
@@ -1782,7 +1731,5 @@ namespace TagLib
 			/// </remarks>
 			void CloseStream (Stream stream);
 		}
-
-		#endregion
 	}
 }

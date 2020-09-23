@@ -40,16 +40,10 @@ namespace TagLib.Tiff
 	[SupportedMimeType ("image/tiff")]
 	public class File : BaseTiffFile
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the media properties.
 		/// </summary>
-		Properties properties;
-
-		#endregion
-
-		#region Constructors
+		private Properties properties;
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -138,10 +132,6 @@ namespace TagLib.Tiff
 		{
 		}
 
-		#endregion
-
-		#region Public Properties
-
 		/// <summary>
 		///    Gets the media properties of the file represented by the
 		///    current instance.
@@ -154,10 +144,6 @@ namespace TagLib.Tiff
 		public override Properties Properties {
 			get { return properties; }
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Saves the changes made in the current instance to the
@@ -178,14 +164,10 @@ namespace TagLib.Tiff
 			}
 		}
 
-		#endregion
-
-		#region Private Methods
-
 		/// <summary>
 		///    Render the whole file and write it back.
 		/// </summary>
-		void WriteFile ()
+		private void WriteFile ()
 		{
 			// Check, if IFD0 is contained
 			IFDTag exif = ImageTag.Exif;
@@ -211,7 +193,7 @@ namespace TagLib.Tiff
 		/// <param name="exif">
 		///    A <see cref="IFDTag"/> The Tiff IFD to update the entries
 		/// </param>
-		void UpdateTags (IFDTag exif)
+		private void UpdateTags (IFDTag exif)
 		{
 			// update the XMP entry
 			exif.Structure.RemoveTag (0, (ushort)IFDEntryTag.XMP);
@@ -286,7 +268,5 @@ namespace TagLib.Tiff
 		{
 			return new Codec (width, height);
 		}
-
-		#endregion
 	}
 }

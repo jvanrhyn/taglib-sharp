@@ -31,8 +31,6 @@ namespace TagLib.Riff
 	/// </summary>
 	public class MovieIdTag : ListTag
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="MovieIdTag" /> with no contents.
@@ -85,11 +83,6 @@ namespace TagLib.Riff
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance enclosed in a "MID " item.
@@ -103,11 +96,6 @@ namespace TagLib.Riff
 			return RenderEnclosed ("MID ");
 		}
 
-		#endregion
-
-
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -233,6 +221,5 @@ namespace TagLib.Riff
 			get { return GetValueAsUInt ("PRT2"); }
 			set { SetValue ("PRT2", value); }
 		}
-		#endregion
 	}
 }

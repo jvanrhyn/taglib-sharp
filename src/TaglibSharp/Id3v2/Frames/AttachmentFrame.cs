@@ -50,37 +50,35 @@ namespace TagLib.Id3v2
 	/// </remarks>
 	public class AttachmentFrame : Frame, IPicture, ILazy
 	{
-		#region Private Properties
-
 		/// <summary>
 		///    Contains the text encoding to use when rendering.
 		/// </summary>
-		StringType encoding = Tag.DefaultEncoding;
+		private StringType encoding = Tag.DefaultEncoding;
 
 		/// <summary>
 		///    Contains the mime type of <see cref="data" />.
 		/// </summary>
-		string mime_type;
+		private string mime_type;
 
 		/// <summary>
 		///    Contains the type of picture.
 		/// </summary>
-		PictureType type = PictureType.Other;
+		private PictureType type = PictureType.Other;
 
 		/// <summary>
 		///    Contains the filename.
 		/// </summary>
-		string filename;
+		private string filename;
 
 		/// <summary>
 		///    Contains the description.
 		/// </summary>
-		string description;
+		private string description;
 
 		/// <summary>
 		///    Contains the picture data.
 		/// </summary>
-		ByteVector data;
+		private ByteVector data;
 
 		/// <summary>
 		///    Contains the raw field data of the current instance as
@@ -94,34 +92,30 @@ namespace TagLib.Id3v2
 		///    all cases, the raw data is stored here until it is
 		///    needed. This speeds up the file read time significantly.
 		/// </remarks>
-		ByteVector raw_data;
+		private ByteVector raw_data;
 
 		/// <summary>
 		///    Contains the ID3v2 version <see cref="raw_data" /> is
 		///    stored in.
 		/// </summary>
-		byte raw_version;
+		private byte raw_version;
 
 		/// <summary>
 		/// Stream where the picture is located
 		/// </summary>
-		File.IFileAbstraction file;
+		private File.IFileAbstraction file;
 
 		/// <summary>
 		/// Offset from where the picture start in the <see cref="file"/>
 		/// </summary>
-		readonly long stream_offset;
+		private readonly long stream_offset;
 
 		/// <summary>
 		/// Size of the picture in the <see cref="file"/> (-1 = until end of Stream)
 		/// </summary>
-		readonly long stream_size = -1;
-
-		#endregion
+		private readonly long stream_size = -1;
 
 
-
-		#region Constructors
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="AttachmentFrame" /> with no contents and the
@@ -296,12 +290,6 @@ namespace TagLib.Id3v2
 			raw_version = version;
 		}
 
-
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the text encoding to use when storing the
@@ -482,11 +470,6 @@ namespace TagLib.Id3v2
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets a string representation of the current instance.
@@ -512,11 +495,6 @@ namespace TagLib.Id3v2
 			return builder.ToString ();
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a specified picture frame from the specified tag,
@@ -726,11 +704,6 @@ namespace TagLib.Id3v2
 			ParseRawData ();
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -909,11 +882,6 @@ namespace TagLib.Id3v2
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -943,11 +911,7 @@ namespace TagLib.Id3v2
 			frame.raw_version = raw_version;
 			return frame;
 		}
-
-		#endregion
 	}
-
-	#region Legacy Class
 
 	/// <summary>
 	///    This class extends <see cref="Frame" />, implementing support for
@@ -966,7 +930,6 @@ namespace TagLib.Id3v2
 	[Obsolete ("Use AttachementFrame instead")]
 	public class AttachedPictureFrame : AttachmentFrame
 	{
-		#region Constructors
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="AttachmentFrame" /> with no contents and the
@@ -1076,9 +1039,6 @@ namespace TagLib.Id3v2
 			: base (data, offset, header, version)
 		{
 		}
-
-		#endregion
-
 	}
 
 	/// <summary>
@@ -1093,9 +1053,6 @@ namespace TagLib.Id3v2
 	[Obsolete ("Use AttachementFrame instead")]
 	public class GeneralEncapsulatedObjectFrame : AttachmentFrame
 	{
-
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="GeneralEncapsulatedObjectFrame" /> with no
@@ -1156,11 +1113,6 @@ namespace TagLib.Id3v2
 			Type = PictureType.NotAPicture;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the file name of the object stored in the
@@ -1194,10 +1146,5 @@ namespace TagLib.Id3v2
 			get { return Data ?? new ByteVector (); }
 			set { Data = value; }
 		}
-
-		#endregion
-
 	}
-
-	#endregion
 }

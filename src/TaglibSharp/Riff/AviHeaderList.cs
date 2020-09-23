@@ -36,7 +36,7 @@ namespace TagLib.Riff
 		/// <summary>
 		///    Contains the AVI codec information.
 		/// </summary>
-		readonly List<ICodec> codecs = new List<ICodec> ();
+		private readonly List<ICodec> codecs = new List<ICodec> ();
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see

@@ -31,18 +31,11 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public abstract class FullBox : Box
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the box version.
 		/// </summary>
-		byte version;
+		private byte version;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -129,11 +122,6 @@ namespace TagLib.Mpeg4
 		{
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the position of the data contained in the current
@@ -169,11 +157,6 @@ namespace TagLib.Mpeg4
 		/// </value>
 		public uint Flags { get; set; }
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Renders the current instance, including its children, to
@@ -197,7 +180,5 @@ namespace TagLib.Mpeg4
 
 			return base.Render (output);
 		}
-
-		#endregion
 	}
 }

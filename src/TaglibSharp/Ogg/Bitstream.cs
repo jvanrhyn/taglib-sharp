@@ -32,30 +32,23 @@ namespace TagLib.Ogg
 	/// </summary>
 	public class Bitstream
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the last packet of the previous page in case it
 		///    is continued in the next frame.
 		/// </summary>
-		ByteVector previous_packet;
+		private ByteVector previous_packet;
 
 		/// <summary>
 		///    Contains the index of the next packet to be processed.
 		/// </summary>
-		int packet_index;
+		private int packet_index;
 
 		/// <summary>
 		///    Contains the absolute granular position of the first
 		///    page.
 		/// </summary>
-		readonly long first_absolute_granular_position;
+		private readonly long first_absolute_granular_position;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -89,11 +82,6 @@ namespace TagLib.Ogg
 			first_absolute_granular_position = page.Header.AbsoluteGranularPosition;
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Reads the next logical page in the stream.
@@ -172,13 +160,8 @@ namespace TagLib.Ogg
 			return Codec.GetDuration (first_absolute_granular_position, lastAbsoluteGranularPosition);
 		}
 
-        #endregion
 
-
-
-        #region Public Properties
-
-        /// <summary>
+		/// <summary>
         ///    Gets the codec object used to interpret the stream
         ///    represented by the current instance.
         /// </summary>
@@ -188,13 +171,8 @@ namespace TagLib.Ogg
         /// </value>
         public Codec Codec { get; private set; }
 
-        #endregion
 
-
-
-        #region Public Properties
-
-        /// <summary>
+		/// <summary>
         ///    Sents a packet to the codec processor to read it.
         /// </summary>
         /// <param name="packet">
@@ -207,11 +185,9 @@ namespace TagLib.Ogg
         ///    called again, typically once the Xiph comment has been
         ///    found. Otherwise <see langword="false" />.
         /// </returns>
-        bool ReadPacket (ByteVector packet)
+		private bool ReadPacket (ByteVector packet)
 		{
 			return Codec.ReadPacket (packet, packet_index++);
 		}
-
-		#endregion
 	}
 }

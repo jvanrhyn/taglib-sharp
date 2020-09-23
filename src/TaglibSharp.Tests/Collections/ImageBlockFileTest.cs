@@ -7,9 +7,9 @@ namespace TaglibSharp.Tests.Collections
 	[TestFixture]
 	public class ImageBlockFileTest
 	{
-		static readonly string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		private static readonly string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-		TestBlockFile CreateFile (int length)
+		private TestBlockFile CreateFile (int length)
 		{
 			byte[] data = new byte[length];
 

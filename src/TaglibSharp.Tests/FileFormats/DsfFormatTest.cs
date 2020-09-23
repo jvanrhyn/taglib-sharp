@@ -7,9 +7,9 @@ namespace TaglibSharp.Tests.FileFormats
 	[TestFixture]
 	public class DsfFormatTest : IFormatTest
 	{
-		static readonly string sample_file = TestPath.Samples + "sample.dsf";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite.dsf";
-		File file;
+		private static readonly string sample_file = TestPath.Samples + "sample.dsf";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite.dsf";
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

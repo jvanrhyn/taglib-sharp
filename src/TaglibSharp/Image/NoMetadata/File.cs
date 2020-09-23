@@ -56,9 +56,6 @@ namespace TagLib.Image.NoMetadata
 	[SupportedMimeType ("taglib/x3f", "x3f")]    // FIXME: Not supported yet!
 	public class File : TagLib.Image.File
 	{
-
-		#region public Properties
-
 		/// <summary>
 		///    Gets the media properties of the file represented by the
 		///    current instance.
@@ -82,10 +79,6 @@ namespace TagLib.Image.NoMetadata
 		public override bool Writeable {
 			get { return false; }
 		}
-
-		#endregion
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -167,10 +160,6 @@ namespace TagLib.Image.NoMetadata
 		{
 		}
 
-		#endregion
-
-		#region Public Methods
-
 		/// <summary>
 		///    Saves the changes made in the current instance to the
 		///    file it represents.
@@ -179,7 +168,5 @@ namespace TagLib.Image.NoMetadata
 		{
 			throw new NotSupportedException ();
 		}
-
-		#endregion
 	}
 }

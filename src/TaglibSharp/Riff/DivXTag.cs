@@ -35,44 +35,36 @@ namespace TagLib.Riff
 	/// </summary>
 	public class DivXTag : Tag
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the title.
 		/// </summary>
-		string title;
+		private string title;
 
 		/// <summary>
 		///    Contains the semicolon separated performers.
 		/// </summary>
-		string artist;
+		private string artist;
 
 		/// <summary>
 		///    Contains the 4 digit year.
 		/// </summary>
-		string year;
+		private string year;
 
 		/// <summary>
 		///    Contains a comment on track.
 		/// </summary>
-		string comment;
+		private string comment;
 
 		/// <summary>
 		///    Contains the genre index.
 		/// </summary>
-		string genre;
+		private string genre;
 
 		/// <summary>
 		///    Contains the extra 6 bytes at the end of the tag.
 		/// </summary>
-		ByteVector extra_data;
+		private ByteVector extra_data;
 
-		#endregion
-
-
-
-
-		#region Public Static Fields
 
 		/// <summary>
 		///    The size of a DivX tag.
@@ -87,11 +79,6 @@ namespace TagLib.Riff
 		/// </value>
 		public static readonly ReadOnlyByteVector FileIdentifier = "DIVXTAG";
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -181,11 +168,6 @@ namespace TagLib.Riff
 			Parse (data);
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw DivX tag.
@@ -208,11 +190,6 @@ namespace TagLib.Riff
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region Private Methods
 
 		/// <summary>
 		///    Populates the current instance by parsing the contents of
@@ -222,7 +199,7 @@ namespace TagLib.Riff
 		///    A <see cref="ByteVector" /> object containing the
 		///    starting with an DivX tag.
 		/// </param>
-		void Parse (ByteVector data)
+		private void Parse (ByteVector data)
 		{
 			title = data.ToString (StringType.Latin1, 0, 32).Trim ();
 			artist = data.ToString (StringType.Latin1, 32, 28).Trim ();
@@ -231,11 +208,7 @@ namespace TagLib.Riff
 			genre = data.ToString (StringType.Latin1, 112, 3).Trim ();
 			extra_data = data.Mid (115, 6);
 		}
-		#endregion
 
-
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -378,7 +351,5 @@ namespace TagLib.Riff
 			title = artist = genre = year = comment = string.Empty;
 			extra_data = new ByteVector (6);
 		}
-
-		#endregion
 	}
 }

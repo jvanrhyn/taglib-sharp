@@ -73,30 +73,24 @@ namespace TagLib.Matroska
 	[SupportedMimeType ("video/x-matroska")]
 	public class File : TagLib.File
 	{
-		#region Private Fields
-
 		/// <summary>
 		///   Contains the tags for the file.
 		/// </summary>
-		readonly Tags tags;
+		private readonly Tags tags;
 
 		/// <summary>
 		///    Contains the media properties.
 		/// </summary>
-		readonly Properties properties;
+		private readonly Properties properties;
 
-		double duration_unscaled;
-		ulong time_scale;
-		TimeSpan duration;
+		private double duration_unscaled;
+		private ulong time_scale;
+		private TimeSpan duration;
 
-		readonly List<Track> tracks = new List<Track> ();
+		private readonly List<Track> tracks = new List<Track> ();
 
-		bool updateTags;
+		private bool updateTags;
 
-		#endregion
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -198,10 +192,6 @@ namespace TagLib.Matroska
 		{
 		}
 
-		#endregion
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Saves the changes made in the current instance to the
@@ -265,10 +255,6 @@ namespace TagLib.Matroska
 			return ret;
 		}
 
-		#endregion
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets a abstract representation of all tags stored in the
@@ -315,10 +301,6 @@ namespace TagLib.Matroska
 			}
 		}
 
-		#endregion
-
-
-		#region Private Methods Read/Write
 
 		/// <summary>
 		///    Reads (and Write, if file Mode is Write) the file with a specified read style.
@@ -328,7 +310,7 @@ namespace TagLib.Matroska
 		///    of accuracy to read the media properties, or <see
 		///    cref="ReadStyle.None" /> to ignore the properties.
 		/// </param>
-		void ReadWrite (ReadStyle propertiesStyle)
+		private void ReadWrite (ReadStyle propertiesStyle)
 		{
 			ulong offset = ReadLeadText ();
 
@@ -366,7 +348,7 @@ namespace TagLib.Matroska
 			}
 		}
 
-		void ReadWriteSegment (EBMLreader element, ReadStyle propertiesStyle, bool retry = true)
+		private void ReadWriteSegment (EBMLreader element, ReadStyle propertiesStyle, bool retry = true)
 		{
 			// First make reference of all EBML elements at level 1 (top) in the Segment
 
@@ -480,7 +462,7 @@ namespace TagLib.Matroska
 		}
 
 
-		void ReadCreateSegmentInfo (EBMLreader element, EBMLelement ebml_sinfo)
+		private void ReadCreateSegmentInfo (EBMLreader element, EBMLelement ebml_sinfo)
 		{
 
 			EBMLelement ebml_title = null;
@@ -542,12 +524,8 @@ namespace TagLib.Matroska
 			}
 		}
 
-		#endregion
 
-
-		#region Private Methods Read
-
-		ulong ReadLeadText ()
+		private ulong ReadLeadText ()
 		{
 			ulong offset = 0;
 
@@ -570,7 +548,7 @@ namespace TagLib.Matroska
 		}
 
 
-		void ReadHeader (EBMLreader element)
+		private void ReadHeader (EBMLreader element)
 		{
 			string doctype = null;
 			ulong i = 0;
@@ -598,7 +576,7 @@ namespace TagLib.Matroska
 		}
 
 
-		List<EBMLreader> ReadSegments (EBMLreader element, bool allowSeekHead)
+		private List<EBMLreader> ReadSegments (EBMLreader element, bool allowSeekHead)
 		{
 			var segm_list = new List<EBMLreader> (10);
 
@@ -669,7 +647,7 @@ namespace TagLib.Matroska
 		}
 
 
-		bool ReadSeekHead (EBMLreader element, List<EBMLreader> segm_list)
+		private bool ReadSeekHead (EBMLreader element, List<EBMLreader> segm_list)
 		{
 			MatroskaID ebml_id = 0;
 			ulong ebml_position = 0;
@@ -731,7 +709,7 @@ namespace TagLib.Matroska
 		}
 
 
-		void ReadTags (EBMLreader element)
+		private void ReadTags (EBMLreader element)
 		{
 			ulong i = 0;
 
@@ -753,7 +731,7 @@ namespace TagLib.Matroska
 		}
 
 
-		void ReadTag (EBMLreader element)
+		private void ReadTag (EBMLreader element)
 		{
 			ulong i = 0;
 
@@ -781,7 +759,7 @@ namespace TagLib.Matroska
 
 		}
 
-		void ReadTargets (EBMLreader element, Tag tag)
+		private void ReadTargets (EBMLreader element, Tag tag)
 		{
 			ulong i = 0;
 
@@ -831,7 +809,7 @@ namespace TagLib.Matroska
 			}
 		}
 
-		void ReadSimpleTag (EBMLreader element, Tag tag, SimpleTag simpletag = null)
+		private void ReadSimpleTag (EBMLreader element, Tag tag, SimpleTag simpletag = null)
 		{
 			ulong i = 0;
 			string key = null;
@@ -899,7 +877,7 @@ namespace TagLib.Matroska
 
 		}
 
-		void ReadAttachments (EBMLreader element, ReadStyle propertiesStyle)
+		private void ReadAttachments (EBMLreader element, ReadStyle propertiesStyle)
 		{
 			ulong i = 0;
 
@@ -920,7 +898,7 @@ namespace TagLib.Matroska
 			}
 		}
 
-		void ReadAttachedFile (EBMLreader element, ReadStyle propertiesStyle)
+		private void ReadAttachedFile (EBMLreader element, ReadStyle propertiesStyle)
 		{
 			ulong i = 0;
 #pragma warning disable 219 // Assigned, never read
@@ -980,7 +958,7 @@ namespace TagLib.Matroska
 
 		}
 
-		void ReadTracks (EBMLreader element)
+		private void ReadTracks (EBMLreader element)
 		{
 			ulong i = 0;
 
@@ -1001,7 +979,7 @@ namespace TagLib.Matroska
 			}
 		}
 
-		void ReadTrackEntry (EBMLreader element)
+		private void ReadTrackEntry (EBMLreader element)
 		{
 			ulong i = 0;
 
@@ -1047,10 +1025,6 @@ namespace TagLib.Matroska
 			}
 		}
 
-		#endregion
-
-
-		#region Private Methods Write/Create
 
 		/// <summary>
 		/// Central point for the Writing, after the master elements of the EBML Segment have been referenced.
@@ -1058,7 +1032,7 @@ namespace TagLib.Matroska
 		/// <param name="ebml_segm">EBML Segment containing the EBML to be written</param>
 		/// <param name="ebml_sinfo">EBML SegmentInfo</param>
 		/// <param name="segm_list">description of the mapping of EBML level 1 in the EBML Segment, ordered</param>
-		void WriteSegment (EBMLreader ebml_segm, EBMLelement ebml_sinfo, List<EBMLreader> segm_list)
+		private void WriteSegment (EBMLreader ebml_segm, EBMLelement ebml_sinfo, List<EBMLreader> segm_list)
 		{
 			// Organize the Voids (free space map)
 			UpdateSegmentsMergeVoids (ebml_segm, segm_list);
@@ -1148,7 +1122,7 @@ namespace TagLib.Matroska
 		/// <param name="segm_list">description of the mapping of EBML level 1 in the EBML Segment, ordered</param>
 		/// <param name="minSize">Size to be reserved. A Margin will be added to it.</param>
 		/// <returns></returns>
-		long WriteReservedEBML (EBMLreader ebml_segm, List<EBMLreader> segm_list, long minSize)
+		private long WriteReservedEBML (EBMLreader ebml_segm, List<EBMLreader> segm_list, long minSize)
 		{
 			long margin = 40;
 			long reserved = minSize + margin;
@@ -1193,7 +1167,7 @@ namespace TagLib.Matroska
 		/// <param name="ebml_segm">EBML Segment containing the EBML to be written</param>
 		/// <param name="segm_list">description of the mapping of EBML level 1 in the EBML Segment, ordered</param>
 		/// <param name="reserved">Reserved space at the Segment, do not write there</param>
-		void WriteEBML (EBMLelement element, EBMLreader ebml_segm, List<EBMLreader> segm_list, long reserved)
+		private void WriteEBML (EBMLelement element, EBMLreader ebml_segm, List<EBMLreader> segm_list, long reserved)
 		{
 			long size = element.Size;
 			long position = 0;
@@ -1282,7 +1256,7 @@ namespace TagLib.Matroska
 		/// </summary>
 		/// <param name="ebml_segm">EBML Segment containing the EBML to be written</param>
 		/// <param name="segm_list">description of the mapping of EBML level 1 in the EBML Segment, ordered</param>
-		void UpdateSegmentsMergeVoids (EBMLreader ebml_segm, List<EBMLreader> segm_list)
+		private void UpdateSegmentsMergeVoids (EBMLreader ebml_segm, List<EBMLreader> segm_list)
 		{
 			ulong maxbound = ebml_segm.Offset + ebml_segm.Size - 2;
 
@@ -1335,7 +1309,7 @@ namespace TagLib.Matroska
 			}
 		}
 
-		EBMLelement CreateAttachments ()
+		private EBMLelement CreateAttachments ()
 		{
 			var ret = new EBMLelement (MatroskaID.Attachments);
 
@@ -1354,7 +1328,7 @@ namespace TagLib.Matroska
 			return ret;
 		}
 
-		EBMLelement CreateAttachedFile (Attachment attach)
+		private EBMLelement CreateAttachedFile (Attachment attach)
 		{
 			var ret = new EBMLelement (MatroskaID.AttachedFile);
 
@@ -1386,7 +1360,7 @@ namespace TagLib.Matroska
 			return ret;
 		}
 
-		EBMLelement CreateTags ()
+		private EBMLelement CreateTags ()
 		{
 			var ret = new EBMLelement (MatroskaID.Tags);
 
@@ -1417,7 +1391,7 @@ namespace TagLib.Matroska
 			return ret;
 		}
 
-		EBMLelement CreateTag (Tag tag)
+		private EBMLelement CreateTag (Tag tag)
 		{
 			var ret = new EBMLelement (MatroskaID.Tag);
 
@@ -1437,7 +1411,7 @@ namespace TagLib.Matroska
 			return ret;
 		}
 
-		EBMLelement CreateSimpleTag (string key, SimpleTag value)
+		private EBMLelement CreateSimpleTag (string key, SimpleTag value)
 		{
 			var ret = new EBMLelement (MatroskaID.SimpleTag);
 
@@ -1469,7 +1443,7 @@ namespace TagLib.Matroska
 			return ret;
 		}
 
-		EBMLelement CreateTargets (Tag tag)
+		private EBMLelement CreateTargets (Tag tag)
 		{
 			var ret = new EBMLelement (MatroskaID.Targets);
 
@@ -1491,7 +1465,7 @@ namespace TagLib.Matroska
 			return ret;
 		}
 
-		EBMLelement CreateSeekHead (List<EBMLreader> segm_list, long offset = 0)
+		private EBMLelement CreateSeekHead (List<EBMLreader> segm_list, long offset = 0)
 		{
 			var ret = new EBMLelement (MatroskaID.SeekHead);
 			bool refCluster = true; // Reference only the first cluster
@@ -1519,7 +1493,5 @@ namespace TagLib.Matroska
 
 			return ret;
 		}
-
-		#endregion
 	}
 }

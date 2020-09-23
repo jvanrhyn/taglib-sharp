@@ -11,12 +11,12 @@ namespace TaglibSharp.Tests.Images
 	[TestFixture]
 	public class JpegNikon3Test
 	{
-		static readonly string sample_file = TestPath.Samples + "sample_nikon3.jpg";
-		static readonly string tmp_file = TestPath.Samples + "tmpwrite_nikon3.jpg";
+		private static readonly string sample_file = TestPath.Samples + "sample_nikon3.jpg";
+		private static readonly string tmp_file = TestPath.Samples + "tmpwrite_nikon3.jpg";
 
-		readonly TagTypes contained_types = TagTypes.TiffIFD;
+		private readonly TagTypes contained_types = TagTypes.TiffIFD;
 
-		File file;
+		private File file;
 
 		[OneTimeSetUp]
 		public void Init ()

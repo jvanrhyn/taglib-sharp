@@ -30,18 +30,11 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class IsoFreeSpaceBox : Box
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the size of the padding.
 		/// </summary>
-		long padding;
+		private long padding;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -80,11 +73,6 @@ namespace TagLib.Mpeg4
 			PaddingSize = padding;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the data contained in the current instance.
@@ -110,7 +98,5 @@ namespace TagLib.Mpeg4
 			get { return padding + 8; }
 			set { padding = value - 8; }
 		}
-
-		#endregion
 	}
 }

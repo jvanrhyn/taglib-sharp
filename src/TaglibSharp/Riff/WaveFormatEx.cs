@@ -31,22 +31,16 @@ namespace TagLib.Riff
 	/// </summary>
 	public struct WaveFormatEx : IAudioCodec, ILosslessAudioCodec
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the number of audio channels.
 		/// </summary>
-		readonly ushort channels;
+		private readonly ushort channels;
 
 		/// <summary>
 		///    Contains the number of samples per second.
 		/// </summary>
-		readonly uint samples_per_second;
+		private readonly uint samples_per_second;
 
-		#endregion
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -111,11 +105,6 @@ namespace TagLib.Riff
 			BitsPerSample = data.Mid (offset + 14, 2).ToUShort (false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets the format tag of the audio described by the
@@ -153,17 +142,9 @@ namespace TagLib.Riff
 		/// </returns>
 		public ushort BitsPerSample { get; private set; }
 
-		#endregion
-
-		#region ILosslessAudioCodec
-
 		int ILosslessAudioCodec.BitsPerSample {
 			get { return BitsPerSample; }
 		}
-
-		#endregion
-
-		#region IAudioCodec
 
 		/// <summary>
 		///    Gets the bitrate of the audio represented by the current
@@ -636,11 +617,6 @@ namespace TagLib.Riff
 			}
 		}
 
-		#endregion
-
-
-
-		#region IEquatable
 
 		/// <summary>
 		///    Generates a hash code for the current instance.
@@ -741,6 +717,5 @@ namespace TagLib.Riff
 		{
 			return !first.Equals (second);
 		}
-		#endregion
 	}
 }

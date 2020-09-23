@@ -7,8 +7,6 @@ namespace TagLib.Id3v2
 	/// </summary>
 	public class EventTimeCode : ICloneable
 	{
-		#region Public Properties
-
 		/// <summary>
 		/// 
 		/// </summary>
@@ -18,10 +16,6 @@ namespace TagLib.Id3v2
 		/// 
 		/// </summary>
 		public int Time { get; set; }
-
-		#endregion
-
-		#region Public Constructors
 
 		/// <summary>
 		/// 
@@ -34,10 +28,6 @@ namespace TagLib.Id3v2
 			Time = time;
 		}
 
-		#endregion
-
-		#region Static Methods
-
 		/// <summary>
 		/// 
 		/// </summary>
@@ -47,10 +37,6 @@ namespace TagLib.Id3v2
 			return new EventTimeCode (EventType.Padding, 0);
 		}
 
-		#endregion
-
-		#region ICloneable
-
 		/// <summary>
 		/// 
 		/// </summary>
@@ -59,7 +45,5 @@ namespace TagLib.Id3v2
 		{
 			return new EventTimeCode (TypeOfEvent, Time);
 		}
-
-		#endregion
 	}
 }

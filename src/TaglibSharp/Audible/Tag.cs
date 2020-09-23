@@ -35,9 +35,7 @@ namespace TagLib.Audible
 	/// </summary>
 	public class Tag : TagLib.Tag
 	{
-		Dictionary<string, string> tags;
-
-		#region Constructors
+		private Dictionary<string, string> tags;
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -102,10 +100,6 @@ namespace TagLib.Audible
 			Parse (data);
 		}
 
-		#endregion
-
-		#region Private Methods
-
 		/// <summary>
 		///    Populates the current instance by parsing the contents of
 		///    a raw AudibleMetadata tag.
@@ -118,7 +112,7 @@ namespace TagLib.Audible
 		///    <paramref name="data" /> is less than 128 bytes or does
 		///    not start with FileIdentifier.
 		/// </exception>
-		void Parse (ByteVector data)
+		private void Parse (ByteVector data)
 		{
 			string currentKey, currentValue;
 			int keyLen, valueLen;
@@ -151,13 +145,13 @@ namespace TagLib.Audible
 				throw new CorruptFileException ();
 		}
 
-		void SetTag (string tagName, string value)
+		private void SetTag (string tagName, string value)
 		{
 			if (tags.ContainsKey (tagName))
 				tags[tagName] = value;
 		}
 
-		string GetTag (string tagName)
+		private string GetTag (string tagName)
 		{
 			return tags.ContainsKey (tagName) ? tags[tagName] : null;
 		}
@@ -190,10 +184,6 @@ namespace TagLib.Audible
 			
 		}
 		*/
-
-		#endregion
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -302,7 +292,5 @@ namespace TagLib.Audible
 		{
 			tags = new Dictionary<string, string> ();
 		}
-
-		#endregion
 	}
 }

@@ -39,7 +39,7 @@ namespace TagLib
 		/// <summary>
 		///    Contains a list of ID3v1 audio generes.
 		/// </summary>
-		static readonly string[] audio = {
+		private static readonly string[] audio = {
 			"Blues",
 			"Classic Rock",
 			"Country",
@@ -193,7 +193,7 @@ namespace TagLib
 		/// <summary>
 		///    Contains a list of DivX audio generes.
 		/// </summary>
-		static readonly string[] video = new[] {
+		private static readonly string[] video = new[] {
 			"Action",
 			"Action/Adventure",
 			"Adult",
@@ -385,7 +385,7 @@ namespace TagLib
 		///    of <paramref name="text" /> or 255 if no numeric value
 		///    could be extracted.
 		/// </returns>
-		static byte StringToByte (string text)
+		private static byte StringToByte (string text)
 		{
 			int last_pos;
 			if (text != null && text.Length > 2 && text[0] == '('

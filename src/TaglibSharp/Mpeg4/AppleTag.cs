@@ -34,24 +34,17 @@ namespace TagLib.Mpeg4
 	/// </summary>
 	public class AppleTag : Tag, IEnumerable<Box>
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the ISO meta box in which that tag will be
 		///    stored.
 		/// </summary>
-		readonly IsoMetaBox meta_box;
+		private readonly IsoMetaBox meta_box;
 
 		/// <summary>
 		///    Contains the ILST box which holds all the values.
 		/// </summary>
-		readonly AppleItemListBox ilst_box;
+		private readonly AppleItemListBox ilst_box;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -81,11 +74,6 @@ namespace TagLib.Mpeg4
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets and sets whether or not the album described by the
@@ -112,11 +100,6 @@ namespace TagLib.Mpeg4
 			}
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets all data boxes that match any of the provided types.
@@ -455,7 +438,7 @@ namespace TagLib.Mpeg4
 		/// <param name="meanstring">String specifying text for mean box</param>
 		/// <param name="namestring">String specifying text for name box</param>
 		/// <returns>Existing AppleDataBox or null if one does not exist</returns>
-		AppleDataBox GetDashAtoms (string meanstring, string namestring)
+		private AppleDataBox GetDashAtoms (string meanstring, string namestring)
 		{
 			foreach (Box box in ilst_box.Children) {
 				if (box.BoxType != BoxType.DASH)
@@ -487,7 +470,7 @@ namespace TagLib.Mpeg4
 		/// <param name="meanstring">String specifying text for mean box</param>
 		/// <param name="namestring">String specifying text for name box</param>
 		/// <returns>AppleAnnotationBox object that is the parent for the mean/name combination</returns>
-		AppleAnnotationBox GetParentDashBox (string meanstring, string namestring)
+		private AppleAnnotationBox GetParentDashBox (string meanstring, string namestring)
 		{
 			foreach (Box box in ilst_box.Children) {
 				if (box.BoxType != BoxType.DASH)
@@ -512,11 +495,7 @@ namespace TagLib.Mpeg4
 			// If we haven't returned the found box yet, there isn't one, return null
 			return null;
 		}
-		#endregion
 
-
-
-		#region Internal Methods
 
 		/// <summary>
 		///    Converts the provided ID into a readonly ID and fixes a
@@ -546,11 +525,6 @@ namespace TagLib.Mpeg4
 			return null;
 		}
 
-		#endregion
-
-
-
-		#region IEnumerable<Box>
 
 		/// <summary>
 		///    Gets an enumerator for enumerating through the tag's data
@@ -570,11 +544,6 @@ namespace TagLib.Mpeg4
 			return ilst_box.Children.GetEnumerator ();
 		}
 
-		#endregion
-
-
-
-		#region TagLib.Tag
 
 		/// <summary>
 		///    Gets the tag types contained in the current instance.
@@ -1730,7 +1699,5 @@ namespace TagLib.Mpeg4
 		{
 			ilst_box.ClearChildren ();
 		}
-
-		#endregion
 	}
 }

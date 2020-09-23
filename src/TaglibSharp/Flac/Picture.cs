@@ -31,9 +31,6 @@ namespace TagLib.Flac
 	/// </summary>
 	public class Picture : IPicture
 	{
-
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="Picture" /> by reading the contents of a raw Flac
@@ -126,11 +123,6 @@ namespace TagLib.Flac
 			IndexedColors = flac_picture.IndexedColors;
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Renders the current instance as a raw Flac picture.
@@ -165,11 +157,6 @@ namespace TagLib.Flac
 			return data;
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the mime-type of the picture data
@@ -262,7 +249,5 @@ namespace TagLib.Flac
 		///    stored in an indexed format.
 		/// </value>
 		public int IndexedColors { get; set; }
-
-		#endregion
 	}
 }

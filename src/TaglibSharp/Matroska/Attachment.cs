@@ -32,8 +32,6 @@ namespace TagLib.Matroska
 	/// </summary>
 	public class Attachment : PictureLazy, IUIDElement
 	{
-		#region Constructors
-
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
 		///    cref="Attachment" /> with no data or values.
@@ -119,11 +117,6 @@ namespace TagLib.Matroska
 		}
 
 
-		#endregion
-
-
-		#region Methods
-
 		/// <summary>
 		/// Derive the Picture-type from the the file-name. 
 		/// It change the <see cref="P:Type"/> from the <see cref="P:Filename"/>.
@@ -188,10 +181,6 @@ namespace TagLib.Matroska
 			return true;
 		}
 
-		#endregion
-
-
-		#region IUIDElement Boilerplate
 
 		/// <summary>
 		/// Unique ID representing the element, as random as possible (setting zero will generate automatically a new one).
@@ -201,15 +190,12 @@ namespace TagLib.Matroska
 			set { _UID = UIDElement.GenUID (value); }
 		}
 
-		ulong _UID = UIDElement.GenUID ();
+		private ulong _UID = UIDElement.GenUID ();
 
 
 		/// <summary>
 		/// Get the Tag type the UID should be represented by, or 0 if undefined
 		/// </summary>
 		public MatroskaID UIDType { get { return MatroskaID.TagAttachmentUID; } }
-
-		#endregion
-
 	}
 }

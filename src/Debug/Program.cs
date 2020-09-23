@@ -9,22 +9,22 @@ namespace Debug
 	/// <summary>
 	/// Stub program to debug some scenarios. Modify it as you need, this is not meant to be reuseable program.
 	/// </summary>
-	class Program
+	internal class Program
 	{
-		static readonly string AssemblyLocation = Path.GetDirectoryName (Assembly.GetAssembly (typeof (Program)).Location);
+		private static readonly string AssemblyLocation = Path.GetDirectoryName (Assembly.GetAssembly (typeof (Program)).Location);
 		public static readonly string Samples = Path.Combine (AssemblyLocation, "..", "..", "..", "..", "TaglibSharp.Tests", "samples");
 
 		/// <summary>
 		/// Ouput message on the console and on the Visual Studio Output
 		/// </summary>
 		/// <param name="str"></param>
-		static void Log (string str)
+		private static void Log (string str)
 		{
 			Console.WriteLine (str);
 			System.Diagnostics.Debug.WriteLine (str);
 		}
 
-		static void Main (string[] args)
+		private static void Main (string[] args)
 		{
 			Log ("--------------------");
 			Log ("* Start : Samples directory: " + Samples);

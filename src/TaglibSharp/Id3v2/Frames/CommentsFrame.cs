@@ -42,8 +42,6 @@ namespace TagLib.Id3v2
 	/// </remarks>
 	public class CommentsFrame : Frame
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    Contains the text encoding to use when rendering the
 		///    current instance.
@@ -53,23 +51,18 @@ namespace TagLib.Id3v2
 		///    Contains the ISO-639-2 language code of the current
 		///    instance.
 		/// </summary>
-		string language;
+		private string language;
 
 		/// <summary>
 		///    Contains the description of the current instance.
 		/// </summary>
-		string description;
+		private string description;
 
 		/// <summary>
 		///    Contains the comment text of the current instance.
 		/// </summary>
-		string text;
+		private string text;
 
-		#endregion
-
-
-
-		#region Constructors
 
 		/// <summary>
 		///    Constructs and initializes a new instance of <see
@@ -188,11 +181,6 @@ namespace TagLib.Id3v2
 			SetData (data, offset, version, false);
 		}
 
-		#endregion
-
-
-
-		#region Public Properties
 
 		/// <summary>
 		///    Gets and sets the text encoding to use when storing the
@@ -272,11 +260,6 @@ namespace TagLib.Id3v2
 			set { text = value; }
 		}
 
-		#endregion
-
-
-
-		#region Public Methods
 
 		/// <summary>
 		///    Gets a string representation of the current instance.
@@ -289,11 +272,6 @@ namespace TagLib.Id3v2
 			return Text;
 		}
 
-		#endregion
-
-
-
-		#region Public Static Methods
 
 		/// <summary>
 		///    Gets a specified comments frame from the specified tag,
@@ -424,11 +402,6 @@ namespace TagLib.Id3v2
 			return best_frame;
 		}
 
-		#endregion
-
-
-
-		#region Protected Methods
 
 		/// <summary>
 		///    Populates the values in the current instance by parsing
@@ -496,11 +469,6 @@ namespace TagLib.Id3v2
 			return v;
 		}
 
-		#endregion
-
-
-
-		#region ICloneable
 
 		/// <summary>
 		///    Creates a deep copy of the current instance.
@@ -516,7 +484,5 @@ namespace TagLib.Id3v2
 			};
 			return frame;
 		}
-
-		#endregion
 	}
 }

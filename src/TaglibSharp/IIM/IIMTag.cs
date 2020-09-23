@@ -29,7 +29,7 @@ namespace TagLib.IIM
 	/// </summary>
 	public class IIMTag : Xmp.XmpTag
 	{
-		List<string> m_Keywords;
+		private List<string> m_Keywords;
 
 		/// <summary>
 		/// Constructor

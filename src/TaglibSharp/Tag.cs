@@ -1338,7 +1338,7 @@ namespace TagLib
 		///    <paramref name="group" />, or <see langword="null" /> if
 		///    the array is <see langword="null" /> or empty.
 		/// </returns>
-		static string FirstInGroup (string[] group)
+		private static string FirstInGroup (string[] group)
 		{
 			return group == null || group.Length == 0 ?
 				null : group[0];
@@ -1355,7 +1355,7 @@ namespace TagLib
 		///    A semicolon separated <see cref="string" /> object
 		///    containing the values from <paramref name="group" />.
 		/// </returns>
-		static string JoinGroup (string[] group)
+		private static string JoinGroup (string[] group)
 		{
 			if (group == null || group.Length == 0)
 				return null;
@@ -1580,7 +1580,7 @@ namespace TagLib
 		///    langword="null" /> or contains only whitespace
 		///    characters. Otherwise <see langword="false" />.
 		/// </returns>
-		static bool IsNullOrLikeEmpty (string value)
+		private static bool IsNullOrLikeEmpty (string value)
 		{
 			return value == null || value.Trim ().Length == 0;
 		}
@@ -1601,7 +1601,7 @@ namespace TagLib
 		///    cref="IsNullOrLikeEmpty(string)" />. Otherwise <see
 		///    langword="false" />.
 		/// </returns>
-		static bool IsNullOrLikeEmpty (string[] value)
+		private static bool IsNullOrLikeEmpty (string[] value)
 		{
 			if (value == null)
 				return true;

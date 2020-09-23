@@ -33,16 +33,10 @@ namespace TagLib.IFD.Entries
 	/// </summary>
 	public struct SRational : IFormattable
 	{
-		#region Private Fields
-
 		/// <summary>
 		///    The denominator of the rational value
 		/// </summary>
-		int denominator;
-
-		#endregion
-
-		#region Constructor
+		private int denominator;
 
 		/// <summary>
 		///    Creates a new Rational value
@@ -63,10 +57,6 @@ namespace TagLib.IFD.Entries
 			Numerator = numerator;
 			this.denominator = denominator;
 		}
-
-		#endregion
-
-		#region Public Methods
 
 		/// <summary>
 		///    Returns a rational value with reduced nominator and denominator
@@ -120,10 +110,6 @@ namespace TagLib.IFD.Entries
 			return $"{this}";
 		}
 
-		#endregion
-
-		#region Public Properties
-
 		/// <value>
 		///    The numerator of the rational value
 		/// </value>
@@ -145,10 +131,6 @@ namespace TagLib.IFD.Entries
 			}
 		}
 
-		#endregion
-
-		#region Public Static Methods
-
 		/// <summary>
 		///    Cast the <see cref="Rational"/> value to a <see cref="System.Double"/>.
 		/// </summary>
@@ -162,7 +144,5 @@ namespace TagLib.IFD.Entries
 		{
 			return rat.Numerator / (double)rat.Denominator;
 		}
-
-		#endregion
 	}
 }
